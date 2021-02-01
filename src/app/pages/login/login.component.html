@@ -1,0 +1,38 @@
+<div>
+  <div nz-row>
+    <div nz-col nzSpan="12"></div>
+    <div nz-col nzSpan="12" class="login">
+      <div>
+        <h1>SIGN IN</h1>
+        <p>username</p>
+        <input
+        class="input-login"
+          nzSize="large"
+          type="text"
+          nz-input
+          placeholder="Username"
+          [(ngModel)]="userLogin.email"
+        />
+         <p>password</p>
+        <input
+        class="input-login"
+          nzSize="large"
+          type="password"
+          nz-input
+          placeholder="Password"
+          [(ngModel)]="userLogin.password"
+        />
+        
+        <br>
+        <button
+          nz-button
+          class="login-form-button login-form-margin"
+          [nzType]="'primary'"
+          (click)="login()"
+        >
+          Log in
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
