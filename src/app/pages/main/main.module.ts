@@ -13,9 +13,11 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzTagModule } from 'ng-zorro-antd/tag';
 import { AddLeaveModule } from '../../components/add-leave/add-leave.module';
-import { CalenerModule } from '../../components/calener/calener.module';
-
+import { EditLeaveModule } from '../../components/edit-leave/edit-leave.module';
+import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
+import { NzModalModule } from 'ng-zorro-antd/modal';
 @NgModule({
   declarations: [MainComponent],
   imports: [
@@ -32,7 +34,10 @@ import { CalenerModule } from '../../components/calener/calener.module';
     NzTableModule,
     NzButtonModule,
     AddLeaveModule,
-    CalenerModule,
-  ]
+    NzTagModule,
+    EditLeaveModule,
+    NzToolTipModule,
+    NzModalModule,
+  ],
 })
-export class MainModule { }
+export class MainModule {}

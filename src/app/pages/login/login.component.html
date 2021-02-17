@@ -1,38 +1,41 @@
-<div>
-  <div nz-row>
-    <div nz-col nzSpan="12"></div>
-    <div nz-col nzSpan="12" class="login">
-      <div>
-        <h1>SIGN IN</h1>
-        <p>username</p>
-        <input
+<div nz-row>
+  <div nz-col nzSpan="12" style="height: 100vh">
+    <img src="../../../assets/THIS.png" />
+  </div>
+  <div nz-col nzSpan="12" class="login">
+    <div class="center">
+      <h1 style="color: white">Sign In</h1>
+      <p>Email</p>
+      <input
         class="input-login"
-          nzSize="large"
-          type="text"
-          nz-input
-          placeholder="Username"
-          [(ngModel)]="userLogin.email"
-        />
-         <p>password</p>
-        <input
+        nzSize="large"
+        type="text"
+        nz-input
+        placeholder="example@gmail.com"
+        [(ngModel)]="userLogin.email"
+      />
+      <p>password</p>
+      <input
         class="input-login"
-          nzSize="large"
-          type="password"
-          nz-input
-          placeholder="Password"
-          [(ngModel)]="userLogin.password"
-        />
-        
-        <br>
-        <button
-          nz-button
-          class="login-form-button login-form-margin"
-          [nzType]="'primary'"
-          (click)="login()"
-        >
-          Log in
-        </button>
-      </div>
+        nzSize="large"
+        type="password"
+        nz-input
+        placeholder="password"
+        [(ngModel)]="userLogin.password"
+        (keyup.enter)="login()"
+      />
+      <br />
+      <br />
+      <button
+        nz-button
+        class="button"
+        nzSize="large"
+        nzType="primary"
+        nzDanger
+        (click)="login()"
+      >
+        Sign in
+      </button>
     </div>
   </div>
 </div>

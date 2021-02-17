@@ -130,5 +130,8 @@
       }
     }
   },
-  "defaultProject": "leaveWork"
+  "defaultProject": "leaveWork",
+  "cli": {
+    "analytics": "5b2621cc-0b32-4170-9662-f056a8aaa983"
+  }
 }

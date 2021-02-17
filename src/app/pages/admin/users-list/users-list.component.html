@@ -1,0 +1,23 @@
+<div>
+  <nz-table [nzData]="listAlluser.data" nzShowPagination="false">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Status</th>
+        <th>Address</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let value of listAlluser.data">
+        <td>{{ value.first_name }}{{ value.last_name }}</td>
+        <td>{{value.status_name}}</td>
+        <td>{{ value.email }}</td>
+        <td>
+          <a (click)="refreshData(value)"><i nz-icon nzType="edit" nzTheme="outline"></i></a>
+        </td>
+        <td><i nz-icon nzType="info-circle" nzTheme="outline"></i></td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>

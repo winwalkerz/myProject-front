@@ -1,19 +1,94 @@
-<div nz-row>
-  <div nz-col nzSpan="8">
-    <span>ชื่อ - นามสกุล</span>
-  </div>
-  <div nz-col nzSpan="5">
-    <input
-      nz-input
-      [(ngModel)]="valueCreate.first_name"
-      [disabled]="true"
-    />
-  </div>
-  <div nz-col nzSpan="5">
-    <input
-      nz-input
-      [(ngModel)]="valueCreate.last_name"
-      [disabled]="true"
-    />
+<div style="margin-bottom: 15px">
+  <div nz-row>
+    <div nz-col nzSpan="12">
+      <span>วันที่ต้องการลา</span>
+    </div>
+    <div nz-col nzSpan="12">
+      <nz-date-picker
+        [nzDisabledDate]="disabledStartDate"
+        nzFormat="yyyy/MM/dd"
+        [(ngModel)]="leaveCreate.date_start"
+        nzPlaceHolder="Start"
+        (nzOnOpenChange)="handleStartOpenChange($event)"
+      ></nz-date-picker>
+      <nz-date-picker
+        #endDatePicker
+        [nzDisabledDate]="disabledEndDate"
+        nzFormat="yyyy/MM/dd"
+        [(ngModel)]="leaveCreate.date_end"
+        nzPlaceHolder="End"
+        (nzOnOpenChange)="handleEndOpenChange($event)"
+      ></nz-date-picker>
+      <br />
+    </div>
   </div>
 </div>
+<div style="margin-bottom: 15px">
+  <div nz-row>
+    <div nz-col nzSpan="12">
+      <span>รูปแบบการลางาน</span>
+    </div>
+    <div nz-col nzSpan="12">
+      <nz-select nzShowSearch nzAllowClear nzPlaceHolder="เลือกรูปแบบการลา" [(ngModel)]="leaveCreate.type">
+        <nz-option nzLabel="ลาพักร้อน" [nzValue]="'ลาพักร้อน'"></nz-option>
+        <nz-option nzLabel="ลากิจ" [nzValue]="'ลากิจ'"></nz-option>
+        <nz-option nzLabel="ลาป่วย" [nzValue]="'ลาป่วย'"></nz-option>
+      </nz-select>
+    </div>
+  </div>
+</div>
+<div style="margin-bottom: 15px">
+  <div nz-row>
+    <div nz-col nzSpan="12">
+      <span>รายละเอียดเพิ่มเติม, หมายเหตุ</span>
+    </div>
+    <div nz-col nzSpan="12">
+      <textarea
+        nz-input
+        placeholder="รายละเอียดเพิ่มเติม"
+        [nzAutosize]="{ minRows: 2, maxRows: 6 }"
+        [(ngModel)]="leaveCreate.description"
+      ></textarea>
+    </div>
+  </div>
+</div>
+<!-- https://firebasestorage.googleapis.com/v0/b/upload-5137e.appspot.com/o/${getpath.name}?alt=media -->
+<nz-upload
+      class="avatar-uploader"
+      [nzAction]="environment.apiURL+'/api/leaveWork/upload'"  
+      nzName="file"
+      nzListType="picture-card"
+      [nzShowUploadList]="false"
+      [nzBeforeUpload]="beforeUpload"
+      (nzChange)="handleChange($event)"
+    >
+      <ng-container *ngIf="!avatarUrl">
+        <i class="upload-icon" nz-icon [nzType]="loading ? 'loading' : 'plus'"></i>
+        <div class="ant-upload-text">Upload</div>
+      </ng-container>
+      <img *ngIf="avatarUrl" [src]="avatarUrl" style="width: 100%" />
+    </nz-upload>
+<div style="margin-bottom: 15px">
+  <button nz-button nzType="primary" nzBlock (click)="createLeave(leaveCreate)">เพิ่ม</button>
+  <nz-modal [(nzVisible)]="isVisible" nzTitle="แจ้งเตือน" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+    <ng-container *nzModalContent>
+      <div class="modal-alert">
+        <p>คุณได้ทำการลาเป็นจำนวน
+        <input style="width: 30px;" nz-input placeholder="default size" nzSize="default"  
+        [(ngModel)]="leaveCreate.allday" />  วัน</p><br>
+      </div>
+    </ng-container>
+  </nz-modal>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+

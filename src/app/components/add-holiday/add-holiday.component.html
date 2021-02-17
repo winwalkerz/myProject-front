@@ -1,0 +1,13 @@
+<div nz-row>
+  <div nz-col nzSpan="6">
+    <p>รายละเอียดวันหยุด</p>
+  </div>
+  <div nz-col nzSpan="6">
+    <input
+      nz-input
+      placeholder="Chrismas, New year"
+      [(ngModel)]="valueHoliday.content"
+    />
+  </div>
+</div>
+<button nz-button nzType="primary" (click)="createHolidayy(valueHoliday)">Save</button>

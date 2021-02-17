@@ -1,0 +1,52 @@
+<div>
+  <div nz-row>
+    <div nz-col nzSpan="12">
+      <span>หมายเลขการลา</span>
+    </div>
+    <div nz-col nzSpan="12">
+      <span>{{ dataDetailSendAfter.id }}</span>
+    </div>
+    <div nz-col nzSpan="12">
+      <span>ชื่อ-นามสกุล</span>
+    </div>
+    <div nz-col nzSpan="12">
+      <span
+        >{{ dataDetailSendAfter.first_name }}
+        {{ dataDetailSendAfter.last_name }}</span
+      >
+    </div>
+    <div nz-col nzSpan="12">
+      <span>วันที่ต้องการลา</span>
+    </div>
+    <div nz-col nzSpan="12">
+      <span>{{ dataDetailSendAfter.date_start }}</span> -
+      <span>{{ dataDetailSendAfter.date_end }}</span>
+    </div>
+    <div nz-col nzSpan="12">
+      <span>หมายเหตุ, รายละเอียด</span>
+    </div>
+    <div nz-col nzSpan="12">
+      <span>{{ dataDetailSendAfter.description }}</span>
+    </div>
+    <div>
+      <nz-select
+        style="width: 200px"
+        [(ngModel)]="dataDetailSendAfter.id_status_fk"
+      >
+        <nz-option [nzValue]="1" nzLabel="wait"></nz-option>
+        <nz-option [nzValue]="2" nzLabel="approve"></nz-option>
+        <nz-option [nzValue]="3" nzLabel="cancel"></nz-option>
+      </nz-select>
+    </div>
+    <div>
+      <button
+        nz-button
+        nzType="primary"
+        (click)="edit(dataDetailSendAfter.id, dataDetailSendAfter)"
+      >
+        บันทึก
+      </button>
+      <button nz-button nzType="primary" nzDanger>ยกเลิก</button>
+    </div>
+  </div>
+</div>

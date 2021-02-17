@@ -1,0 +1,92 @@
+
+<div nz-row>
+<div nz-col nzSpan="12" nzAlign="middle">
+  <span>Firstname :</span>
+</div>
+<div nz-col nzPull="8" nzSpan="12">
+  <input  class="input-box" nz-input required placeholder="First name" [(ngModel)]="addUser.first_name" />
+  </div>
+</div>
+<br>
+
+<div nz-row>
+  <div nz-col nzSpan="12">
+    <div>
+    <span>Lastname :</span>
+    </div>
+</div>
+  <div nz-col nzPull="8" nzSpan="12">
+    <input  class="input-box" nz-input placeholder="Last name" [(ngModel)]="addUser.last_name" />
+  </div>
+</div>
+<br>
+
+<!-- email password ------------------------------------------------------->
+<div nz-row>
+  <div nz-col nzSpan="12" nzAlign="middle">
+    <span>Email :</span>
+  </div>
+  <div nz-col nzPull="8" nzSpan="12">
+    <input  class="input-box" nz-input placeholder="Email" [(ngModel)]="addUser.email" />
+    </div>
+  </div>
+  <br>
+  
+  <div nz-row>
+    <div nz-col nzSpan="12">
+      <div>
+      <span>Password :</span>
+      </div>
+  </div>
+    <div nz-col nzPull="8" nzSpan="12">
+      <input  class="input-box" nz-input placeholder="Password" [(ngModel)]="addUser.password" />
+    </div>
+  </div>
+  <br>
+
+  <div nz-row>
+    <div nz-col nzSpan="12">
+      <div>
+      <span>Position :</span>
+      </div>
+  </div>
+    <div nz-col nzPull="8" nzSpan="12">
+      <input  class="input-box" nz-input placeholder="Position" [(ngModel)]="addUser.position" />
+    </div>
+  </div>
+  <br>
+
+
+
+  <!-- role ---------------------- -->
+
+  <div style="margin-bottom: 15px">
+    <div nz-row>
+      <div nz-col nzSpan="12">
+        <span>Role :</span>
+      </div>
+      <div nz-col nzPull="8" nzSpan="12">
+        <nz-select nzShowSearch nzAllowClear nzPlaceHolder="กำหนด role" [(ngModel)]="addUser.role">
+          <nz-option nzLabel="User" [nzValue]="'user'"></nz-option>
+          <nz-option nzLabel="Admin" [nzValue]="'admin'"></nz-option>
+        </nz-select>
+      </div>
+    </div>
+  </div>
+  <br>
+
+  <div style="margin-bottom: 15px">
+    <button nz-button nzType="primary" nzBlock (click)="createUser(addUser)">เพิ่ม</button>
+    <nz-modal [(nzVisible)]="isVisible" nzTitle="แจ้งเตือน" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+      <nz-alert
+      nzType="success"
+      nzMessage="Add User Success!"
+      nzDescription="คุณได้ทำการเพิ่ม User เข้ามาในระบบสำเร็จ!!"
+      nzShowIcon
+    >
+    </nz-alert>
+    </nz-modal>
+  </div>
+
+
+    

@@ -1,0 +1,59 @@
+<div style="margin-bottom: 15px">
+  <div nz-row>
+    <div nz-col nzSpan="12">
+      <span>วันที่ต้องการลา</span>
+    </div>
+    <div nz-col nzSpan="12">
+      <nz-date-picker
+        [nzDisabledDate]="disabledStartDate"
+        nzFormat="yyyy/MM/dd"
+        [(ngModel)]="dataEditSend.date_start"
+        nzPlaceHolder="Start"
+        (nzOnOpenChange)="handleStartOpenChange($event)"
+      ></nz-date-picker>
+      <nz-date-picker
+        #endDatePicker
+        [nzDisabledDate]="disabledEndDate"
+        nzFormat="yyyy/MM/dd"
+        [(ngModel)]="dataEditSend.date_end"
+        nzPlaceHolder="End"
+        (nzOnOpenChange)="handleEndOpenChange($event)"
+      ></nz-date-picker>
+      <br />
+    </div>
+  </div>
+</div>
+<div style="margin-bottom: 15px">
+  <div nz-row>
+    <div nz-col nzSpan="12">
+      <span>รูปแบบการลางาน</span>
+    </div>
+    <div nz-col nzSpan="12">
+      <nz-select nzShowSearch nzAllowClear nzPlaceHolder="เลือกรูปแบบการลา" [(ngModel)]="dataEditSend.type">
+        <nz-option nzLabel="ลาพักร้อน" [nzValue]="'ลาพักร้อน'"></nz-option>
+        <nz-option nzLabel="ลากิจ" [nzValue]="'ลากิจ'"></nz-option>
+        <nz-option nzLabel="ลาป่วย" [nzValue]="'ลาป่วย'"></nz-option>
+      </nz-select>
+    </div>
+  </div>
+</div>
+<div style="margin-bottom: 15px">
+  <div nz-row>
+    <div nz-col nzSpan="12">
+      <span>รายละเอียดเพิ่มเติม, หมายเหตุ</span>
+    </div>
+    <div nz-col nzSpan="12">
+      <textarea
+        nz-input
+        placeholder="รายละเอียดเพิ่มเติม"
+        [nzAutosize]="{ minRows: 2, maxRows: 6 }"
+        [(ngModel)]="dataEditSend.description"
+      ></textarea>
+    </div>
+  </div>
+</div>
+<div style="margin-bottom: 15px">
+  <button nz-button nzType="primary" nzBlock >
+    บันทึก
+  </button>
+</div>

@@ -8,21 +8,23 @@ export class CrudService {
   constructor(
     private http: HttpClient // Inject HttpClient มาใช้ใน component หรือ service.
   ) {}
-
+ 
   refresh() {
     return this.http.get(`${url}/users/search`).toPromise();
   }
   // เพิ่มมาใหม่
-  show(data: any){
-    return this.http.post(`${url}/users/search`,data).toPromise();
+  show(data: any) {
+    return this.http.post(`${url}/users/search`, data).toPromise();
+  }
+  createLeave(data: any) {
+    return this.http.post(`${url}/leaveWork/createLeave`, data).toPromise();
+  }
+  createUsers(data: any) {
+    return this.http.post(`${url}/users/createuser`, data).toPromise();
   }
 
-  create(data: any) {
-    return this.http.post(url, data).toPromise();
-  }
-
-  edit(data: any, id: any) {
-    return this.http.put(`${url}/${id}`, data).toPromise();
+  edit(id: any,data: any ) {
+    return this.http.put(`${url}/leavework/update/${id}`, data).toPromise();
   }
 
   delete(id: any) {
