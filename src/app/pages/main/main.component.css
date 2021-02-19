@@ -29,11 +29,19 @@ nz-breadcrumb {
   margin: 16px 0;
 }
 
+.headdering{
+  -webkit-box-shadow: -7px 8px 46px -13px rgba(0,0,0,0.75);
+-moz-box-shadow: -7px 8px 46px -13px rgba(0,0,0,0.75);
+box-shadow: -7px 8px 46px -13px rgba(0,0,0,0.75);
+background-color: #214d72;
+}
+
 .inner-content {
-  padding: 24px;
+  padding: 15px;
   background: #fff;
   min-height: 630px;
   margin-top: 15px;
+  border-radius: 10px;
 }
 
 nz-footer {
@@ -46,3 +54,143 @@ nz-footer {
 
 /* --------------------------------LAY-OUT----------------------------------- */
 .box-2{float:right;padding: 5px; text-align:right;}
+
+/* sider ---------------------------------------------------------------------*/
+
+::ng-deep .ant-layout-sider-children {
+  background-color: #1D3752 !important;
+}
+/* .ng-star-inserted {
+  background-color: #2c2c2c;
+} */
+
+ul.ant-menu {
+  background-color: #1D3752;
+}
+
+.ant-menu-submenu {
+  background-color: #1D3752;
+}
+
+/* select color */
+::ng-deep .ant-menu-dark .ant-menu-item:hover {
+  
+  background-color: #ee6a59 !important;
+}
+
+/* selected color */
+::ng-deep .ant-menu-submenu-open { 
+  color: #50bfc3 !important;
+
+}
+
+/* inline color */
+.ant-menu-item-selected {
+  background-color: #ee6a59 !important;
+}
+
+/* horizon color */
+::ng-deep .ant-menu-dark .ant-menu-sub {
+  background-color: #1a1a1a !important;
+
+}
+
+
+.crud-button {
+  border-radius: 4px;
+}
+
+/* head of content (button) */
+.headingcontent{
+  border-radius: 2px;
+    height: 40px;
+    padding: 5px 5px 50px;
+}
+
+/* head of table fliter  */
+.heading {
+  background-color: #ECF0F6;
+  border-radius: 2px;
+    height: 40px;
+    padding: 20px 30px 50px;
+}
+
+
+.alert-button{
+  color: #fff;
+  background-color: #F05454;
+    border-color: #ff4d4f;
+    text-shadow: 0 -1px 0 rgb(0 0 0 / 12%);
+    box-shadow: 0 2px 0 rgb(0 0 0 / 5%);
+  /* background-color: #F05454; */
+}
+
+
+
+
+/* avartar */
+nz-avatar {
+  margin-top: 16px;
+  margin-right: 16px;
+}
+
+
+/* delete button */
+.btn-tmt-act {
+  background: linear-gradient(
+45deg
+,#f1eae8 0,#f1eae8 100%);
+  color: #908484;
+  font-size: 16px;
+  transition: .25s ease-in-out;
+  padding: .3rem .5rem;
+  line-height: 1;
+  box-shadow: 0 0 0 rgb(177 38 41 / 0%);
+}
+
+.btn-tmt-act.btn-tmt-act-ed:hover {
+  background: linear-gradient(
+    -45deg,
+    #e91527 0, #f39c61 100%);
+  box-shadow: 0 0.35rem 0.5rem reg(177 38 41 /30%);
+  color: #f1eae8;
+  transition: .25s ease-in-out;
+    
+}
+
+/* edit button */
+.btn-tmt-act.btn-tmt-act-ed2:hover {
+  background: linear-gradient(
+    -45deg,
+    #FBC02D 0, #FFEB3B 100%);
+  box-shadow: 0 0.35rem 0.5rem reg(177 38 41 /30%);
+  color: #f1eae8;
+  transition: .25s ease-in-out;
+}
+
+
+/* add leave button */
+.btn-tmt-primary{
+  font-variant: tabular-nums;
+  color: white;
+  background-color: #e85440;
+  border-color: #e85440;
+  box-sizing: border-box;
+  border-radius: 5px;
+  height: 38px;
+}
+
+.btn-tmt-primary.btn-tmt-primary-ed:hover{
+  font-variant: tabular-nums;
+  color: white;
+  background-color: #ff8181;
+  border-color: #ff8181;
+  box-sizing: border-box;
+  border-radius: 5px;
+  height: 38px;
+}
+
+
+
+
+

@@ -28,6 +28,6 @@ export class CrudService {
   }
 
   delete(id: any) {
-    return this.http.delete(`${url}/${id}`).toPromise();
+    return this.http.delete(`$/leavework/delete/${id}`).toPromise();
   }
 }

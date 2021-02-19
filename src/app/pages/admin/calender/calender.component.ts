@@ -35,4 +35,6 @@ export class CalenderComponent implements OnInit {
     });
     drawRef.afterClose.subscribe(() => {});
   }
+
+  
 }

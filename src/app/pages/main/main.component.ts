@@ -18,22 +18,21 @@ export class MainComponent implements OnInit {
   dataForEdit: any;
   typeData: any=[];
   list_data: any;
-
-datediff: any;
  
-  
-  // {
+  // datas = {
   //   id: '',
   //   first_name: '',
   //   last_name: '',
   //   date_start: '',
   //   date_end:'',
-  //   id_leave: '',
-  //   type_name: '',
-  //   status_name: '',
+  //   // id_leave: '',
+  //   type: '',
+  //   // status_name: '',
   // };
   value = 'tar';
   listorder: any = [];
+  user_info: any = [];
+  
   constructor(
     private crud: CrudService,
     private nzDrawerService: NzDrawerService, //ประกาศตัวแปลเพื่อมาใช้งาน
@@ -42,7 +41,13 @@ datediff: any;
   ) {}
 
   
-
+  ngOnInit(): void {
+    this.showData();
+    this.showInfo();
+    console.log('ดูนะไอสัส')
+    console.log(this.dataForEdit)
+    // this.addLeave();
+  }
   
 
   reData(value: any) {
@@ -89,20 +94,31 @@ datediff: any;
     });
   }
 
-  
-  ngOnInit(): void {
-    this.showData();
-    // this.addLeave();
-  }
-
   showData() {
     this.userService.getOrderByID().then((res: any) => {
       this.listorder = res;
     });
   }
+  
+
+  showInfo() {
+    this.userService.getAlluser().then((res: any) => {
+      this.user_info = res;
+    });
+  }
+
   logout() {
     this.router.navigate(['login']);
   }
+
+  // deleteLeave(){
+  //   this.crud.delete
+  // }
+
+  // pmam() {
+  //   var str = this.listorder.create_at
+  //   console.log(str)
+  // }
 
 
 }

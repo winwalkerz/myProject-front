@@ -18,6 +18,12 @@ import { AddLeaveModule } from '../../components/add-leave/add-leave.module';
 import { EditLeaveModule } from '../../components/edit-leave/edit-leave.module';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzImageModule } from 'ng-zorro-antd/image';
+import { NzAvatarModule } from 'ng-zorro-antd/avatar';
+import { NzBadgeModule } from 'ng-zorro-antd/badge';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+
 @NgModule({
   declarations: [MainComponent],
   imports: [
@@ -38,6 +44,11 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
     EditLeaveModule,
     NzToolTipModule,
     NzModalModule,
+    NzImageModule,
+    NzAvatarModule,
+    NzBadgeModule,
+    NzDatePickerModule,
+    NzDropDownModule
   ],
 })
 export class MainModule {}

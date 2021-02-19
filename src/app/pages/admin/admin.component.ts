@@ -45,9 +45,11 @@ export class AdminComponent implements OnInit {
       nzTitle: 'เพิ่ม User',
       nzContent: AddUsersComponent,
       nzWidth: '65%',
+      nzCloseOnNavigation: true,
       nzContentParams: {
         dataTypeSend: this.typeData,
       },
+      
     });
 
     drawRef.afterClose.subscribe(() => {
