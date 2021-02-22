@@ -29,6 +29,9 @@ const routes: Routes = [
   },
   
   { path: 'calender', loadChildren: () => import('./pages/admin/calender/calender.module').then(m => m.CalenderModule) },
+  { path: 'user-list-leave', loadChildren: () => import('./pages/main/user-list-leave/user-list-leave.module').then(m => m.UserListLeaveModule) },
+  { path: 'calendar', loadChildren: () => import('./pages/main/calendar/calendar.module').then(m => m.CalendarModule) },
+  
 ];
 
 @NgModule({

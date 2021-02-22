@@ -23,11 +23,15 @@ export class CrudService {
     return this.http.post(`${url}/users/createuser`, data).toPromise();
   }
 
+  create(data: any) {
+    return this.http.post(url, data).toPromise();
+  }
+
   edit(id: any,data: any ) {
     return this.http.put(`${url}/leavework/update/${id}`, data).toPromise();
   }
 
   delete(id: any) {
-    return this.http.delete(`$/leavework/delete/${id}`).toPromise();
+    return this.http.delete(`${url}/leavework/delete/${id}`).toPromise();
   }
 }

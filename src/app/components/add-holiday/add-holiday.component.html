@@ -10,4 +10,15 @@
     />
   </div>
 </div>
+<div nz-row>
+  <div nz-col nzSpan=6>
+    <p>รูปแบบวันหยุด</p>
+  </div>
+  <div nz-col nzSpan=6>
+    <nz-select nzPlaceHolder="เลือกรูปวันหยุด" [(ngModel)]="valueHoliday.type">
+      <nz-option nzValue="error" nzLabel="วันหยุดตามปฏิทิน"></nz-option>
+      <nz-option nzValue="warning" nzLabel="วันหยุดเพิ่มเติมบริษัท"></nz-option>
+    </nz-select>
+  </div>
+</div>
 <button nz-button nzType="primary" (click)="createHolidayy(valueHoliday)">Save</button>

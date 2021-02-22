@@ -7,18 +7,20 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./add-holiday.component.css'],
 })
 export class AddHolidayComponent implements OnInit {
-  @Input() value?: any;
+  @Input() date: any;
   valueHoliday = {
     id: '',
     content: '',
-    date: '',
+    type:'',
+    date:Object
   };
 
   // @Input() subtitle?: string;
   constructor(private holy: HolidayService, private nzModalRef: NzModalRef) {}
 
   ngOnInit(): void {
-    this.valueHoliday.date = this.value;
+    this.valueHoliday.date = this.date
+    // console.log(this.valueHoliday.date)
   }
   isVisible = false;
   isOkLoading = false;

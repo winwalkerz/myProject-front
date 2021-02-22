@@ -6,6 +6,7 @@ import { CalenderComponent } from './calender.component';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { FormsModule } from '@angular/forms';
 import { AddHolidayModule } from '../../../components/add-holiday/add-holiday.module';
+import { NzBadgeModule } from 'ng-zorro-antd/badge';
 @NgModule({
   declarations: [CalenderComponent],
   imports: [
@@ -15,6 +16,7 @@ import { AddHolidayModule } from '../../../components/add-holiday/add-holiday.mo
     NzSelectModule,
     FormsModule,
     AddHolidayModule,
+    NzBadgeModule,
   ]
 })
 export class CalenderModule { }

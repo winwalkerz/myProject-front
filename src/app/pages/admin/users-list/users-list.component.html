@@ -2,9 +2,10 @@
   <nz-table [nzData]="listAlluser.data" nzShowPagination="false">
     <thead>
       <tr>
-        <th>Name</th>
+        <th width="200px">Name</th>
         <th style="text-align: center;">Status</th>
-        <th>Address</th>
+        <th width="200px">Address</th>
+        <th>Images</th>
         <th>Action</th>
       </tr>
     </thead>
@@ -26,10 +27,30 @@
           </td>
         <td>{{ value.email }}</td>
         <td>
-          <a (click)="refreshData(value)"><i nz-icon nzType="edit" nzTheme="outline"></i></a>
+          <div *ngIf="value?.file">
+            <img
+              nz-image
+              width="25px"
+              height="25px"
+              nzSrc="{{ value.file }}"
+              alt=""
+            />
+          </div>
+        </td>
+        <td>
+          <button _ngcontent-wba-c15="" class="btn btn-tmt-act btn-tmt-act-ed2">
+            <a nz-tooltip nzTooltipTitle="แก้ไข">
+              <i nz-icon nzType="edit" nzTheme="outline" (click)="refreshData(value)"></i>
+            </a>
+            </button>
         </td>
         <td><i nz-icon nzType="info-circle" nzTheme="outline"></i></td>
       </tr>
     </tbody>
   </nz-table>
+  <nz-pagination
+    [nzPageIndex]="1"
+    [nzTotal]="count"
+    (nzPageIndexChange)="click($event)"
+  ></nz-pagination>
 </div>

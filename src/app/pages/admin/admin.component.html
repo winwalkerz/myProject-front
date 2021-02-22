@@ -14,23 +14,34 @@
   </nz-sider>
   <nz-layout>
     <nz-header class="headdering">
-      <div nz-row>
-        <div nz-col nzSpan="8">
+      <div nz-row >
+        <div nz-col nzSpan="24">
            <!-- icon -->
           <i class="trigger" style="color: white;" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'" (click)="isCollapsed = !isCollapsed"></i>
-          <!-- logout bottom -->
-          <div class="box-2">
-            <button nz-button nzType="primary" nzDanger (click)="logout()">
-              Logout
-            </button>
-          </div>
+    
+        
+        
           <!-- add user-->
-          <button nz-button nzType="primary" nzSize="default" nzShape="round" (click)="addUser()">
+          <button class="btn-tmt-primary btn-tmt-primary-ed" nz-button nzType="primary"  (click)="addUser()">
             <i nz-icon nzType="plus-circle" nzTheme="outline"></i>เพิ่ม User
            </button>
+
+          <!-- profile -->
+          
+            <button nz-button class="profilebot" nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu">  
+            <nz-avatar nzText="ADMIN" ></nz-avatar><span style="margin-left: 10px;"> Profile</span>
+              <i nz-icon nzType="down"></i></button>
+              <nz-dropdown-menu #menu="nzDropdownMenu">
+                <ul nz-menu>
+                  <li nz-menu-item>Information</li> 
+                  <li nz-menu-item>about Us</li>
+                  <li nz-menu-item (click)="logout()">Logout </li>
+                </ul>
+              </nz-dropdown-menu>
+         
         </div>
-        
       </div>
+      
     </nz-header>
     <nz-content>
       <div class="inner-content">

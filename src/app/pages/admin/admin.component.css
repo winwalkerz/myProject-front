@@ -97,3 +97,32 @@ ul.ant-menu {
 
 }
 
+.btn-tmt-primary{
+  font-variant: tabular-nums;
+  color: white;
+  background-color: #e85440;
+  border-color: #e85440;
+  box-sizing: border-box;
+  border-radius: 5px;
+  height: 38px;
+}
+
+li:focus {
+  outline: none  !important;
+}
+
+.profilebot{
+  width: 150px;
+  height: 50px;
+  background-color: #214d72;
+  border: 1px solid #214d72;
+  color: white;
+  margin-left: 800px;
+  
+}
+
+/* avartar */
+nz-avatar {
+  margin-top: 0px;
+  margin-left: 5px;
+}

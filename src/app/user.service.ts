@@ -20,7 +20,7 @@ export class UserService {
     return this._http.get(`${api_url}/users/showDB`, _header)
       .toPromise();
   }
-  getAlluser(){
+  getAlluser(data:String){
     let token = localStorage.getItem('token');
     let token_json = JSON.parse(token || '{}');
 
@@ -29,7 +29,7 @@ export class UserService {
         authorization: `Bearer ${token_json.token}`,
       },
     };
-    return this._http.get(`${api_url}/users/showbyuser`, _header)
+    return this._http.get(`${api_url}/users/showbyuser/?page=${data}`, _header,)
       .toPromise();
   }
 }

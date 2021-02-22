@@ -5,29 +5,33 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-users-list',
   templateUrl: './users-list.component.html',
-  styleUrls: ['./users-list.component.css']
+  styleUrls: ['./users-list.component.css'],
 })
 export class UsersListComponent implements OnInit {
   listAlluser: any = [];
   isCollapsed = false;
   dataDetailSendBefore: any;
+  count: any;
+  page='1'
   constructor(
     private userservice: UserService,
     private nzdrawerservice: NzDrawerService
   ) {}
 
   ngOnInit(): void {
-    this.getAlluser();
+    this.getAlluser(this.page);
   }
-  getAlluser() {
-    this.userservice.getAlluser().then((res: any) => {
+  getAlluser(data:String) {
+    this.userservice.getAlluser(data).then((res: any) => {
       this.listAlluser = res;
+      this.count = res.count;
+      console.log(this.count);
     });
   }
   refreshData(value: any) {
     this.dataDetailSendBefore = { ...value };
     this.openDetail();
-    console.log(this.dataDetailSendBefore)
+    console.log(this.dataDetailSendBefore);
   }
   openDetail() {
     const drawRef = this.nzdrawerservice.create<
@@ -43,7 +47,12 @@ export class UsersListComponent implements OnInit {
     });
 
     drawRef.afterClose.subscribe(() => {
-      this.getAlluser();
+      this.getAlluser(this.page);
     });
+  }
+  click($event: any) {
+    
+    this.page = $event;
+    this.getAlluser(this.page);
   }
 }

@@ -49,6 +49,7 @@ export class AddLeaveComponent implements OnInit {
   avatarUrl?: string;
 
   calculateDiff(){
+    let datenormal = this.leaveCreate.date_start;
     let date1 = this.leaveCreate.date_start;
     let date2 = this.leaveCreate.date_end;
     let dayCount = 0
@@ -57,8 +58,10 @@ export class AddLeaveComponent implements OnInit {
       dayCount++
       date1.setDate(date1.getDate() + 1)
     }
+    date1.setDate(date1.getDate() - dayCount)
     this.leaveCreate.allday = dayCount 
     return this.leaveCreate.allday
+    
 }
 
 

@@ -9,19 +9,10 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
 import { LeaveDetailModule } from '../../components/leave-detail/leave-detail.module';
-import { NzButtonModule } from 'ng-zorro-antd/button';
-import { NzInputModule } from 'ng-zorro-antd/input';
 import { AddUsersModule } from '../../components/add-users/add-users.module';
-import { CalenderModule } from './calender/calender.module';
-import { NzPaginationModule } from 'ng-zorro-antd/pagination';
-import { UsersListModule } from './users-list/users-list.module';
-
-
-
-
-
-
-
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 
 
 @NgModule({
@@ -29,19 +20,18 @@ import { UsersListModule } from './users-list/users-list.module';
   imports: [
     CommonModule,
     AdminRoutingModule,
+    NzTableModule,
     NzLayoutModule,
     NzIconModule,
     NzSelectModule,
-    FormsModule,
-    NzTableModule,
     NzMenuModule,
+    FormsModule,
     LeaveDetailModule,
-    NzButtonModule,
-    NzInputModule,
     AddUsersModule,
-    CalenderModule,
-    NzPaginationModule,
-    UsersListModule
+    NzButtonModule,
+    NzAvatarModule,
+    NzDropDownModule
+
   ]
 })
 export class AdminModule { }

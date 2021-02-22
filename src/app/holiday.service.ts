@@ -10,4 +10,9 @@ export class HolidayService {
   createHoliday(data: any) {
     return this.http.post(`${url}/holiday/createholiday`, data).toPromise();
   }
+
+  getHoliday(){
+    return this.http.get(`${url}/holiday/getholiday`).toPromise();
+  }
+
 }

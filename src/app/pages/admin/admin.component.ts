@@ -3,30 +3,18 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from './../../user.service';
 import { NzDrawerService, NzDrawerRef } from 'ng-zorro-antd/drawer';
 import { AddUsersComponent } from '../../components/add-users/add-users.component'
-
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css'],
 })
 export class AdminComponent implements OnInit {
-
-// info = {
-  //   // id: '',
-  //   page : 1,
-  //   perpage :10,
-  //   first_name: '',
-  //   last_name: '',
-  //   email: '',
-  //   password: '',
-  //   role: '',
-  //   position: '',
-  // };
-
-  typeData: any = [];
+  // typeData: any = [];
   listAlluser: any = [];
   isCollapsed = false;
   dataDetailSendBefore: any;
+  typeData: any = [];
+
   constructor(
     private Router:Router,
     private userservice: UserService,
@@ -53,21 +41,21 @@ export class AdminComponent implements OnInit {
     });
 
     drawRef.afterClose.subscribe(() => {
-      this.getAlluser();
+      // this.getAlluser();
     });
   }
 
-  getAlluser() {
-    this.userservice.getAlluser().then((res: any) => {
-      this.listAlluser = res;
-    });
-  }
+  // getAlluser() {
+  //   this.userservice.getAlluser().then((res: any) => {
+  //     this.listAlluser = res;
+  //   });
+  // }
 
   logout() {
     window.location.href = "http://localhost:4200/login";
   }
 
-
+  
   // goCalender(){
   //   this.Router.navigate(['calender'])
   // }

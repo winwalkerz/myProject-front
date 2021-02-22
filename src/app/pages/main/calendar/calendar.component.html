@@ -1,0 +1,18 @@
+<nz-calendar  >
+  <ul *nzDateCell="let date; let month" class="events">
+    <ng-container *ngFor="let index_m of counts">
+      <ng-container *ngIf="monthint[index_m] == month.getMonth()">
+        <ng-container *ngIf="dayint[index_m] == date.getDate()">
+          <!-- <ng-container *ngFor="let item of holyData.data"> -->
+          <li>
+            <nz-badge
+              [nzStatus]="holyData.data[index_m].type"
+              [nzText]="holyData.data[index_m].content"
+            ></nz-badge>
+          </li>
+          <!-- </ng-container> -->
+        </ng-container>
+      </ng-container></ng-container
+    >
+  </ul>
+</nz-calendar>
