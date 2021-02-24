@@ -1,3 +1,4 @@
+import { from } from 'rxjs';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -13,6 +14,8 @@ import { AddUsersModule } from '../../components/add-users/add-users.module';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
+import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
+import { UsersListModule } from './users-list/users-list.module'
 
 
 @NgModule({
@@ -30,7 +33,9 @@ import { NzAvatarModule } from 'ng-zorro-antd/avatar';
     AddUsersModule,
     NzButtonModule,
     NzAvatarModule,
-    NzDropDownModule
+    NzDropDownModule,
+    UsersListModule,
+    NzToolTipModule
 
   ]
 })

@@ -12,6 +12,9 @@ import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzMessageModule } from 'ng-zorro-antd/message';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzAlertModule } from 'ng-zorro-antd/alert';
+import { NzTagModule } from 'ng-zorro-antd/tag';
+import { NzFormModule, } from 'ng-zorro-antd/form';
 
 @NgModule({
   declarations: [AddLeaveComponent],
@@ -27,7 +30,11 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
     NzUploadModule,
     NzMessageModule,
     NzIconModule,
-    NzModalModule
+    NzModalModule,
+    NzAlertModule,
+    NzTagModule,
+    NzFormModule,
+ 
   ]
 })
 export class AddLeaveModule { }

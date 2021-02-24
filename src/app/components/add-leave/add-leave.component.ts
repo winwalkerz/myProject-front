@@ -7,6 +7,7 @@ import { Observable, Observer } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import {NzDatePickerComponent} from 'ng-zorro-antd/date-picker';
 import jwt_decode from 'jwt-decode';
+import { NzModalService } from 'ng-zorro-antd/modal';
 
 
 
@@ -24,7 +25,8 @@ export class AddLeaveComponent implements OnInit {
   constructor(
     private Crudservice: CrudService,
     private nzDrawerRef: NzDrawerRef,
-    private msg: NzMessageService
+    private msg: NzMessageService,
+    private modal: NzModalService
   ) {}
 
   environment = environment
@@ -48,8 +50,10 @@ export class AddLeaveComponent implements OnInit {
   loading = false;
   avatarUrl?: string;
 
+
+  // calculate date differents ----------------------------------------------------------------
   calculateDiff(){
-    let datenormal = this.leaveCreate.date_start;
+
     let date1 = this.leaveCreate.date_start;
     let date2 = this.leaveCreate.date_end;
     let dayCount = 0
@@ -64,8 +68,7 @@ export class AddLeaveComponent implements OnInit {
     
 }
 
-
-
+// varible of date_start_end --------------------------------------------
   open(): void {
     this.visible = true;
   }
@@ -73,12 +76,10 @@ export class AddLeaveComponent implements OnInit {
   close(): void {
     this.visible = false;
   }
-  
-  // modelChangeFn(value:any){
-  //   this.leaveCreate.id_type_fk= value;
-  //   console.log("working pls")
-  // }
 
+
+
+// start ----------------------------------------------------------------------------------
   decode: any;
   ngOnInit(): void {
     var token = localStorage.getItem('token'); //สร้างตัวแปลมาเก็บ token ที่มาจาก storage
@@ -87,24 +88,21 @@ export class AddLeaveComponent implements OnInit {
     console.log(this.leaveCreate.id)
   }
 
-  createLeave(data: any) {
-    this.Crudservice.createLeave(data).then(() => {
-      this.showModal();
-    });
-  }
 
-  showModal(): void {
+// --------------------------------confiamation add leave--------------------------------------
+  showConfirm(data: any){
     this.isVisible = true;
+    
   }
-
-  // model Ok -------------------------------------------
-
   
-
-  handleOk(): void {
+  handleOk(data:any): void {
     console.log('Button ok clicked!');
-    this.isVisible = false;
-    this.nzDrawerRef.close();
+    this.Crudservice.createLeave(data).then(() => {
+      this.isVisible = false;
+      this.nzDrawerRef.close();
+      this.leaveworkCreated(data);
+  });
+     
   }
 
   handleCancel(): void {
@@ -112,6 +110,21 @@ export class AddLeaveComponent implements OnInit {
     this.isVisible = false;
     this.nzDrawerRef.close();
   }
+
+  
+  leaveworkCreated(data:any): void {
+    this.modal.success({
+      nzTitle: 'แจ้งเตือน',
+      nzContent: 'คุณได้ทำการลาเป็นจำนวน '+ this.leaveCreate.allday + ' วัน',
+      nzOkText: 'OK',
+      nzOkType: 'primary',
+      nzCancelText: null,
+      nzOkDanger: true,
+      nzFooter: null,
+      nzOnOk: () => console.log('OK'),
+    });
+  }
+
 
   ///////////////////////////////// date ////////////////////////////////////
   startValue: Date | null = null;
@@ -198,5 +211,6 @@ export class AddLeaveComponent implements OnInit {
         break;
     }
   }
+
 
 }

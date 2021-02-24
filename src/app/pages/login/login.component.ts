@@ -9,6 +9,7 @@ import jwt_decode from 'jwt-decode';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+  err= ''
   userLogin = {
     email: '',
     password: '',

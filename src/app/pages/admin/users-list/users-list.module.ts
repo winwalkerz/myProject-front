@@ -8,6 +8,14 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { UsersListRoutingModule } from './users-list-routing.module';
 import { UsersListComponent } from './users-list.component';
 import { NzPaginationModule } from 'ng-zorro-antd/pagination';
+import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzGridModule } from 'ng-zorro-antd/grid';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzTagModule } from 'ng-zorro-antd/tag';
+import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
+import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzImageModule } from 'ng-zorro-antd/image';
 
 @NgModule({
@@ -21,7 +29,15 @@ import { NzImageModule } from 'ng-zorro-antd/image';
     NzTableModule,
     NzMenuModule,
     NzPaginationModule,
-    NzImageModule
+    NzImageModule,
+    NzToolTipModule,
+    NzLayoutModule,
+    NzFormModule,
+    NzInputModule,
+    NzGridModule,
+    NzButtonModule,
+    NzTagModule,
+    NzModalModule
 
   ]
 })

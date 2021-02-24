@@ -42,6 +42,7 @@ nz-breadcrumb {
   background: #fff;
   min-height: 630px;
   margin-top: 15px;
+
 }
 
 nz-footer {
@@ -125,4 +126,10 @@ li:focus {
 nz-avatar {
   margin-top: 0px;
   margin-left: 5px;
+}
+
+/* menu sider */
+.element-menu {
+  position: absolute;
+  top: 2px;
 }

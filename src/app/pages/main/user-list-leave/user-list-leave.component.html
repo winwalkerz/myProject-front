@@ -5,24 +5,23 @@
   <div nz-row nzJustify="end" class="headingcontent">
 
     <div nz-col nzSpan="18" nzPull="250px">
-   <h2>รายการลาทั้งหมดของคุณ</h2>
+       <h2>รายการลาทั้งหมดของคุณ </h2>
     </div>
 
     <div nz-col nzSpan="3" >
-      <div>
         <button class="calenbot" nz-button nzSize="large" >
-
-          <i nz-icon nzType="calendar" style=" position: absolute; left: 8px; bottom: 10px;" nzTheme="outline"></i>Calender
+          <i nz-icon nzType="calendar" style=" position: absolute; left: 8px; bottom: 10px;" nzTheme="outline"></i>
+          <span style=" position: absolute; right: 7px; bottom: 5px;">Calendar</span>
         </button>
-      </div>
     </div>
 
     
-
+    
     <div nz-col nzSpan="3">
       <button class="btn-tmt-primary btn-tmt-primary-ed" 
       nz-button="" nztype="primary"  (click)="addLeave()"> 
-      <i nz-icon style=" vertical-align:middle;" nzType="plus-circle" ></i>ทำเรื่องขอลา!
+      <i nz-icon  nzType="plus-circle" class="position-botton"></i>
+      <span>ทำเรื่องขอลา!</span>
       </button>
     </div>
   
@@ -34,6 +33,7 @@
     
   </div>
   <br>
+  
 
   
 <!----------------------------- table ------------------------------------------------------------ -->
@@ -50,7 +50,7 @@
           <th style="width: 150px">จำนวนวัน</th>
           <th style="width: 150px">Type</th>
           <th style="width: 120px">Status</th>
-          <th style="width: 80px"></th>
+          <th style="width: 80px;"></th>
           <th style="width: 80px"></th>
         </tr>
       </thead>
@@ -82,7 +82,7 @@
           </td>
           <td>
             <div class="row">
-          <p>  {{ value.allday }} วัน</p>
+           <p style="margin-top: 15px;">  {{ value.allday }} วัน</p>
           </div>
           </td>
           <td >{{ value.type }}</td>
@@ -105,7 +105,7 @@
             </button>
           </td>
           <td>
-            <button  class="btn btn-tmt-act btn-tmt-act-ed" (click)="deleteLeave(value.id)" >
+            <button  class="btn btn-tmt-act btn-tmt-act-ed"  (click)="showDeleteConfirm(value.id)">
               <a nz-tooltip nzTooltipTitle="ลบ">
               <i nz-icon nzType="delete" nzTheme="outline"></i>
               </a>

@@ -4,11 +4,12 @@
     <ul nz-menu nzTheme="dark" nzMode="inline">
       <li nz-menu-item routerLink="users-list">
         <i nz-icon nzType="database" nzTheme="outline"></i>
-        <span>รายการลาทั้งหมด</span>
+        <span class="element-menu">รายการลาทั้งหมด</span>
       </li>
+
       <li nz-menu-item routerLink="calender">
         <i nz-icon nzType="calendar" nzTheme="outline"></i>
-        <span>Calender</span>
+        <span class="element-menu">Calender</span>
       </li>
     </ul>
   </nz-sider>
@@ -29,7 +30,7 @@
           <!-- profile -->
           
             <button nz-button class="profilebot" nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu">  
-            <nz-avatar nzText="ADMIN" ></nz-avatar><span style="margin-left: 10px;"> Profile</span>
+            <nz-avatar nzText="ADMIN" ></nz-avatar><span style="margin-left: 10px;"> Account</span>
               <i nz-icon nzType="down"></i></button>
               <nz-dropdown-menu #menu="nzDropdownMenu">
                 <ul nz-menu>

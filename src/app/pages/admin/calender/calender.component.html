@@ -15,6 +15,19 @@
           [(ngModel)]="selectedValue"
   (nzSelectChange)="selectChange($event)"
       </nz-calendar> -->
+      <div nz-row>
+        <div nz-col nzSpan="12" style="margin-bottom: 10px;">
+          <nz-badge nzStatus="error">
+           <span> วันหยุดตามปฏิทินประเทศไทย</span>
+          </nz-badge>
+        </div>
+        <div nz-col nzSpan="12">
+          <nz-badge nzStatus="warning">
+            <span> วันหยุดเพิ่มเติมของบริษัท</span>
+          </nz-badge>
+        </div>
+      </div>
+      
       <nz-calendar [(ngModel)]="selectedValue" (nzSelectChange)="selectChange($event)" (dblclick)="addHoliday(datetime)">
         <ul *nzDateCell="let date; let month" class="events">
           <ng-container *ngFor="let index_m of counts">

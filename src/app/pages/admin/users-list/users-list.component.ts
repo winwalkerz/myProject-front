@@ -1,13 +1,17 @@
 import { LeaveDetailComponent } from './../../../components/leave-detail/leave-detail.component';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { NzTableQueryParams } from 'ng-zorro-antd/table';
+import { Observable } from 'rxjs';
 import { UserService } from './../../../user.service';
 import { NzDrawerService } from 'ng-zorro-antd/drawer';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
 @Component({
   selector: 'app-users-list',
   templateUrl: './users-list.component.html',
   styleUrls: ['./users-list.component.css'],
 })
 export class UsersListComponent implements OnInit {
+
   listAlluser: any = [];
   isCollapsed = false;
   dataDetailSendBefore: any;

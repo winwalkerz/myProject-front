@@ -22,6 +22,7 @@ import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 
+
 @NgModule({
   declarations: [MainComponent],
   imports: [
@@ -44,7 +45,7 @@ import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
     NzModalModule,
     NzDropDownModule,
     NzAvatarModule,
-    NzDatePickerModule
+    NzDatePickerModule,
   ],
 })
 export class MainModule {}

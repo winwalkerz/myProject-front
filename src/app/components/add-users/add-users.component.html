@@ -76,7 +76,7 @@
   <br>
 
   <div style="margin-bottom: 15px">
-    <button nz-button nzType="primary" nzBlock (click)="createUser(addUser)">เพิ่ม</button>
+    <button nz-button nzType="primary" nzDanger nzBlock (click)="createUser(addUser)">เพิ่ม</button>
     <nz-modal [(nzVisible)]="isVisible" nzTitle="แจ้งเตือน" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
       <nz-alert
       nzType="success"

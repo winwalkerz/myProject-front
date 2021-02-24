@@ -171,17 +171,19 @@ nz-avatar {
 
 /* add leave button */
 .btn-tmt-primary{
-  font-variant: tabular-nums;
+ 
   color: white;
   background-color: #e85440;
   border-color: #e85440;
   box-sizing: border-box;
   border-radius: 5px;
-  height: 38px;
+  height: 39px;
+  width: 111px;
+  
 }
 
 .btn-tmt-primary.btn-tmt-primary-ed:hover{
-  font-variant: tabular-nums;
+  
   color: white;
   background-color: #ff8181;
   border-color: #ff8181;
@@ -199,4 +201,11 @@ nz-avatar {
   width: 115px;
   border-radius: 5px;
   
+}
+
+/* icon-in-button */
+.position-botton {
+  position: absolute;
+  bottom: 10px;
+  left: 5px;
 }

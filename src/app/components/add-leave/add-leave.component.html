@@ -68,18 +68,33 @@
       </ng-container>
       <img *ngIf="avatarUrl" [src]="avatarUrl" style="width: 100%" />
     </nz-upload>
+
+    <!-- ----------------------Last Summit botton----------------------------------- -->
+
 <div style="margin-bottom: 15px">
-  <button nz-button nzType="primary"  nzDanger nzBlock (click)="createLeave(leaveCreate)">เพิ่ม</button>
-  <nz-modal [(nzVisible)]="isVisible" nzTitle="แจ้งเตือน" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+  <button nz-button nzType="primary"  nzDanger nzBlock (click)="showConfirm(leaveCreate)">เพิ่ม</button>
+  
+  <!-- Submit modal -->
+  <nz-modal [(nzVisible)]="isVisible" nzTitle="แจ้งเตือน" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk(leaveCreate)">
     <ng-container *nzModalContent>
-      <div class="modal-alert">
-        <p>คุณได้ทำการลาเป็นจำนวน
-        <input style="width: 30px;" nz-input placeholder="default size" nzSize="default"  
-        [(ngModel)]="leaveCreate.allday" />  วัน</p><br>
-      </div>
+      <nz-alert
+      nzType="warning"
+      nzMessage="กรุณายินยันการดำเนินการ"
+      nzDescription="คุณต้องการทำการลางานเป็นจำนวน {{leaveCreate.allday}} วันหรือไม่ ?"
+      nzShowIcon
+    >
+    </nz-alert>
     </ng-container>
   </nz-modal>
 </div>
+
+
+
+
+
+
+
+
 
 
 

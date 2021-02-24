@@ -4,27 +4,33 @@ import { AddLeaveComponent } from './../../../components/add-leave/add-leave.com
 import { EditLeaveComponent } from './../../../components/edit-leave/edit-leave.component';
 import { Component, OnInit } from '@angular/core';
 import { NzDrawerService } from 'ng-zorro-antd/drawer';
-import { from } from 'rxjs';
+import { NzModalService } from 'ng-zorro-antd/modal';
 @Component({
   selector: 'app-user-list-leave',
   templateUrl: './user-list-leave.component.html',
   styleUrls: ['./user-list-leave.component.css'],
 })
 export class UserListLeaveComponent implements OnInit {
+
+  
   data: any;
   dataForEdit: any;
   typeData: any = [];
   list_data: any;
+
+  
   listorder: any = [];
 
   constructor(
     private nzDrawerService: NzDrawerService, //ประกาศตัวแปลเพื่อมาใช้งาน
     private userService: UserService,
-    private crud: CrudService
+    private crud: CrudService,
+    private modal:NzModalService
   ) {}
 
   ngOnInit(): void {
     this.showData();
+    console.log()
   }
 
   //แสดข้อมูลของ user
@@ -33,6 +39,8 @@ export class UserListLeaveComponent implements OnInit {
       this.listorder = res;
     });
   }
+
+  
 
   //เพิ่มการลางานของ user
   addLeave() {
@@ -81,4 +89,20 @@ export class UserListLeaveComponent implements OnInit {
     this.crud.delete(id).then(() => {});
     this.showData();
   }
+
+  showDeleteConfirm(id: any): void {
+    this.modal.confirm({
+      nzTitle: '<b>คำเตือน !!!</b>',
+      nzContent: 'คุณเเน่ใจใช่ไหมว่าจะลบการลางานนี้ ?',
+      nzOkText: 'Yes',
+      nzOkType: 'primary',
+      nzOkDanger: true,
+      nzOnOk: () => this.deleteLeave(id),
+      nzCancelText: 'No',
+      nzOnCancel: () => console.log('Cancel')
+    }).afterClose.subscribe(() => {
+      this.showData();
+    })
+  }
 }
+

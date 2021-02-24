@@ -189,7 +189,7 @@ nz-avatar {
 
 /* add leave button */
 .btn-tmt-primary{
-  font-variant: tabular-nums;
+ 
   color: white;
   background-color: #e85440;
   border-color: #e85440;
@@ -199,7 +199,7 @@ nz-avatar {
 }
 
 .btn-tmt-primary.btn-tmt-primary-ed:hover{
-  font-variant: tabular-nums;
+  
   color: white;
   background-color: #ff8181;
   border-color: #ff8181;
@@ -208,6 +208,11 @@ nz-avatar {
   height: 38px;
 }
 
+/* menu sider */
+.element-menu {
+  position: absolute;
+  top: 2px;
+}
 
 
 

@@ -2,11 +2,12 @@
   <nz-table [nzData]="listAlluser.data" nzShowPagination="false">
     <thead>
       <tr>
-        <th width="200px">Name</th>
+        <th width="220px">Name</th>
         <th style="text-align: center;">Status</th>
         <th width="200px">Address</th>
         <th>Images</th>
         <th>Action</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -38,8 +39,8 @@
           </div>
         </td>
         <td>
-          <button _ngcontent-wba-c15="" class="btn btn-tmt-act btn-tmt-act-ed2">
-            <a nz-tooltip nzTooltipTitle="แก้ไข">
+          <button  _ngcontent-wba-c15="" class="btn btn-tmt-act btn-tmt-act-ed2">
+            <a nz-tooltip nzTooltipTitle="แก้ไข" >
               <i nz-icon nzType="edit" nzTheme="outline" (click)="refreshData(value)"></i>
             </a>
             </button>

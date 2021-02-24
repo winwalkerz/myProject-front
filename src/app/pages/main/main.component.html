@@ -2,12 +2,17 @@
   <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
     <div class="logo"></div>
     <ul nz-menu nzTheme="dark" nzMode="inline">
-
+    
       <li nz-menu-item routerLink="user-list-leave">
         <i nz-icon nzType="database" nzTheme="outline"></i>
-        <span>รายการลาทั้งหมด</span>
+        <span class="element-menu">รายการลาทั้งหมด</span>
       </li>
-      <li nz-menu-item routerLink="calendar"><i nz-icon nzType="calendar" nzTheme="outline"></i>Calender</li>
+   
+    
+      <li nz-menu-item routerLink="calendar">
+        <i nz-icon nzType="calendar" nzTheme="outline"></i>
+        <span class="element-menu">Calender</span>
+      </li>
        
     </ul>
   </nz-sider>
@@ -24,10 +29,15 @@
           ></i>
         </div>
 
+        <div>
+          <span>{{name.first}}</span>
+        </div>
+       
+
         <div nz-col nzSpan="12" >
           <div>
             <button nz-button class="profilebot" nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu">  
-            <nz-avatar nzText="USER" ></nz-avatar><span style="margin-left: 10px;"> Profile</span>
+            <nz-avatar nzText="USER" ></nz-avatar><span style="margin-left: 10px;"> Account</span>
               <i nz-icon nzType="down"></i></button>
               <nz-dropdown-menu #menu="nzDropdownMenu">
                 <ul nz-menu>
@@ -43,7 +53,6 @@
       </nz-header>
     <nz-content class="inner-content">
       <router-outlet></router-outlet>
-      
     </nz-content>
     <!-- <nz-footer>Ant Design ©2020 Implement By Angular</nz-footer> -->
   </nz-layout>
