@@ -5,6 +5,8 @@ import { EditLeaveComponent } from './../../../components/edit-leave/edit-leave.
 import { Component, OnInit } from '@angular/core';
 import { NzDrawerService } from 'ng-zorro-antd/drawer';
 import { NzModalService } from 'ng-zorro-antd/modal';
+import { NzMessageService} from 'ng-zorro-antd/message';
+
 @Component({
   selector: 'app-user-list-leave',
   templateUrl: './user-list-leave.component.html',
@@ -25,7 +27,8 @@ export class UserListLeaveComponent implements OnInit {
     private nzDrawerService: NzDrawerService, //ประกาศตัวแปลเพื่อมาใช้งาน
     private userService: UserService,
     private crud: CrudService,
-    private modal:NzModalService
+    private modal:NzModalService,
+    private nzMessageService: NzMessageService
   ) {}
 
   ngOnInit(): void {
@@ -87,8 +90,11 @@ export class UserListLeaveComponent implements OnInit {
 
   deleteLeave(id: any) {
     this.crud.delete(id).then(() => {});
+    this.nzMessageService.success('Deleted');
     this.showData();
   }
+
+
 
   showDeleteConfirm(id: any): void {
     this.modal.confirm({

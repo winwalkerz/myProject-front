@@ -1,0 +1,63 @@
+.headname{
+ background-image: url("../../../../assets/bg-head-name.JPG");
+ border-radius: 5px;
+ width: 730px;
+ height: 117px;
+ -webkit-box-shadow: 1px 3px 19px 3px rgba(0,0,0,0.23);
+-moz-box-shadow: 1px 3px 19px 3px rgba(0,0,0,0.23);
+box-shadow: 1px 3px 19px 3px rgba(0,0,0,0.23);
+}
+
+.welcometext{
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 35px;
+  margin-left: 20px;
+}
+
+.content1{
+  background-color: white;
+  width: 420px;
+  height: 160px;
+  border-radius: 5px;
+  -webkit-box-shadow: 18px 13px 26px -7px rgba(0,0,0,0.17);
+-moz-box-shadow: 18px 13px 26px -7px rgba(0,0,0,0.17);
+box-shadow: 18px 13px 26px -7px rgba(0,0,0,0.17);
+}
+
+.content2{
+  background-color: white;
+  width: 400px;
+  height: 150px;
+  border-radius: 5px;
+  -webkit-box-shadow: 18px 13px 26px -7px rgba(0,0,0,0.17);
+-moz-box-shadow: 18px 13px 26px -7px rgba(0,0,0,0.17);
+box-shadow: 18px 13px 26px -7px rgba(0,0,0,0.17);
+}
+
+.content3{
+  background-color: white;
+  width: 400px;
+  height: 150px;
+  border-radius: 5px;
+  -webkit-box-shadow: 18px 13px 26px -7px rgba(0,0,0,0.17);
+-moz-box-shadow: 18px 13px 26px -7px rgba(0,0,0,0.17);
+box-shadow: 18px 13px 26px -7px rgba(0,0,0,0.17);
+}
+
+.inside-content{
+  padding: 20px;
+  color: gray;
+  font-size: 17px;
+}
+
+.between-line{
+  padding: 5px;
+}
+
+.number-result {
+  font-size: 18px;
+  color: #f05454;
+}
+

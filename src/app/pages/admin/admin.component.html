@@ -2,6 +2,12 @@
   <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
     <div class="logo"></div>
     <ul nz-menu nzTheme="dark" nzMode="inline">
+
+      <li nz-menu-item routerLink="overview">
+        <i nz-icon nzType="pie-chart" nzTheme="outline"></i>
+        <span class="element-menu">Overview</span>
+      </li>
+
       <li nz-menu-item routerLink="users-list">
         <i nz-icon nzType="database" nzTheme="outline"></i>
         <span class="element-menu">รายการลาทั้งหมด</span>
@@ -11,6 +17,7 @@
         <i nz-icon nzType="calendar" nzTheme="outline"></i>
         <span class="element-menu">Calender</span>
       </li>
+
     </ul>
   </nz-sider>
   <nz-layout>

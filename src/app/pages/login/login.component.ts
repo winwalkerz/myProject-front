@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
       if (this.decode.role === 'user') {
         this.router.navigate(['main']);
       } else {
-        this.router.navigate(['admin/users-list']);
+        this.router.navigate(['admin/overview']);
       }
       //
       // console.log(token);

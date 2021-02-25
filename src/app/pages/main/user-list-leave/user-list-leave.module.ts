@@ -16,6 +16,7 @@ import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzImageModule } from 'ng-zorro-antd/image';
+import { NzMessageModule } from 'ng-zorro-antd/message';
 
 @NgModule({
   declarations: [UserListLeaveComponent],
@@ -36,7 +37,8 @@ import { NzImageModule } from 'ng-zorro-antd/image';
     NzToolTipModule,
     NzModalModule,
     NzLayoutModule,
-    NzImageModule
+    NzImageModule,
+    NzMessageModule
   ]
 })
 export class UserListLeaveModule { }
