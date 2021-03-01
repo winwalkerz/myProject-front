@@ -1,57 +1,75 @@
 <div>
-  <nz-table [nzData]="listAlluser.data" nzShowPagination="false">
-    <thead>
-      <tr>
-        <th width="220px">Name</th>
-        <th style="text-align: center;">Status</th>
-        <th width="200px">Address</th>
-        <th>Images</th>
-        <th>Action</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let value of listAlluser.data">
-        <td>{{ value.first_name }}&emsp;{{ value.last_name }}</td>
-        <td style="text-align: center;">
-          <div *ngIf="value.status_name == 'wait'" nz-tooltip nzTooltipTitle="wait" nzTooltipPlacement="top">
-            <i nz-icon nzType="clock-circle" nzTheme="outline"></i>
-          </div>
-         
-          <div *ngIf="value.status_name == 'approve'" nz-tooltip nzTooltipTitle="approve" nzTooltipPlacement="top">
-            <i nz-icon [nzType]="'check-circle'" [nzTheme]="'twotone'" [nzTwotoneColor]="'#52c41a'" ></i>
-            </div>
-        
-            <div *ngIf="value.status_name == 'cancel'" nz-tooltip nzTooltipTitle="cancel" nzTooltipPlacement="top">
-              <img src="../../../../assets/cancel.jpg" alt="" style="width: 15px;">
-              </div>
-          </td>
-        <td>{{ value.email }}</td>
-        <td>
-          <div *ngIf="value?.file">
-            <img
-              nz-image
-              width="25px"
-              height="25px"
-              nzSrc="{{ value.file }}"
-              alt=""
-            />
-          </div>
-        </td>
-        <td>
-          <button  _ngcontent-wba-c15="" class="btn btn-tmt-act btn-tmt-act-ed2">
-            <a nz-tooltip nzTooltipTitle="แก้ไข" >
-              <i nz-icon nzType="edit" nzTheme="outline" (click)="refreshData(value)"></i>
-            </a>
-            </button>
-        </td>
-        <td><i nz-icon nzType="info-circle" nzTheme="outline"></i></td>
-      </tr>
-    </tbody>
-  </nz-table>
-  <nz-pagination
-    [nzPageIndex]="1"
-    [nzTotal]="count"
-    (nzPageIndexChange)="click($event)"
-  ></nz-pagination>
+  <nz-tabset>
+    <nz-tab nzTitle="รายการทั้งหมด" >
+      <app-admin-allcheck-list></app-admin-allcheck-list>
+     <!--  <div>
+        <nz-table [nzData]="listAlluser.data" nzShowPagination="false">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Status</th>
+              <th>Address</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let value of listAlluser.data">
+            <tr>
+              <td>{{ value.first_name }}{{ value.last_name }}</td>
+              <td>{{ value.status_name }}</td>
+              <td>{{ value.email }}</td>
+              <td>
+                <a (click)="refreshData(value)"
+                  ><i nz-icon nzType="edit" nzTheme="outline"></i
+                ></a>
+              </td>
+              <td><i nz-icon nzType="info-circle" nzTheme="outline"></i></td>
+            </tr>
+          </tbody>
+        </nz-table>
+        <nz-pagination
+          [nzPageIndex]="1"
+          [nzTotal]="count"
+          (nzPageIndexChange)="click($event)"
+        ></nz-pagination>
+      </div> -->
+    </nz-tab>
+
+    <nz-tab nzTitle=" รายการที่ยังไม่ได้ตรวจสอบ">
+      <app-admin-uncheck-list></app-admin-uncheck-list>
+      <!-- <div>
+        <nz-table [nzData]="listAlluser.data" nzShowPagination="false">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Status</th>
+              <th>Address</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let value of listAlluser.data">
+            <tr>
+              <td>{{ value.first_name }}{{ value.last_name }}</td>
+              <td>{{ value.status_name }}</td>
+              <td>{{ value.email }}</td>
+              <td>
+                <a (click)="refreshData(value)"
+                  ><i nz-icon nzType="edit" nzTheme="outline"></i
+                ></a>
+              </td>
+              <td><i nz-icon nzType="info-circle" nzTheme="outline"></i></td>
+            </tr>
+          </tbody>
+        </nz-table>
+        <nz-pagination
+          [nzPageIndex]="1"
+          [nzTotal]="count"
+          (nzPageIndexChange)="click($event)"
+        ></nz-pagination>
+      </div> -->
+    </nz-tab>
+
+    <nz-tab nzTitle="รายการที่ตรวจสอบแล้ว">
+      <app-admin-check-list></app-admin-check-list>
+    </nz-tab>   
+  </nz-tabset>
 </div>

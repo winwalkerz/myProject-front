@@ -20,7 +20,7 @@ export class CrudService {
     return this.http.post(`${url}/leaveWork/createLeave`, data).toPromise();
   }
   createUsers(data: any) {
-    return this.http.post(`${url}/users/createuser`, data).toPromise();
+    return this.http.post(`${url}/users/create`, data).toPromise();
   }
 
   create(data: any) {
@@ -33,5 +33,9 @@ export class CrudService {
 
   delete(id: any) {
     return this.http.delete(`${url}/leavework/delete/${id}`).toPromise();
+  }
+
+  filter(data: any) {
+    return this.http.post(`${url}/leavework/filter`, data).toPromise();
   }
 }

@@ -1,0 +1,14 @@
+<div class="heading">
+  <th>
+      <input
+          nz-input
+          placeholder="ชื่อ หรือนามสกุล"
+          nzSize="default"
+          nzSize="small"
+          name="search"
+          [(ngModel)]="model_search.fist_name"
+
+          (keyup.enter)="changeFilter()"
+        />
+  </th>
+</div>

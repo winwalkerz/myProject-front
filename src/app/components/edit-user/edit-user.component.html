@@ -1,13 +1,14 @@
+  
 <div nz-row>
   <div nz-col nzSpan="12" nzAlign="middle">
     <span>Firstname :</span>
   </div>
   <div nz-col nzPull="8" nzSpan="12">
-    <input  class="input-box" nz-input required placeholder="First name" [(ngModel)]="addUser.first_name" />
+    <input  class="input-box" nz-input required placeholder="First name" [(ngModel)]="edit.first_name" />
     </div>
-    <br><br>
-    
   </div>
+  <br>
+  
   <div nz-row>
     <div nz-col nzSpan="12">
       <div>
@@ -15,7 +16,7 @@
       </div>
   </div>
     <div nz-col nzPull="8" nzSpan="12">
-      <input  class="input-box" nz-input placeholder="Last name" [(ngModel)]="addUser.last_name" />
+      <input  class="input-box" nz-input placeholder="Last name" [(ngModel)]="edit.last_name" />
     </div>
   </div>
   <br>
@@ -26,7 +27,7 @@
       <span>Email :</span>
     </div>
     <div nz-col nzPull="8" nzSpan="12">
-      <input  class="input-box" nz-input placeholder="Email" [(ngModel)]="addUser.email" />
+      <input  class="input-box" nz-input placeholder="Email" [(ngModel)]="edit.email" />
       </div>
     </div>
     <br>
@@ -38,7 +39,7 @@
         </div>
     </div>
       <div nz-col nzPull="8" nzSpan="12">
-        <input  class="input-box" nz-input placeholder="Password" [(ngModel)]="addUser.password" />
+        <input  class="input-box" nz-input placeholder="Password" [(ngModel)]="edit.password" />
       </div>
     </div>
     <br>
@@ -56,21 +57,13 @@
       <span>จำนวนวันที่ลาได้ :</span>
     </div>
     <div nz-col nzPull="8" nzSpan="12">
-      <input  class="input-box" nz-input placeholder="1-100" [(ngModel)]="addUser.max_days" />
+      <input  class="input-box" nz-input placeholder="1-100" [(ngModel)]="edit.max_days" />
 
     </div>
   </div>
 </div>
-
 <div style="margin-bottom: 15px">
-  <button nz-button nzType="primary" nzDanger nzBlock (click)="createUser(addUser)">เพิ่ม</button>
-  <nz-modal [(nzVisible)]="isVisible" nzTitle="แจ้งเตือน" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
-    <nz-alert
-    nzType="success"
-    nzMessage="Add User Success!"
-    nzDescription="คุณได้ทำการเพิ่ม User เข้ามาในระบบสำเร็จ!!"
-    nzShowIcon
-  >
-  </nz-alert>
-  </nz-modal>
+  <button nz-button nzType="primary" nzBlock (click)="editfunc(edit.id,edit)">
+    บันทึก
+  </button>
 </div>

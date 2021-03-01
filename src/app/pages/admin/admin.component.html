@@ -18,7 +18,12 @@
         <span class="element-menu">Calender</span>
       </li>
 
-    </ul>
+      <li nz-menu-item routerLink="member">
+        <i nz-icon nzType="team" nzTheme="outline"></i>
+        <span class="element-menu">Member</span>
+      </li>
+
+    </ul> 
   </nz-sider>
   <nz-layout>
     <nz-header class="headdering">
@@ -26,13 +31,6 @@
         <div nz-col nzSpan="24">
            <!-- icon -->
           <i class="trigger" style="color: white;" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'" (click)="isCollapsed = !isCollapsed"></i>
-    
-        
-        
-          <!-- add user-->
-          <button class="btn-tmt-primary btn-tmt-primary-ed" nz-button nzType="primary"  (click)="addUser()">
-            <i nz-icon nzType="plus-circle" nzTheme="outline"></i>เพิ่ม User
-           </button>
 
           <!-- profile -->
           

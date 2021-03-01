@@ -26,11 +26,12 @@ export class LeaveDetailComponent implements OnInit {
   getStatus() {
     this.statusService.getStatus().then((res: any) => {
       this.statusData = res;
-      // console.log(this.statusData.data);
+      console.log(this.statusData.data.check);
     });
   }
   edit(id: any, data: any) {
-    console.log("rdtrfygvhbjn:",id, data);
+    // console.log(id, data);
+    this.dataDetailSendAfter.check='1'
     this.crud
       .edit(id, data)
       .then(() => {
@@ -38,5 +39,4 @@ export class LeaveDetailComponent implements OnInit {
       })
       .catch((error: any) => {});
   }
-
 }

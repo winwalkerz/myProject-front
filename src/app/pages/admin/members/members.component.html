@@ -1,0 +1,53 @@
+<button
+  class="btn-tmt-primary btn-tmt-primary-ed"
+  nz-button
+  nzType="primary"
+  (click)="addUser()"
+>
+  <i nz-icon nzType="plus-circle" nzTheme="outline"></i>เพิ่ม User
+</button>
+<br><br>
+<div>
+  <nz-table nzShowPagination="false" [nzData]="members">
+    <thead>
+      <tr>
+        <th>NO.ID</th>
+        <th>ชื่อนามสกุล</th>
+        <th>Email</th>
+        <th>จำนวนันที่ลาได้</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let item of members">
+      <tr>
+        <td>{{ item.id }}</td>
+        <td>{{ item.first_name }} {{ item.last_name }}</td>
+        <td>{{ item.email }}</td>
+        <td>{{ item.max_days }}</td>
+        <td>
+      
+
+          <button class="btn btn-tmt-act btn-tmt-act-ed2" >
+            <a nz-tooltip nzTooltipTitle="แก้ไข">
+            <i nz-icon nzType="edit" nzTheme="outline" (click)="reData(item)"></i>
+          </a>
+          </button>
+        </td>
+        <td>
+          <button class="btn btn-tmt-act btn-tmt-act-ed"  (click)="delUser(item.id)">
+            <a nz-tooltip nzTooltipTitle="ลบ">
+            <i nz-icon nzType="delete" nzTheme="outline"></i>
+            </a>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>
+<br>
+<nz-pagination
+  [nzPageIndex]="1"
+  [nzTotal]="memberCount"
+  (nzPageIndexChange)="click($event)"
+></nz-pagination>

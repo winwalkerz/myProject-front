@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
 import { NzDrawerService } from 'ng-zorro-antd/drawer';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { NzMessageService} from 'ng-zorro-antd/message';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-user-list-leave',
@@ -28,7 +29,8 @@ export class UserListLeaveComponent implements OnInit {
     private userService: UserService,
     private crud: CrudService,
     private modal:NzModalService,
-    private nzMessageService: NzMessageService
+    private nzMessageService: NzMessageService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -109,6 +111,11 @@ export class UserListLeaveComponent implements OnInit {
     }).afterClose.subscribe(() => {
       this.showData();
     })
+  }
+
+  // go to calendar
+  goCalender(){
+    this.router.navigate(['main/calendar']);
   }
 }
 

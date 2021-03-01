@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core';
 import { CrudService } from './../../crud.service';
 import { NzDrawerRef } from 'ng-zorro-antd/drawer';
-
-
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-add-users',
@@ -10,15 +8,8 @@ import { NzDrawerRef } from 'ng-zorro-antd/drawer';
   styleUrls: ['./add-users.component.css']
 })
 export class AddUsersComponent implements OnInit {
-  
   isVisible = false;
-
-  constructor(private Crudservice : CrudService,
-              private NzDrawerRef: NzDrawerRef) { }
-
-  
   visible = false;
-
   addUser = {
     // id: '',
     first_name: '',
@@ -26,16 +17,14 @@ export class AddUsersComponent implements OnInit {
     email: '',
     password: '',
     role: '',
-    position: '',
+    position: 'user',
+    max_days:0
   };
-
-  
+  constructor(private Crudservice : CrudService,
+    private NzDrawerRef: NzDrawerRef) { }
 
   ngOnInit(): void {
-    
   }
-
-
   createUser(data: any) {
     this.Crudservice.createUsers(data).then(() => {
       console.log('add success')
@@ -69,5 +58,4 @@ export class AddUsersComponent implements OnInit {
     this.isVisible = false;
     this.NzDrawerRef.close();
   }
-
 }

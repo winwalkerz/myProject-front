@@ -1,3 +1,4 @@
+import { NzMessageService } from 'ng-zorro-antd/message';
 import { LoginService } from './../../login.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
@@ -9,13 +10,15 @@ import jwt_decode from 'jwt-decode';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  err= ''
+  alert = '';
   userLogin = {
     email: '',
     password: '',
   };
   decode: any;
-  constructor(private loginService: LoginService, private router: Router) {}
+  constructor(private loginService: LoginService, 
+              private router: Router,
+              private msg: NzMessageService) {}
 
   ngOnInit(): void {}
   login() {
@@ -23,21 +26,25 @@ export class LoginComponent implements OnInit {
       email: this.userLogin.email,
       password: this.userLogin.password,
     };
-    this.loginService.login(loginData).then((res: any) => {
-      //point
-      // console.log('token');
-
-      localStorage.setItem('token', JSON.stringify(res));   //เก็บ token ลง localstorage
-      var token = localStorage.getItem('token');    //สร้างตัวแปลมาเก็บ token ที่มาจาก storage
-      this.decode = jwt_decode(token || '');
-      // console.log(this.decode);
-      if (this.decode.role === 'user') {
-        this.router.navigate(['main']);
-      } else {
-        this.router.navigate(['admin/overview']);
-      }
-      //
-      // console.log(token);
-    });
+    this.loginService
+      .login(loginData)
+      .then((res: any) => {
+        localStorage.setItem('token', JSON.stringify(res)); //เก็บ token ลง localstorage
+        var token = localStorage.getItem('token'); //สร้างตัวแปลมาเก็บ token ที่มาจาก storage
+        this.decode = jwt_decode(token || '');
+        // console.log(this.decode);
+        if (this.decode.role === 'admin') {
+          this.router.navigate(['admin/overview']);
+        }else {
+          this.router.navigate(['main/user-list-leave'])
+          
+        }
+        //
+        // console.log(token);
+      })
+      .catch((err) => {
+        this.msg.error(err.error.message);
+        console.log(this.alert);
+      });
   }
 }

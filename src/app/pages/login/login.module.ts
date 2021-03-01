@@ -11,6 +11,8 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { NzAlertModule } from 'ng-zorro-antd/alert';
+import { NzMessageModule } from 'ng-zorro-antd/message';
 
 @NgModule({
   declarations: [LoginComponent],
@@ -24,6 +26,8 @@ import { NzDividerModule } from 'ng-zorro-antd/divider';
     NzIconModule,
     NzDividerModule,
     NzButtonModule,
+    NzAlertModule,
+    NzMessageModule
   ]
 })
 export class LoginModule { }
