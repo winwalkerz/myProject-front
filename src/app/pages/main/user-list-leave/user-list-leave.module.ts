@@ -17,6 +17,9 @@ import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzImageModule } from 'ng-zorro-antd/image';
 import { NzMessageModule } from 'ng-zorro-antd/message';
+import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
+import { NzAlertModule } from 'ng-zorro-antd/alert';
+
 
 @NgModule({
   declarations: [UserListLeaveComponent],
@@ -38,7 +41,9 @@ import { NzMessageModule } from 'ng-zorro-antd/message';
     NzModalModule,
     NzLayoutModule,
     NzImageModule,
-    NzMessageModule
+    NzMessageModule,
+    NzPopconfirmModule,
+    NzAlertModule
   ]
 })
 export class UserListLeaveModule { }

@@ -8,6 +8,9 @@ import { NzGridModule } from 'ng-zorro-antd/grid';
 import { FormsModule } from '@angular/forms';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzMessageModule } from 'ng-zorro-antd/message';
+import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
+import { NzModalModule } from 'ng-zorro-antd/modal';
 
 
 @NgModule({
@@ -20,7 +23,10 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
     NzGridModule,
     FormsModule,
     NzDatePickerModule,
-    NzSelectModule
+    NzSelectModule,
+    NzMessageModule,
+    NzPopconfirmModule,
+    NzModalModule
   ]
 })
 export class EditLeaveModule { }

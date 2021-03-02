@@ -57,6 +57,7 @@ export class AddLeaveComponent implements OnInit {
     let date1 = this.leaveCreate.date_start;
     let date2 = this.leaveCreate.date_end;
     let dayCount = 0
+    
 
     while (date2 >= date1) {
       dayCount++
@@ -108,7 +109,6 @@ export class AddLeaveComponent implements OnInit {
   handleCancel(): void {
     console.log('Button cancel clicked!');
     this.isVisible = false;
-    this.nzDrawerRef.close();
   }
 
   

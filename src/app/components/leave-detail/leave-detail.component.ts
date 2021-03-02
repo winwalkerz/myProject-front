@@ -2,6 +2,7 @@ import { CrudService } from './../../crud.service';
 import { StatusService } from '../../status.service';
 import { Component, OnInit } from '@angular/core';
 import { NzDrawerRef } from 'ng-zorro-antd/drawer';
+import { NzMessageService} from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-leave-detail',
@@ -13,7 +14,8 @@ export class LeaveDetailComponent implements OnInit {
   constructor(
     private nzdrawerref: NzDrawerRef,
     private statusService: StatusService,
-    private crud: CrudService
+    private crud: CrudService,
+    private nzMessageService: NzMessageService,
   ) { }
 
   dataDetailSendAfter: any = [];
@@ -36,7 +38,12 @@ export class LeaveDetailComponent implements OnInit {
       .edit(id, data)
       .then(() => {
         this.nzdrawerref.close();
+        this.nzMessageService.success('Edit Success.');
       })
       .catch((error: any) => {});
+  }
+
+  closeEdit(){
+    this.nzdrawerref.close();
   }
 }

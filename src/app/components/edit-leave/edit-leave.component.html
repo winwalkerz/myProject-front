@@ -10,8 +10,7 @@
         [(ngModel)]="dataEditSend.date_start"
         nzPlaceHolder="Start"
         (nzOnOpenChange)="handleStartOpenChange($event)"
-      ></nz-date-picker>
-      <nz-date-picker
+      ></nz-date-picker> - <nz-date-picker
         #endDatePicker
         [nzDisabledDate]="disabledEndDate"
         nzFormat="yyyy/MM/dd"
@@ -53,7 +52,7 @@
   </div>
 </div>
 <div style="margin-bottom: 15px">
-  <button nz-button nzType="primary" nzBlock >
+  <button nz-button nzType="primary" nzBlock (click)="edit(dataEditSend.id,dataEditSend)">
     บันทึก
   </button>
 </div>

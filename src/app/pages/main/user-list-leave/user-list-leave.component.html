@@ -29,21 +29,21 @@
   <!-- <h5>จำนวนวันที่คุณลาได้ทั้งหมด :<span class="numcount">  12</span></h5>
   <h5>จำนวนวันที่คุณได้ทำการลาเเล้ว :<span class="numcount">  12</span></h5> -->
 <!-- --------------------------------------จำนวนวะนลา ลาไปเเเล้ว ----------------------------- -->
-  
-<div nz-row>
-  <div class="gridcount1" nz-col nzSpan="7">
-      <h5>จำนวนวันที่คุณลาได้ทั้งหมด :<span class="numcount">  12</span></h5>
-    
+
+
+<div nz-row class="headcount">
+  <div class="gridcount" nz-col nzSpan="6">
+      <p>จำนวนวันที่คุณลาได้ทั้งหมด :<span class="numcount">   {{decode.max_days}}</span></p>
   </div>
 
-  <div class="gridcount2" nz-col nzSpan="7">
-    <h5>จำนวนวันที่คุณได้ทำการลาเเล้ว :<span class="numcount">  12</span></h5>
+  <div class="gridcount" nz-col nzSpan="6">
+      <p>จำนวนวันที่คุณได้ทำการลาเเล้ว :<span class="numcount"> {{allcount}}</span></p>
   </div>
 
-  <div nz-col nzSpan="10">
-    
+  <div nz-col nzSpan="14">
   </div>
 </div>
+<br>
 
   
 
@@ -66,7 +66,7 @@
 <!----------------------------- table ------------------------------------------------------------ -->
 
   <div nz-row>
-    <nz-table [nzData]="listorder.data" nzShowPagination="false">
+    <nz-table [nzData]="listorder" nzShowPagination="false">
       <thead>
         <tr>
           <th style="width: 50px">id</th>
@@ -75,14 +75,14 @@
           <th style="width: 220px">Description</th>
           <th style="width: 390px">วันและเวลา</th>
           <th style="width: 150px">จำนวนวัน</th>
-          <th style="width: 150px">Type</th>
+          <th style="width: 180px">Type</th>
           <th style="width: 120px">Status</th>
-          <th style="width: 80px;"></th>
-          <th style="width: 80px"></th>
+          <th style="width: 60px;"></th>
+          <th style="width: 60px"></th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let value of listorder.data">
+        <tr *ngFor="let value of listorder">
           <td>{{ value.id }}</td>
           <td>
             <div *ngIf="value?.file">
@@ -112,7 +112,23 @@
            <p style="margin-top: 15px;">  {{ value.allday }} วัน</p>
           </div>
           </td>
-          <td >{{ value.type }}</td>
+
+          <!-- type ------------------------------------------------------->
+          <td>{{value.type}}</td>
+         
+          <!-- <td >
+          <div *ngIf="value.type == 'ลากิจ'">
+            <span class="type_business">{{value.type}}</span>
+          </div>
+          <div *ngIf="value.type == 'ลาป่วย'">
+            <span class="type_medic">{{value.type}}</span>
+          </div>
+          <div *ngIf="value.type == 'ลาพักร้อน'">
+            <span class="type_summer">{{value.type}}</span>
+          </div>
+          </td> -->
+
+          <!-- status ---------------------------------------------------->
           <td style="text-align: center;">
               <div *ngIf="value.status_name == 'wait'" nz-tooltip nzTooltipTitle="wait" nzTooltipPlacement="top">
                 <i nz-icon nzType="clock-circle" nzTheme="outline"></i>
@@ -132,7 +148,7 @@
             </button>
           </td>
           <td>
-            <button  class="btn btn-tmt-act btn-tmt-act-ed"  (click)="showDeleteConfirm(value.id)">
+            <button  class="btn btn-tmt-act btn-tmt-act-ed"  (click)="showDeleteConfirm(value.id,value)">
               <a nz-tooltip nzTooltipTitle="ลบ">
               <i nz-icon nzType="delete" nzTheme="outline"></i>
               </a>

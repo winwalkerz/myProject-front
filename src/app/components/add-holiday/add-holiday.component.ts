@@ -1,3 +1,4 @@
+import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzModalRef } from 'ng-zorro-antd/modal';
 import { HolidayService } from './../../holiday.service';
 import { Component, OnInit, Input } from '@angular/core';
@@ -16,7 +17,8 @@ export class AddHolidayComponent implements OnInit {
   };
 
   // @Input() subtitle?: string;
-  constructor(private holy: HolidayService, private nzModalRef: NzModalRef) {}
+  constructor(private holy: HolidayService, private nzModalRef: NzModalRef,
+               private NzMessageService: NzMessageService ) {}
 
   ngOnInit(): void {
     this.valueHoliday.date = this.date
@@ -31,6 +33,7 @@ export class AddHolidayComponent implements OnInit {
 
   createHolidayy(data: any) {
     this.holy.createHoliday(data).then((res: any) => {
+      this.NzMessageService.success('Add Success');
       this.nzModalRef.close();
     });
   }
