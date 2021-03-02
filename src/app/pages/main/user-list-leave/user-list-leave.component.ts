@@ -23,6 +23,7 @@ export class UserListLeaveComponent implements OnInit {
   listorder: any = [];
   count: any;
   allcount = 0;
+  lastallcount=0;
 
   constructor(
     private nzDrawerService: NzDrawerService, //ประกาศตัวแปลเพื่อมาใช้งาน
@@ -44,8 +45,8 @@ export class UserListLeaveComponent implements OnInit {
     for (let i = 0; i < item; i++) {
       this.allcount += this.listorder[i].allday;
     }
-    this.allcount = this.decode.max_days - this.allcount;
-    console.log(this.allcount);
+    this.lastallcount = this.decode.max_days - this.allcount;
+    console.log(this.lastallcount);
   }
   //แสดข้อมูลของ user
   showData() {

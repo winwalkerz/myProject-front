@@ -71,15 +71,15 @@ export class CalenderComponent implements OnInit {
     //ส่ง count มาจาก holyData.count ---> method getHoliday
 
     // console.log(count)
-    var i;
+    // var i;
     // var day=[]      //เก็บวันที่
-    for (i = 0; i < count; i++) {
+    for (let i = 0; i < count; i++) {
       this.daystr[i] = this.holyData.data[i].date.slice(8, 10);
       this.dayint[i] = parseInt(this.daystr[i]);
       this.monthstr[i] = this.holyData.data[i].date.slice(5, 7);
       this.monthint[i] = parseInt(this.monthstr[i]);
     }
-    for (i = 0; i < count; i++) {
+    for (let i = 0; i < count; i++) {
       this.monthint[i] += -1;
       this.counts[i] = i;
       console.log(
