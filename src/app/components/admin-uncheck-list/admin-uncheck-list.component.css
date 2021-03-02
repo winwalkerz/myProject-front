@@ -1,0 +1,42 @@
+.heading {
+  background-color: #ECF0F6;
+  border-radius: 2px;
+    height: 40px;
+    padding: 20px 30px 50px;
+}
+
+.get-center{
+  text-align: center;
+}
+
+.search-fields{
+  width: 200px;
+  border-radius: 4px;
+}
+
+
+
+.btn-tmt-act {
+  background: linear-gradient(
+45deg
+,#f1eae8 0,#f1eae8 100%);
+  color: #908484;
+  font-size: 16px;
+  transition: .25s ease-in-out;
+  padding: .3rem .5rem;
+  line-height: 1;
+  box-shadow: 0 0 0 rgb(177 38 41 / 0%);
+}
+
+
+
+
+/* edit button */
+.btn-tmt-act.btn-tmt-act-ed2:hover {
+  background: linear-gradient(
+    -45deg,
+    #FBC02D 0, #FFEB3B 100%);
+  box-shadow: 0 0.35rem 0.5rem reg(177 38 41 /30%);
+  color: #f1eae8;
+  transition: .25s ease-in-out;
+}

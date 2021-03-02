@@ -32,6 +32,7 @@ const routes: Routes = [
   { path: 'user-list-leave', loadChildren: () => import('./pages/main/user-list-leave/user-list-leave.module').then(m => m.UserListLeaveModule) },
   { path: 'calendar', loadChildren: () => import('./pages/main/calendar/calendar.module').then(m => m.CalendarModule) },
   { path: 'overview', loadChildren: () => import('./pages/admin/overview/overview.module').then(m => m.OverviewModule) },
+  { path: 'members', loadChildren: () => import('./pages/admin/members/members.module').then(m => m.MembersModule) },
   
 ];
 

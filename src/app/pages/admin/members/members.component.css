@@ -1,0 +1,42 @@
+.btn-tmt-primary{
+  font-variant: tabular-nums;
+  color: white;
+  background-color: #e85440;
+  border-color: #e85440;
+  box-sizing: border-box;
+  border-radius: 5px;
+  height: 38px;
+}
+
+/* delete button */
+.btn-tmt-act {
+  background: linear-gradient(
+45deg
+,#f1eae8 0,#f1eae8 100%);
+  color: #908484;
+  font-size: 16px;
+  transition: .25s ease-in-out;
+  padding: .3rem .5rem;
+  line-height: 1;
+  box-shadow: 0 0 0 rgb(177 38 41 / 0%);
+}
+
+.btn-tmt-act.btn-tmt-act-ed:hover {
+  background: linear-gradient(
+    -45deg,
+    #e91527 0, #f39c61 100%);
+  box-shadow: 0 0.35rem 0.5rem reg(177 38 41 /30%);
+  color: #f1eae8;
+  transition: .25s ease-in-out;
+    
+}
+
+/* edit button */
+.btn-tmt-act.btn-tmt-act-ed2:hover {
+  background: linear-gradient(
+    -45deg,
+    #FBC02D 0, #FFEB3B 100%);
+  box-shadow: 0 0.35rem 0.5rem reg(177 38 41 /30%);
+  color: #f1eae8;
+  transition: .25s ease-in-out;
+}

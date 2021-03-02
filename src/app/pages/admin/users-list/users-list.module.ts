@@ -1,3 +1,6 @@
+import { AdminAllcheckListModule } from './../../../components/admin-allcheck-list/admin-allcheck-list.module';
+import { AdminUncheckListModule } from './../../../components/admin-uncheck-list/admin-uncheck-list.module';
+import { AdminCheckListModule } from './../../../components/admin-check-list/admin-check-list.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -8,15 +11,7 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { UsersListRoutingModule } from './users-list-routing.module';
 import { UsersListComponent } from './users-list.component';
 import { NzPaginationModule } from 'ng-zorro-antd/pagination';
-import { NzLayoutModule } from 'ng-zorro-antd/layout';
-import { NzFormModule } from 'ng-zorro-antd/form';
-import { NzInputModule } from 'ng-zorro-antd/input';
-import { NzGridModule } from 'ng-zorro-antd/grid';
-import { NzButtonModule } from 'ng-zorro-antd/button';
-import { NzTagModule } from 'ng-zorro-antd/tag';
-import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
-import { NzModalModule } from 'ng-zorro-antd/modal';
-import { NzImageModule } from 'ng-zorro-antd/image';
+import { NzTabsModule } from 'ng-zorro-antd/tabs';
 
 @NgModule({
   declarations: [UsersListComponent],
@@ -29,16 +24,10 @@ import { NzImageModule } from 'ng-zorro-antd/image';
     NzTableModule,
     NzMenuModule,
     NzPaginationModule,
-    NzImageModule,
-    NzToolTipModule,
-    NzLayoutModule,
-    NzFormModule,
-    NzInputModule,
-    NzGridModule,
-    NzButtonModule,
-    NzTagModule,
-    NzModalModule
-
+    NzTabsModule,
+    AdminCheckListModule,
+    AdminUncheckListModule,
+    AdminAllcheckListModule
   ]
 })
 export class UsersListModule { }

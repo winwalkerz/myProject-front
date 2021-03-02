@@ -6,6 +6,8 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';     //ถ้าไม่ลงใช้ ngModel ไม่ได้
+import { NzTableModule } from 'ng-zorro-antd/table';
+import { NzTabsModule } from 'ng-zorro-antd/tabs';
 
 
 
@@ -17,7 +19,9 @@ import { FormsModule } from '@angular/forms';     //ถ้าไม่ลงใ�
     NzGridModule,
     NzSelectModule,
     NzButtonModule,
-    FormsModule
+    FormsModule,
+    NzTableModule,
+    NzTabsModule
   ]
 })
 export class LeaveDetailModule { }
