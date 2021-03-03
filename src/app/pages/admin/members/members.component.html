@@ -14,6 +14,7 @@
         <th>NO.ID</th>
         <th>ชื่อนามสกุล</th>
         <th>Email</th>
+        <th>Position</th>
         <th>จำนวนันที่ลาได้</th>
         <th></th>
         <th></th>
@@ -24,7 +25,8 @@
         <td>{{ item.id }}</td>
         <td>{{ item.first_name }} {{ item.last_name }}</td>
         <td>{{ item.email }}</td>
-        <td>{{ item.max_days }}</td>
+        <td>{{ item.position}}</td>
+        <td style="text-align: center;">{{ item.max_days }}</td>
         <td>
       
 
@@ -35,7 +37,7 @@
           </button>
         </td>
         <td>
-          <button class="btn btn-tmt-act btn-tmt-act-ed"  (click)="delUser(item.id)">
+          <button class="btn btn-tmt-act btn-tmt-act-ed"  (click)="showDeleteConfirm(item.id)">
             <a nz-tooltip nzTooltipTitle="ลบ">
             <i nz-icon nzType="delete" nzTheme="outline"></i>
             </a>

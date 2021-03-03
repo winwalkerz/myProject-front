@@ -1,6 +1,7 @@
 import { UserService } from './../../user.service';
 import { NzDrawerRef } from 'ng-zorro-antd/drawer';
 import { Component, OnInit } from '@angular/core';
+import { NzMessageService} from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-edit-user',
@@ -11,7 +12,8 @@ export class EditUserComponent implements OnInit {
   edit: any;
   constructor(
     private userService: UserService,
-    private nzDrawerRef: NzDrawerRef
+    private nzDrawerRef: NzDrawerRef,
+    private nzMessageService: NzMessageService
   ) {}
 
   ngOnInit(): void {}
@@ -20,6 +22,7 @@ export class EditUserComponent implements OnInit {
       .editUser(id, data)
       .then(() => {
         this.nzDrawerRef.close();
+        this.nzMessageService.success('Edit Success.');
       })
       .catch((error: any) => {});
   }

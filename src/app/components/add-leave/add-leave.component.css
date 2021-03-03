@@ -7,3 +7,25 @@
    float: left;
    padding: 5px;
 }
+
+
+
+.cancelbot{
+    font-weight: 400;
+    border: 1px solid #d9d9d9;
+    padding: 0 15px;
+    font-size: 14px;
+    border-radius: 4px;
+    height: 32px;
+    user-select: none;
+    transition: all .3s cubic-bezier(.645,.045,.355,1);
+    margin-left: 10px;
+    box-shadow: 0 2px 0 rgb(0 0 0 / 2%);
+    color: rgba(0,0,0,.65);
+    background-color: #fff;
+}
+
+
+
+
+

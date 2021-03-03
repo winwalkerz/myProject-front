@@ -1,6 +1,8 @@
 import { CrudService } from './../../crud.service';
 import { NzDrawerRef } from 'ng-zorro-antd/drawer';
 import { Component, OnInit } from '@angular/core';
+import { NzMessageService } from 'ng-zorro-antd/message';
+
 
 @Component({
   selector: 'app-add-users',
@@ -10,25 +12,35 @@ import { Component, OnInit } from '@angular/core';
 export class AddUsersComponent implements OnInit {
   isVisible = false;
   visible = false;
+  alert = '';
   addUser = {
     // id: '',
     first_name: '',
     last_name: '',
     email: '',
     password: '',
-    role: '',
-    position: 'user',
-    max_days:0
+    role: 'user',
+    position: '',
+    max_days: ''
   };
   constructor(private Crudservice : CrudService,
-    private NzDrawerRef: NzDrawerRef) { }
+    private NzDrawerRef: NzDrawerRef,
+    private nzMessageService: NzMessageService,
+    private msg: NzMessageService,) { }
 
   ngOnInit(): void {
   }
+
+
   createUser(data: any) {
     this.Crudservice.createUsers(data).then(() => {
+      this.NzDrawerRef.close();
+      this.nzMessageService.success('เพิ่มยูสเซอร์สำเร็จ!');
       console.log('add success')
-      this.showModal();
+      
+    }).catch((err) => {
+      this.msg.error(err.error.message);
+      console.log(this.alert);
     });
   }
 
@@ -40,22 +52,9 @@ export class AddUsersComponent implements OnInit {
     this.visible = false;
   }
 
-  showModal(): void {
-    this.isVisible = true;
-  }
-
-
-  // modal
-
-  handleOk(): void {
-    console.log('Button ok clicked!');
-    this.isVisible = false;
+   // -----------------------------------cancel botton------------------------
+   cancel(){
     this.NzDrawerRef.close();
   }
 
-  handleCancel(): void {
-    console.log('Button cancel clicked!');
-    this.isVisible = false;
-    this.NzDrawerRef.close();
-  }
 }

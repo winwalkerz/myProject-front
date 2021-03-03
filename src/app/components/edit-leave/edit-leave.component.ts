@@ -11,6 +11,7 @@ import { NzMessageService} from 'ng-zorro-antd/message';
 export class EditLeaveComponent implements OnInit {
   
   dataEditSend: any;
+  allday = 0
 
   
  
@@ -23,6 +24,8 @@ export class EditLeaveComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.dataEditSend);
   }
+
+  //  ---------------------edit button---------------------------------
   edit(id: any, data: any) {
     this.crudService
       .edit(id, data)
@@ -31,6 +34,11 @@ export class EditLeaveComponent implements OnInit {
       })
       .catch((error: any) => {});
       this.nzMessageService.success('Edit Success.');
+  }
+
+  // -----------------------------------cancel botton------------------------
+  cancel(){
+    this.nzDrawerRef.close();
   }
 
 

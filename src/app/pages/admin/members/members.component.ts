@@ -4,6 +4,8 @@ import { EditUserComponent } from './../../../components/edit-user/edit-user.com
 
 import { NzDrawerService } from 'ng-zorro-antd/drawer';
 import { Component, OnInit } from '@angular/core';
+import { NzModalService } from 'ng-zorro-antd/modal';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-members',
@@ -13,7 +15,9 @@ import { Component, OnInit } from '@angular/core';
 export class MembersComponent implements OnInit {
   constructor(
     private nzdrawerservice: NzDrawerService,
-    private users: UserService
+    private users: UserService,
+    private modal: NzModalService,
+    private nzMessageService: NzMessageService,
   ) {}
   members: any = [];
   model_search = {
@@ -33,7 +37,7 @@ export class MembersComponent implements OnInit {
     >({
       nzTitle: 'เพิ่ม User',
       nzContent: AddUsersComponent,
-      nzWidth: '65%',
+      nzWidth: '35%',
       nzCloseOnNavigation: true,
       nzContentParams: {
         dataTypeSend: this.typeData,
@@ -69,7 +73,7 @@ export class MembersComponent implements OnInit {
       EditUserComponent,
       { edit: any }
     >({
-      nzTitle: 'เพิ่ม User',
+      nzTitle: 'แก้ไข User',
       nzContent: EditUserComponent,
       nzWidth: '65%',
       nzCloseOnNavigation: true,
@@ -82,8 +86,28 @@ export class MembersComponent implements OnInit {
       this.memberList(this.model_search);
     });
   }
+
+
+  showDeleteConfirm(id: any): void {
+    this.modal
+      .confirm({
+        nzTitle: '<b>คำเตือน !!!</b>',
+        nzContent: 'คุณเเน่ใจใช่ไหมว่าจะลบยูสเซอร์นี้ ?',
+        nzOkText: 'Yes',
+        nzOkType: 'primary',
+        nzOkDanger: true,
+        nzOnOk: () => this.delUser(id),
+        nzCancelText: 'No',
+        nzOnCancel: () => console.log('Cancel'),
+      })
+      .afterClose.subscribe(() => {
+        this.memberList(id);
+      });
+  }
+  
   delUser(id: any) {
     this.users.deleteUser(id).then((res: any) => {});
+    this.nzMessageService.success('Deleted');
     this.memberList(this.model_search);
   }
 }

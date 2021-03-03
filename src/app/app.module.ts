@@ -10,8 +10,7 @@ import en from '@angular/common/locales/en';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { EditUserComponent } from './components/edit-user/edit-user.component';
-
+import { EditUserComponent } from './components/edit-user/edit-user.component'
 
 
 registerLocaleData(en);
@@ -19,7 +18,9 @@ registerLocaleData(en);
 @NgModule({
   declarations: [
     AppComponent,
-    EditUserComponent,
+    EditUserComponent
+    
+    
     
    
   ],

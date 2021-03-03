@@ -12,6 +12,8 @@ import { NzMessageModule } from 'ng-zorro-antd/message';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
+
 
 
 
@@ -29,7 +31,8 @@ import { NzAlertModule } from 'ng-zorro-antd/alert';
     NzMessageModule,
     NzModalModule,
     NzIconModule,
-    NzAlertModule
+    NzAlertModule,
+    NzDividerModule
   ]
 })
 export class AddUsersModule { }

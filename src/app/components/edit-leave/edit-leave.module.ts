@@ -11,6 +11,7 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzMessageModule } from 'ng-zorro-antd/message';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
     NzSelectModule,
     NzMessageModule,
     NzPopconfirmModule,
-    NzModalModule
+    NzModalModule,
+    NzDividerModule
   ]
 })
 export class EditLeaveModule { }

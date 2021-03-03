@@ -31,6 +31,9 @@ export class AddLeaveComponent implements OnInit {
 
   environment = environment
 
+  alert = '';
+  
+
   dataTypeSend:any  //รับมาจากหน้า main เพื่อนเอาไปแสดงค่า
   visible = false;
   date_str1 = '';
@@ -91,17 +94,18 @@ export class AddLeaveComponent implements OnInit {
 
 
 // --------------------------------confiamation add leave--------------------------------------
-  showConfirm(data: any){
-    this.isVisible = true;
+  showConfirm(data: any): void {
+    this.isVisible = true
     
   }
   
   handleOk(data:any): void {
     console.log('Button ok clicked!');
     this.Crudservice.createLeave(data).then(() => {
-      this.isVisible = false;
-      this.nzDrawerRef.close();
-      this.leaveworkCreated(data);
+    this.leaveworkCreated(data);
+  }).catch((err) => {
+    this.msg.error(err.error.message);
+    console.log(this.alert);
   });
      
   }
@@ -113,16 +117,24 @@ export class AddLeaveComponent implements OnInit {
 
   
   leaveworkCreated(data:any): void {
+    this.isVisible = false;
+    this.nzDrawerRef.close();
     this.modal.success({
-      nzTitle: 'แจ้งเตือน',
-      nzContent: 'คุณได้ทำการลาเป็นจำนวน '+ this.leaveCreate.allday + ' วัน',
+      nzTitle: 'ทำการลาสำเร็จ',
+      nzContent: 'คุณได้ทำการลางานเป็นจำนวน '+ this.leaveCreate.allday + ' วัน',
       nzOkText: 'OK',
-      nzOkType: 'primary',
+      nzOkType: 'danger',
       nzCancelText: null,
       nzOkDanger: true,
       nzFooter: null,
       nzOnOk: () => console.log('OK'),
-    });
+      
+    })
+  }
+
+  // -----------------------------------cancel botton------------------------
+  cancel(){
+    this.nzDrawerRef.close();
   }
 
 

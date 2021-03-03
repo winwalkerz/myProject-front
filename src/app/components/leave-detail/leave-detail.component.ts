@@ -31,16 +31,23 @@ export class LeaveDetailComponent implements OnInit {
       console.log(this.statusData.data.check);
     });
   }
-  edit(id: any, data: any) {
+
+  // 
+    edit(id: any, data: any) {
     // console.log(id, data);
     this.dataDetailSendAfter.check='1'
     this.crud
       .edit(id, data)
-      .then(() => {
+      .then( () => {
         this.nzdrawerref.close();
+        // location.reload() 
         this.nzMessageService.success('Edit Success.');
+      }).then(() => {
+        
+      
       })
       .catch((error: any) => {});
+      
   }
 
   closeEdit(){

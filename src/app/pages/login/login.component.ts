@@ -33,11 +33,12 @@ export class LoginComponent implements OnInit {
         var token = localStorage.getItem('token'); //สร้างตัวแปลมาเก็บ token ที่มาจาก storage
         this.decode = jwt_decode(token || '');
         // console.log(this.decode);
-        if (this.decode.role === 'admin') {
+       if (this.decode.role === 'user') {
+          this.router.navigate(['main/user-list-leave']);
+        } else if (this.decode.role ==='admin') {
           this.router.navigate(['admin/overview']);
         }else {
-          this.router.navigate(['main/user-list-leave'])
-          
+          this.router.navigate(['login'])
         }
         //
         // console.log(token);

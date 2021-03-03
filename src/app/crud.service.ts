@@ -19,6 +19,7 @@ export class CrudService {
   createLeave(data: any) {
     return this.http.post(`${url}/leaveWork/createLeave`, data).toPromise();
   }
+
   createUsers(data: any) {
     return this.http.post(`${url}/users/create`, data).toPromise();
   }

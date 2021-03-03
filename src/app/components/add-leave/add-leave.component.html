@@ -1,9 +1,9 @@
 <div style="margin-bottom: 15px">
   <div nz-row>
-    <div nz-col nzSpan="12">
+    <div nz-col nzSpan="9">
       <span>วันที่ต้องการลา</span>
     </div>
-    <div nz-col nzSpan="12">
+    <div nz-col nzSpan="15">
       <nz-date-picker
         [nzDisabledDate]="disabledStartDate"
         nzFormat="yyyy/MM/dd"
@@ -24,10 +24,10 @@
 </div>
 <div style="margin-bottom: 15px">
   <div nz-row>
-    <div nz-col nzSpan="12">
+    <div nz-col nzSpan="9">
       <span>รูปแบบการลางาน</span>
     </div>
-    <div nz-col nzSpan="12">
+    <div nz-col nzSpan="15">
       <nz-select nzShowSearch nzAllowClear nzPlaceHolder="เลือกรูปแบบการลา" [(ngModel)]="leaveCreate.type">
         <nz-option nzLabel="ลาพักร้อน" [nzValue]="'ลาพักร้อน'"></nz-option>
         <nz-option nzLabel="ลากิจ" [nzValue]="'ลากิจ'"></nz-option>
@@ -38,12 +38,12 @@
 </div>
 <div style="margin-bottom: 15px">
   <div nz-row>
-    <div nz-col nzSpan="12">
+    <div nz-col nzSpan="9">
       <span>รายละเอียดเพิ่มเติม, หมายเหตุ</span>
     </div>
-    <div nz-col nzSpan="12">
+    <div nz-col nzSpan="15">
       <textarea
-        nz-input
+        nz-input required
         placeholder="รายละเอียดเพิ่มเติม"
         [nzAutosize]="{ minRows: 2, maxRows: 6 }"
         [(ngModel)]="leaveCreate.description"
@@ -69,22 +69,21 @@
     </nz-upload>
 
     <!-- ----------------------Last Summit botton----------------------------------- -->
-
-<div style="margin-bottom: 15px">
-  <button nz-button nzType="primary"  nzDanger nzBlock (click)="showConfirm(leaveCreate)">เพิ่ม</button>
-  
+    <nz-divider></nz-divider>
+  <div>
+  <button style="border-radius: 5px;" nz-button nzType="primary"  nzDanger  (click)="showConfirm(leaveCreate)">OK</button>
   <!-- Submit modal -->
-  <nz-modal [(nzVisible)]="isVisible" nzTitle="แจ้งเตือน" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk(leaveCreate)">
+  <nz-modal [(nzVisible)]="isVisible" nzTitle="กรุณายืนยันการลางาน" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk(leaveCreate)">
     <ng-container *nzModalContent>
       <nz-alert
       nzType="warning"
-      nzMessage="กรุณายินยันการดำเนินการ"
-      nzDescription="คุณต้องการทำการลางานเป็นจำนวน {{leaveCreate.allday}} วันหรือไม่ ?"
-      nzShowIcon
-    >
+      nzMessage="ประเภทการลางานของคุณ =  ' {{leaveCreate.type}} '" 
+      nzDescription="จำนวนวันลางานของคุณ =  ' {{leaveCreate.allday}} วัน '"
+      nzShowIcon>
     </nz-alert>
     </ng-container>
   </nz-modal>
+  <button class="cancelbot" nz-button nzType="default" (click)="cancel()">Cancel</button>
 </div>
 
 

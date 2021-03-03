@@ -35,7 +35,7 @@ export class CalenderComponent implements OnInit {
     const drawRef = this.nzModalService.create({
       nzTitle: 'เพิ่มวันหยุด',
       nzContent: AddHolidayComponent,
-      nzWidth: '65%',
+      nzWidth: '45%',
       nzFooter: null,
       nzComponentParams: {
         date: data,
