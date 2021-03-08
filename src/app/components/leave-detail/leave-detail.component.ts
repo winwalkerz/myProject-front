@@ -41,7 +41,7 @@ export class LeaveDetailComponent implements OnInit {
       .then( () => {
         this.nzdrawerref.close();
         // location.reload() 
-        this.nzMessageService.success('Edit Success.');
+        this.nzMessageService.success('แก้ไขสำเร็จ');
       }).then(() => {
         
       

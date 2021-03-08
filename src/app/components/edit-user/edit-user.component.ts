@@ -22,7 +22,7 @@ export class EditUserComponent implements OnInit {
       .editUser(id, data)
       .then(() => {
         this.nzDrawerRef.close();
-        this.nzMessageService.success('Edit Success.');
+        this.nzMessageService.success('แก้ไขสำเร็จ');
       })
       .catch((error: any) => {});
   }

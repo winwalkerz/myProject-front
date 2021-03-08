@@ -71,7 +71,7 @@
     <!-- ----------------------Last Summit botton----------------------------------- -->
     <nz-divider></nz-divider>
   <div>
-  <button style="border-radius: 5px;" nz-button nzType="primary"  nzDanger  (click)="showConfirm(leaveCreate)">OK</button>
+  <button style="border-radius: 5px;" nz-button nzType="primary"  nzDanger  (click)="showConfirm(leaveCreate)">ยืนยัน</button>
   <!-- Submit modal -->
   <nz-modal [(nzVisible)]="isVisible" nzTitle="กรุณายืนยันการลางาน" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk(leaveCreate)">
     <ng-container *nzModalContent>
@@ -83,7 +83,7 @@
     </nz-alert>
     </ng-container>
   </nz-modal>
-  <button class="cancelbot" nz-button nzType="default" (click)="cancel()">Cancel</button>
+  <button class="cancelbot" nz-button nzType="default" (click)="cancel()">ยกเลิก</button>
 </div>
 
 

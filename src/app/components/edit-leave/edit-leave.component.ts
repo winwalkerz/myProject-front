@@ -33,7 +33,7 @@ export class EditLeaveComponent implements OnInit {
         this.nzDrawerRef.close();
       })
       .catch((error: any) => {});
-      this.nzMessageService.success('Edit Success.');
+      this.nzMessageService.success('แก้ไขสำเร็จ');
   }
 
   // -----------------------------------cancel botton------------------------

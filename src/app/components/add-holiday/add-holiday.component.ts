@@ -38,7 +38,7 @@ export class AddHolidayComponent implements OnInit {
   createHolidayy(data: any) {
     this.holy.createHoliday(data).then((res: any) => {
       this.nzModalRef.close();
-      this.NzMessageService.success('Add Success');
+      this.NzMessageService.success('เพิ่มวันหยุดสำเร็จ');
     }).catch((err) => {
       this.NzMessageService.error(err.error.message);
       console.log(this.alert);
