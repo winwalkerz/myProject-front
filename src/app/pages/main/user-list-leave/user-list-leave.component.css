@@ -5,7 +5,9 @@
   cursor: pointer;
   transition: color 0.3s;
 }
-
+th {
+  text-align: center;
+}
 .trigger:hover {
   color: #1890ff;
 }
@@ -206,7 +208,7 @@ nz-avatar {
 /* icon-in-button */
 .position-botton {
   position: absolute;
-  bottom: 10px;
+  bottom: 12px;
   left: 5px;
 }
 

@@ -2,7 +2,6 @@
   <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
     <div class="logo"></div>
     <ul nz-menu nzTheme="dark" nzMode="inline">
-
       <li nz-menu-item routerLink="overview">
         <i nz-icon nzType="pie-chart" nzTheme="outline"></i>
         <span class="element-menu">Overview</span>
@@ -22,39 +21,46 @@
         <i nz-icon nzType="team" nzTheme="outline"></i>
         <span class="element-menu">Member</span>
       </li>
-
-    </ul> 
+    </ul>
   </nz-sider>
   <nz-layout>
     <nz-header class="headdering">
-      <div nz-row >
-        <div nz-col nzSpan="24">
-           <!-- icon -->
-          <i class="trigger" style="color: white;" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'" (click)="isCollapsed = !isCollapsed"></i>
+      <div>
+        <div nz-row>
+       
+          <i
+            class="trigger"
+            style="color: white;"
+            nz-icon
+            [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+            (click)="isCollapsed = !isCollapsed"
+          ></i>
 
-          <!-- profile -->
-          
-            <button nz-button class="profilebot" nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu">  
-            <nz-avatar nzText="ADMIN" ></nz-avatar><span style="margin-left: 10px;"> Account</span>
-              <i nz-icon nzType="down"></i></button>
-              <nz-dropdown-menu #menu="nzDropdownMenu">
-                <ul nz-menu>
-                  <li nz-menu-item>Information</li> 
-                  <li nz-menu-item>about Us</li>
-                  <li nz-menu-item (click)="logout()">Logout </li>
-                </ul>
-              </nz-dropdown-menu>
-         
+          <button
+            nz-button
+            class="profilebot"
+            nz-dropdown
+            nzTrigger="click"
+            [nzDropdownMenu]="menu"
+          >
+            <nz-avatar nzText="ADMIN"></nz-avatar
+            ><span style="margin-left: 10px;"> {{decode.first_name}}</span>
+            <i nz-icon nzType="down"></i>
+          </button>
+          <nz-dropdown-menu #menu="nzDropdownMenu">
+            <ul nz-menu>
+              <li nz-menu-item>Information</li>
+              <li nz-menu-item>about Us</li>
+              <li nz-menu-item (click)="logout()">Logout</li>
+            </ul>
+          </nz-dropdown-menu>
         </div>
       </div>
-      
     </nz-header>
-    <nz-content>
-      <div class="inner-content">
+    <nz-content class="inner-content">
       <router-outlet></router-outlet>
-    </div>
     </nz-content>
-    
+
     <!-- <nz-footer>Ant Design ©2020 Implement By Angular</nz-footer> -->
   </nz-layout>
 </nz-layout>
