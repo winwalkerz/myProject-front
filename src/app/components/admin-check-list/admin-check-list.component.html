@@ -1,3 +1,13 @@
+<div class="heading">
+  <input
+              nz-input
+              class="search-fields"
+              placeholder="ชื่อ หรือนามสกุล"
+              name="search"
+              [(ngModel)]="model_search.search"
+              (keyup.enter)="changeFilter()"
+            />
+  </div>
 <div>
   <nz-table [nzData]="listAlluser" nzShowPagination="false">
     <thead>

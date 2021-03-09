@@ -81,23 +81,21 @@ export class MembersComponent implements OnInit {
         edit: this.newData,
       },
     });
-
     drawRefEdit.afterClose.subscribe(() => {
       this.memberList(this.model_search);
     });
   }
-
 
   showDeleteConfirm(id: any): void {
     this.modal
       .confirm({
         nzTitle: '<b>คำเตือน !!!</b>',
         nzContent: 'คุณเเน่ใจใช่ไหมว่าจะลบยูสเซอร์นี้ ?',
-        nzOkText: 'Yes',
+        nzOkText: 'ยืนยัน',
         nzOkType: 'primary',
         nzOkDanger: true,
         nzOnOk: () => this.delUser(id),
-        nzCancelText: 'No',
+        nzCancelText: 'ยกเลิก',
         nzOnCancel: () => console.log('Cancel'),
       })
       .afterClose.subscribe(() => {

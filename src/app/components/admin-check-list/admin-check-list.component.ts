@@ -1,3 +1,4 @@
+import { CrudService } from './../../crud.service';
 import { LeaveDetailComponent } from './../leave-detail/leave-detail.component';
 import { NzDrawerService } from 'ng-zorro-antd/drawer';
 import { UserService } from './../../user.service';
@@ -15,9 +16,13 @@ export class AdminCheckListComponent implements OnInit {
     page: 1,
     check: '1',
   };
+  model_search = {
+    search: '',
+  };
   
   constructor(private userservice: UserService,
-    private nzdrawerservice: NzDrawerService) { }
+    private nzdrawerservice: NzDrawerService,
+    private crud:CrudService) { }
 
   ngOnInit(): void {
     this.getAlluser(this.body)
@@ -42,7 +47,7 @@ export class AdminCheckListComponent implements OnInit {
     >({
       nzTitle: 'รายละเอียด',
       nzContent: LeaveDetailComponent,
-      nzWidth: '65%',
+      nzWidth: '45%',
       nzContentParams: {
         dataDetailSendAfter: this.dataDetailSendBefore,
       },
@@ -55,5 +60,13 @@ export class AdminCheckListComponent implements OnInit {
   click($event: any) {
     this.body.page = $event;
     this.getAlluser(this.body);
+  }
+  changeFilter() {
+    console.log('running');
+    this.crud.filter(this.model_search).then((res: any) => {
+      this.listAlluser = res.data;
+      this.count = res.count;
+      console.log(this.listAlluser);
+    });
   }
 }

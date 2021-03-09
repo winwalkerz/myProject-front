@@ -2,6 +2,7 @@ import { UserService } from './../../user.service';
 import { NzDrawerRef } from 'ng-zorro-antd/drawer';
 import { Component, OnInit } from '@angular/core';
 import { NzMessageService} from 'ng-zorro-antd/message';
+import { NzModalService } from 'ng-zorro-antd/modal';
 
 @Component({
   selector: 'app-edit-user',
@@ -13,8 +14,26 @@ export class EditUserComponent implements OnInit {
   constructor(
     private userService: UserService,
     private nzDrawerRef: NzDrawerRef,
-    private nzMessageService: NzMessageService
+    private nzMessageService: NzMessageService,
+    private modal: NzModalService,
   ) {}
+
+  showEditConfirm(id: any, data:any): void {
+    this.modal
+      .confirm({
+        nzTitle: '<b>คำเตือน</b>',
+        nzContent: 'คุณเเน่ใจใช่ไหมว่าต้องการแก้ไขยูสเซอร์นี้?',
+        nzOkText: 'ยืนยัน',
+        nzOkType: 'primary',
+        nzOkDanger: true,
+        nzOnOk: () => this.editfunc(id, data),
+        nzCancelText: 'ยกเลิก',
+        nzOnCancel: () => console.log('Cancel'),
+      })
+      // .afterClose.subscribe(() => {
+      //   this.memberList(id);
+      // });
+  }
 
   ngOnInit(): void {}
   editfunc(id: any, data: any) {
@@ -26,4 +45,10 @@ export class EditUserComponent implements OnInit {
       })
       .catch((error: any) => {});
   }
+
+  closeEdit(){
+    this.nzDrawerRef.close();
+  }
+
+  
 }

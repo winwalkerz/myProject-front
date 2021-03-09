@@ -71,14 +71,14 @@
     <!-- ----------------------Last Summit botton----------------------------------- -->
     <nz-divider></nz-divider>
   <div>
-  <button style="border-radius: 5px;" nz-button nzType="primary"  nzDanger  (click)="showConfirm(leaveCreate)">ยืนยัน</button>
+  <button style="border-radius: 5px;" nz-button nzType="primary"  nzDanger  (click)="showConfirm(leaveCreate)">บันทึก</button>
   <!-- Submit modal -->
-  <nz-modal [(nzVisible)]="isVisible" nzTitle="กรุณายืนยันการลางาน" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk(leaveCreate)">
+  <nz-modal [(nzVisible)]="isVisible" nzTitle="กรุณายืนยันการลางาน" nzOkText="ยืนยัน" nzCancelText="ยกเลิก" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk(leaveCreate)">
     <ng-container *nzModalContent>
       <nz-alert
       nzType="warning"
-      nzMessage="ประเภทการลางานของคุณ =  ' {{leaveCreate.type}} '" 
-      nzDescription="จำนวนวันลางานของคุณ =  ' {{leaveCreate.allday}} วัน '"
+      nzMessage="ประเภทการลางานของคุณ :   {{leaveCreate.type}} " 
+      nzDescription="จำนวนวันลางานของคุณ :  {{leaveCreate.allday}} วัน "
       nzShowIcon>
     </nz-alert>
     </ng-container>

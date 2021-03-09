@@ -62,7 +62,9 @@
   </div>
 </div>
 <div style="margin-bottom: 15px">
-  <button nz-button nzType="primary" nzBlock (click)="editfunc(edit.id,edit)">
+  <button nz-button nzType="primary"  (click)="showEditConfirm(edit.id,edit)">
     ยืนยัน
   </button>
+  <button nz-button nzType="primary" (click)="closeEdit()">ยกเลิก</button>
 </div>
+

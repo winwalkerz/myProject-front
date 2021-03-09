@@ -53,7 +53,7 @@ export class AdminAllcheckListComponent implements OnInit {
     >({
       nzTitle: 'รายละเอียด',
       nzContent: LeaveDetailComponent,
-      nzWidth: '65%',
+      nzWidth: '45%',
       nzContentParams: {
         dataDetailSendAfter: this.dataDetailSendBefore,
       },
