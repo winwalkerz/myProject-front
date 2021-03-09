@@ -29,10 +29,10 @@
           ></i>
         </div>
       
-        <div nz-col nzSpan="12" >
+        <div nz-col nzSpan="12" nzJustify="space-between">
           <div>
             <button nz-button class="profilebot" nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu">  
-            <nz-avatar nzText="USER" ></nz-avatar><span style="margin-left: 10px;"> {{decode.first_name}} {{decode.last_name}}</span>
+            <nz-avatar nzText="USER" ></nz-avatar><span style="margin-left: 10px;"> {{decode.first_name}} </span>
               <i nz-icon nzType="down"></i></button>
               <nz-dropdown-menu #menu="nzDropdownMenu">
                 <ul nz-menu>

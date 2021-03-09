@@ -11,6 +11,7 @@
         nzSize="large"
         type="text"
         nz-input
+        nzPrefixIcon="user"
         placeholder="example@gmail.com"
         [(ngModel)]="userLogin.email"
       />
@@ -20,6 +21,7 @@
         nzSize="large"
         type="password"
         nz-input
+        nzPrefixIcon="lock"
         placeholder="password"
         [(ngModel)]="userLogin.password"
         (keyup.enter)="login()"

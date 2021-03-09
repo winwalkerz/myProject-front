@@ -4,16 +4,17 @@
   nzType="primary"
   (click)="addUser()"
 >
-  <i nz-icon nzType="plus-circle" nzTheme="outline"></i>เพิ่ม User
+  <i nz-icon nzType="plus-circle" nzTheme="outline"></i> <span>เพิ่ม User</span>
 </button>
-<br><br>
+<br /><br />
 <div>
   <nz-table nzShowPagination="false" [nzData]="members">
     <thead>
       <tr>
         <th>NO.ID</th>
         <th>ชื่อนามสกุล</th>
-        <th>Email</th>
+        <th>อีเมล</th>
+        <th>ตำหแหน่ง</th>
         <th>จำนวนันที่ลาได้</th>
         <th></th>
         <th></th>
@@ -24,20 +25,27 @@
         <td>{{ item.id }}</td>
         <td>{{ item.first_name }} {{ item.last_name }}</td>
         <td>{{ item.email }}</td>
-        <td>{{ item.max_days }}</td>
+        <td>{{ item.position }}</td>
+        <td style="text-align: center">{{ item.max_days }}</td>
         <td>
-      
-
-          <button class="btn btn-tmt-act btn-tmt-act-ed2" >
+          <button class="btn btn-tmt-act btn-tmt-act-ed2">
             <a nz-tooltip nzTooltipTitle="แก้ไข">
-            <i nz-icon nzType="edit" nzTheme="outline" (click)="reData(item)"></i>
-          </a>
+              <i
+                nz-icon
+                nzType="edit"
+                nzTheme="outline"
+                (click)="open(item)"
+              ></i>
+            </a>
           </button>
         </td>
         <td>
-          <button class="btn btn-tmt-act btn-tmt-act-ed"  (click)="delUser(item.id)">
+          <button
+            class="btn btn-tmt-act btn-tmt-act-ed"
+            (click)="showDeleteConfirm(item.id)"
+          >
             <a nz-tooltip nzTooltipTitle="ลบ">
-            <i nz-icon nzType="delete" nzTheme="outline"></i>
+              <i nz-icon nzType="delete" nzTheme="outline"></i>
             </a>
           </button>
         </td>
@@ -45,9 +53,92 @@
     </tbody>
   </nz-table>
 </div>
-<br>
+<br />
 <nz-pagination
   [nzPageIndex]="1"
   [nzTotal]="memberCount"
   (nzPageIndexChange)="click($event)"
 ></nz-pagination>
+
+<nz-drawer
+  [nzClosable]="false"
+  [nzVisible]="visible"
+  nzPlacement="right"
+  nzTitle="แก้ไขข้อมูลพนักงาน"
+  nzWidth="65%"
+>
+  <ng-container *nzDrawerContent>
+    <div>
+      <div nz-row>
+        <div nz-col nzWith="250px">col-12</div>
+        <div nz-col nzSpan="2">col-12</div>
+      </div>
+      <div nz-row>
+        <div nz-col nzSpan="4">
+          <span>Firstname :</span>
+        </div>
+        <div nz-col nzSpan="4" style="width: 200px">
+          <input nz-input required [(ngModel)]="newData.first_name" />
+        </div>
+      </div>
+      <br />
+
+      <div nz-row>
+        <div nz-col nzSpan="12">
+          <div>
+            <span>Lastname :</span>
+          </div>
+        </div>
+        <div nz-col nzPull="8" nzSpan="12">
+          <!-- <input  class="input-box" nz-input placeholder="Last name" [(ngModel)]="newData.last_name" /> -->
+        </div>
+      </div>
+      <br />
+
+      <div nz-row>
+        <div nz-col nzSpan="12" nzAlign="middle">
+          <span>Email :</span>
+        </div>
+        <div nz-col nzPull="8" nzSpan="12">
+          <!-- <input  class="input-box" nz-input placeholder="Email" [(ngModel)]="newData.email" /> -->
+        </div>
+      </div>
+      <br />
+
+      <div nz-row>
+        <div nz-col nzSpan="12">
+          <div>
+            <span>Password :</span>
+          </div>
+        </div>
+        <div nz-col nzPull="8" nzSpan="12">
+          <!-- <input  class="input-box" nz-input placeholder="Password" [(ngModel)]="newData.password" /> -->
+        </div>
+      </div>
+      <br />
+
+      <br />
+
+      <div style="margin-bottom: 15px">
+        <div nz-row>
+          <div nz-col nzSpan="12">
+            <span>จำนวนวันที่ลาได้ :</span>
+          </div>
+          <div nz-col nzPull="8" nzSpan="12">
+            <!-- <input  class="input-box" nz-input placeholder="1-100" [(ngModel)]="newData.max_days" /> -->
+          </div>
+        </div>
+      </div>
+      <div style="margin-bottom: 15px">
+        <button
+          nz-button
+          nzType="primary"
+          (click)="showEditConfirm(newData.id, newData)"
+        >
+          ยืนยัน
+        </button>
+        <button nz-button nzType="primary" (click)="closeEdit()">ยกเลิก</button>
+      </div>
+    </div>
+  </ng-container>
+</nz-drawer>

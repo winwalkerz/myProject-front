@@ -1,9 +1,11 @@
+import { UserEditorComponent } from './../../../components/user-editor/user-editor.component';
 import { UserService } from './../../../user.service';
 import { AddUsersComponent } from './../../../components/add-users/add-users.component';
-import { EditUserComponent } from './../../../components/edit-user/edit-user.component';
-
+import { NzDrawerRef } from 'ng-zorro-antd/drawer';
 import { NzDrawerService } from 'ng-zorro-antd/drawer';
 import { Component, OnInit } from '@angular/core';
+import { NzModalService } from 'ng-zorro-antd/modal';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-members',
@@ -13,7 +15,10 @@ import { Component, OnInit } from '@angular/core';
 export class MembersComponent implements OnInit {
   constructor(
     private nzdrawerservice: NzDrawerService,
-    private users: UserService
+    private users: UserService,
+    private modal: NzModalService,
+    private nzMessageService: NzMessageService,
+    // private nzDrawerRef:NzDrawerRef
   ) {}
   members: any = [];
   model_search = {
@@ -22,7 +27,7 @@ export class MembersComponent implements OnInit {
   };
   memberCount = null;
   typeData: any;
-  newData: any;
+  newData: any= [];
   ngOnInit(): void {
     this.memberList(this.model_search);
   }
@@ -33,7 +38,7 @@ export class MembersComponent implements OnInit {
     >({
       nzTitle: 'เพิ่ม User',
       nzContent: AddUsersComponent,
-      nzWidth: '65%',
+      nzWidth: '35%',
       nzCloseOnNavigation: true,
       nzContentParams: {
         dataTypeSend: this.typeData,
@@ -48,8 +53,8 @@ export class MembersComponent implements OnInit {
     this.users.memberList(this.model_search).then((res: any) => {
       this.members = res.data;
       this.memberCount = res.count;
-      console.log('member : ', this.members);
-      console.log('member : ', this.members);
+      // console.log('member : ', this.members);
+      // console.log('member : ', this.members);
     });
   }
   click($event: any) {
@@ -58,32 +63,92 @@ export class MembersComponent implements OnInit {
   }
 
   //เอาข้อมูลมาเปลี่ยนก่อนส่งไป edit
-  reData(data: any) {
-    this.newData = { ...data };
-    this.editUsers();
-  }
+  // reData(data: any) {
+  //   this.newData = { ...data };
+  //   console.log(this.newData)
+  //   this.open(this.newData);
+  // }
 
   //edit users
-  editUsers() {
-    const drawRefEdit = this.nzdrawerservice.create<
-      EditUserComponent,
-      { edit: any }
-    >({
-      nzTitle: 'เพิ่ม User',
-      nzContent: EditUserComponent,
-      nzWidth: '65%',
-      nzCloseOnNavigation: true,
-      nzContentParams: {
-        edit: this.newData,
-      },
-    });
+  // editUsers() {
+    // const drawRefEdit = this.nzdrawerservice.create<
+    //   UserEditorComponent,
+    //   { edits: any }
+    // >({
+    //   nzTitle: 'แก้ไข User',
+    //   nzContent: UserEditorComponent,
+    //   nzWidth: '65%',
+    //   nzCloseOnNavigation: true,
+    //   nzContentParams: {
+    //     edits: this.newData,
+    //   },
+    // });
+    // drawRefEdit.afterClose.subscribe(() => {
+    //   this.memberList(this.model_search);
+    // });
+  // }
 
-    drawRefEdit.afterClose.subscribe(() => {
-      this.memberList(this.model_search);
-    });
+  showDeleteConfirm(id: any): void {
+    this.modal
+      .confirm({
+        nzTitle: '<b>คำเตือน !!!</b>',
+        nzContent: 'คุณเเน่ใจใช่ไหมว่าจะลบยูสเซอร์นี้ ?',
+        nzOkText: 'ยืนยัน',
+        nzOkType: 'primary',
+        nzOkDanger: true,
+        nzOnOk: () => this.delUser(id),
+        nzCancelText: 'ยกเลิก',
+        nzOnCancel: () => console.log('Cancel'),
+      })
+      .afterClose.subscribe(() => {
+        this.memberList(id);
+      });
   }
+  
   delUser(id: any) {
     this.users.deleteUser(id).then((res: any) => {});
+    this.nzMessageService.success('Deleted');
     this.memberList(this.model_search);
+  }
+
+  visible = false;
+
+  open(item:any){
+    this.visible = true;
+    this.newData = { ...item };
+    console.log(this.newData)
+
+  }
+
+  
+
+  showEditConfirm(id: any, data:any): void {
+    this.modal
+      .confirm({
+        nzTitle: '<b>คำเตือน</b>',
+        nzContent: 'คุณเเน่ใจใช่ไหมว่าต้องการแก้ไขยูสเซอร์นี้?',
+        nzOkText: 'ยืนยัน',
+        nzOkType: 'primary',
+        nzOkDanger: true,
+        nzOnOk: () => this.editfunc(id, data),
+        nzCancelText: 'ยกเลิก',
+        nzOnCancel: () => console.log('Cancel'),
+      })
+      // .afterClose.subscribe(() => {
+      //   this.memberList(id);
+      // });
+  }
+  editfunc(id: any, data: any) {
+    this.users
+      .editUser(id, data)
+      .then(() => {
+        
+        this.nzMessageService.success('แก้ไขสำเร็จ');
+      })
+      .catch((error: any) => {});
+  }
+
+  closeEdit(){
+    this.visible = false;
   }
 }

@@ -2,6 +2,8 @@ import { CrudService } from './../../crud.service';
 import { StatusService } from '../../status.service';
 import { Component, OnInit } from '@angular/core';
 import { NzDrawerRef } from 'ng-zorro-antd/drawer';
+import { NzMessageService} from 'ng-zorro-antd/message';
+import { NzModalService } from 'ng-zorro-antd/modal';
 
 @Component({
   selector: 'app-leave-detail',
@@ -13,7 +15,9 @@ export class LeaveDetailComponent implements OnInit {
   constructor(
     private nzdrawerref: NzDrawerRef,
     private statusService: StatusService,
-    private crud: CrudService
+    private crud: CrudService,
+    private nzMessageService: NzMessageService,
+    private modal: NzModalService,
   ) { }
 
   dataDetailSendAfter: any = [];
@@ -29,14 +33,43 @@ export class LeaveDetailComponent implements OnInit {
       console.log(this.statusData.data.check);
     });
   }
-  edit(id: any, data: any) {
+
+  showEditConfirm(id: any, data:any): void {
+    this.modal
+      .confirm({
+        nzTitle: '<b>คำเตือน</b>',
+        nzContent: 'คุณต้องการยืนยันการดำเนินการหรือไม่?',
+        nzOkText: 'ยืนยัน',
+        nzOkType: 'primary',
+        nzOkDanger: true,
+        nzOnOk: () => this.edit(id, data),
+        nzCancelText: 'ยกเลิก',
+        nzOnCancel: () => console.log('Cancel'),
+      })
+      // .afterClose.subscribe(() => {
+      //   this.memberList(id);
+      // });
+  }
+
+  // 
+    edit(id: any, data: any) {
     // console.log(id, data);
     this.dataDetailSendAfter.check='1'
     this.crud
       .edit(id, data)
-      .then(() => {
+      .then( () => {
         this.nzdrawerref.close();
+        // location.reload() 
+        this.nzMessageService.success('แก้ไขสำเร็จ');
+      }).then(() => {
+        
+      
       })
       .catch((error: any) => {});
+      
+  }
+
+  closeEdit(){
+    this.nzdrawerref.close();
   }
 }

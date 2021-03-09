@@ -1,13 +1,23 @@
+<div class="heading">
+  <input
+              nz-input
+              class="search-fields"
+              placeholder="ชื่อ หรือนามสกุล"
+              name="search"
+              [(ngModel)]="model_search.search"
+              (keyup.enter)="changeFilter()"
+            />
+  </div>
 <div>
   <nz-table [nzData]="listAlluser" nzShowPagination="false">
     <thead>
       <tr>
         <th style="width: 250px;">ชื่อ-นามสกุล</th>
-            <th class="get-center">Status</th>
-            <th>Images</th>
+            <th class="get-center">สถาณะ</th>
+            <th>รูปภาพ</th>
             <th style="width:170px">วันที่ยื่นคำร้อง</th>
-            <th style="width: 100">Type</th>
-            <th style="width: 170px;">Description</th>
+            <th style="width: 100">ประเภทการลา</th>
+            <th style="width: 170px;">คำอธิบาย</th>
             <th></th>
             <th></th>
       </tr>

@@ -1,8 +1,8 @@
 <div nz-row>
-  <div nz-col nzSpan="12" nzAlign="middle">
+  <div nz-col nzSpan="7" nzAlign="middle">
     <span>Firstname :</span>
   </div>
-  <div nz-col nzPull="8" nzSpan="12">
+  <div nz-col  nzSpan="17">
     <input
       class="input-box"
       nz-input
@@ -14,12 +14,12 @@
   <br /><br />
 </div>
 <div nz-row>
-  <div nz-col nzSpan="12">
+  <div nz-col nzSpan="7">
     <div>
       <span>Lastname :</span>
     </div>
   </div>
-  <div nz-col nzPull="8" nzSpan="12">
+  <div nz-col  nzSpan="17">
     <input
       class="input-box"
       nz-input
@@ -32,10 +32,10 @@
 
 <!-- email password ------------------------------------------------------->
 <div nz-row>
-  <div nz-col nzSpan="12" nzAlign="middle">
+  <div nz-col nzSpan="7" nzAlign="middle">
     <span>Email :</span>
   </div>
-  <div nz-col nzPull="8" nzSpan="12">
+  <div nz-col nzSpan="17">
     <input
       class="input-box"
       nz-input
@@ -47,12 +47,12 @@
 <br />
 
 <div nz-row>
-  <div nz-col nzSpan="12">
+  <div nz-col nzSpan="7">
     <div>
       <span>Password :</span>
     </div>
   </div>
-  <div nz-col nzPull="8" nzSpan="12">
+  <div nz-col nzSpan="17">
     <input
       class="input-box"
       nz-input
@@ -64,12 +64,12 @@
 <br />
 
 <div nz-row>
-  <div nz-col nzSpan="12">
+  <div nz-col nzSpan="7">
     <div>
       <span>position :</span>
     </div>
   </div>
-  <div nz-col nzPull="8" nzSpan="12">
+  <div nz-col nzSpan="17">
     <input
       class="input-box"
       nz-input
@@ -84,10 +84,10 @@
 
 <div style="margin-bottom: 15px">
   <div nz-row>
-    <div nz-col nzSpan="12">
+    <div nz-col nzSpan="7">
       <span>จำนวนวันที่ลาได้ :</span>
     </div>
-    <div nz-col nzPull="8" nzSpan="12">
+    <div nz-col nzSpan="17">
       <input
         class="input-box"
         nz-input
@@ -97,29 +97,11 @@
     </div>
   </div>
 </div>
+<nz-divider></nz-divider>
 
+<!-- --------------------------------------submit and cancel botton -->
 <div style="margin-bottom: 15px">
-  <button
-    nz-button
-    nzType="primary"
-    nzDanger
-    nzBlock
-    (click)="createUser(addUser)"
-  >
-    เพิ่ม
-  </button>
-  <nz-modal
-    [(nzVisible)]="isVisible"
-    nzTitle="แจ้งเตือน"
-    (nzOnCancel)="handleCancel()"
-    (nzOnOk)="handleOk()"
-  >
-    <nz-alert
-      nzType="success"
-      nzMessage="Add User Success!"
-      nzDescription="คุณได้ทำการเพิ่ม User เข้ามาในระบบสำเร็จ!!"
-      nzShowIcon
-    >
-    </nz-alert>
-  </nz-modal>
+  <button nz-button nzType="primary" nzDanger (click)="createUser(addUser)">บันทึก</button>
+
+  <button class="cancelbot" nz-button nzType="default" (click)="cancel()">ยกเลิก</button>
 </div>

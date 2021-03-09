@@ -39,7 +39,7 @@ export class UserListLeaveComponent implements OnInit {
 
     var token = localStorage.getItem('token') //สร้างตัวแปลมาเก็บ token ที่มาจาก storage
     this.decode = jwt_decode(token || '')
-    // console.log(this.decode);
+    console.log(this.decode);
   }
   calculated (item: any) {
     this.allcount = 0
@@ -69,7 +69,7 @@ export class UserListLeaveComponent implements OnInit {
     >({
       nzTitle: 'เพิ่มรายการลางาน',
       nzContent: AddLeaveComponent,
-      nzWidth: '65%',
+      nzWidth: '45%',
       nzContentParams: {
         dataTypeSend: this.typeData
       }
@@ -94,7 +94,7 @@ export class UserListLeaveComponent implements OnInit {
     >({
       nzTitle: 'แก้ไขรายการลางาน',
       nzContent: EditLeaveComponent,
-      nzWidth: '65%',
+      nzWidth: '45%',
       nzContentParams: {
         dataEditSend: this.dataForEdit
       }

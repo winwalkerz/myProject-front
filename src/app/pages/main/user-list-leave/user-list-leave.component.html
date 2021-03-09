@@ -2,7 +2,7 @@
   <!-- calender and addleave button --------------------------------------------------- -->
 
   <div nz-row nzJustify="end" class="headingcontent">
-    <div nz-col nzSpan="18" nzPull="250px">
+    <div nz-col nzSpan="18" nzPull="270px">
       <h2>รายการลาทั้งหมดของคุณ</h2>
     </div>
 
@@ -11,10 +11,10 @@
         <i
           nz-icon
           nzType="calendar"
-          style="position: absolute; left: 8px; bottom: 10px"
+          style=" position: absolute; left: 8px; bottom: 10px;"
           nzTheme="outline"
         ></i>
-        <span style="position: absolute; right: 7px; bottom: 5px"
+        <span style=" position: absolute; right: 7px; bottom: 5px;"
           >Calendar</span
         >
       </button>
@@ -28,48 +28,93 @@
         (click)="addLeave()"
       >
         <i nz-icon nzType="plus-circle" class="position-botton"></i>
-        <span>ทำเรื่องขอลา!</span>
+        <span>ทำรายการลา</span>
       </button>
     </div>
   </div>
+  <!-- <h5>จำนวนวันที่คุณลาได้ทั้งหมด :<span class="numcount">  12</span></h5>
+  <h5>จำนวนวันที่คุณได้ทำการลาเเล้ว :<span class="numcount">  12</span></h5> -->
+  <!-- --------------------------------------จำนวนวะนลา ลาไปเเเล้ว ----------------------------- -->
+
+  <div nz-row class="headcount">
+    <div class="gridcount" nz-col nzSpan="7">
+      <p>
+        จำนวนวันที่คุณสามารถลาได้ที่เหลือ :<span class="numcount">
+          {{lastallcount}}</span
+        >
+      </p>
+    </div>
+
+    <div class="gridcount" nz-col nzSpan="6">
+      <p>
+        จำนวนวันที่คุณได้ลาไปแล้วทั้งหมด :<span class="numcount">
+          {{allcount}}</span
+        >
+      </p>
+    </div>
+
+    <div nz-col nzSpan="14"></div>
+  </div>
+  <br />
 
   <!-- filter content ------------------------------------------------------------------------------ -->
-  <div nz-row>
-    <div class="gridcount1" nz-col nzSpan="7">
-        <h5>จำนวนวันที่คุณลาได้ทั้งหมด :<span class="numcount">  {{decode.max_days}}</span></h5>
-      
+  <!-- <div nz-row class="heading">
+    <div nz-col nzSpan="12">
+       <h5>จำนวนวันที่คุณลาได้ทั้งหมด :<span class="numcount">  12</span></h5>
     </div>
-  
-    <div class="gridcount2" nz-col nzSpan="7">
-      <h5>จำนวนวันที่คุณสามารถลาได้ :<span class="numcount">  {{lastallcount}}</span></h5>
-    </div>
-  
-    <div nz-col nzSpan="10">
-      
+    <div nz-col nzSpan="12">
+      <h5>จำนวนวันที่คุณได้ทำการลาเเล้ว :<span class="numcount">  12</span></h5>
     </div>
   </div>
+  <br> -->
 
   <!----------------------------- table ------------------------------------------------------------ -->
 
   <div nz-row>
     <nz-table [nzData]="listorder" nzShowPagination="false">
       <thead>
-        <tr>
-          <th style="width: 50px">id</th>
-          <th style="width: 80px">image</th>
-          <th style="width: 220px">วันที่ยื่นคำร้อง</th>
-          <th style="width: 220px">Description</th>
-          <th style="width: 390px">วันและเวลา</th>
-          <th style="width: 150px">จำนวนวัน</th>
-          <th style="width: 150px">Type</th>
-          <th style="width: 120px">Status</th>
-          <th style="width: 80px"></th>
-          <th style="width: 80px"></th>
+        <tr style="width: 100%;">
+          <th style="width: 40px;text-align: center;">id</th>
+          <th style="width: 220px;text-align: center;">วันที่ยื่นคำร้อง</th>
+          <th
+            style="width: 350px;text-align: center;"
+            nz-tooltip
+            nzTooltipTitle="เดือน/วัน/ปี"
+            nzTooltipPlacement="top"
+          >
+            วันที่ต้องการลา
+          </th>
+          <th style="width: 150px;text-align: center;">จำนวนวัน</th>
+          <th style="width: 220px;text-align: center;">Description</th>
+          <th style="width: 200px;text-align: center;">สิ่งที่แนบมา</th>
+          <th style="width: 200px;text-align: center;">ประเภทของการลา</th>
+          <th style="width: 120px;text-align: center;">สถานะ</th>
+          <th style="width: 40px;text-align: center;"></th>
+          <th style="width: 4px;text-align: center;"></th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let value of listorder">
           <td>{{ value.id }}</td>
+          <td style="text-align: center;">
+            <nz-tag [nzColor]="'magenta'"
+              >{{ value.created_at| date: 'short'}}</nz-tag
+            >
+          </td>
+          <td style="text-align: center;">
+            <nz-tag [nzColor]="'gold'"
+              >{{ value.date_start | date: 'shortDate' }} </nz-tag
+            >-
+            <nz-tag [nzColor]="'gold'"
+              >{{ value.date_end | date: 'shortDate' }}</nz-tag
+            >
+          </td>
+          <td style="text-align: center;">
+            <div class="row">
+              <p style="margin-top: 15px;">{{ value.allday }} วัน</p>
+            </div>
+          </td>
+          <td style="text-align: center;">{{ value.description }}</td>
           <td>
             <div *ngIf="value?.file">
               <img
@@ -81,28 +126,24 @@
               />
             </div>
           </td>
-          <td>
-            <nz-tag [nzColor]="'magenta'">{{
-              value.created_at | date: "short"
-            }}</nz-tag>
-          </td>
-          <td>{{ value.description }}</td>
-          <td>
-            <nz-tag [nzColor]="'gold'">{{
-              value.date_start | date: "shortDate"
-            }}</nz-tag
-            >-
-            <nz-tag [nzColor]="'gold'">{{
-              value.date_end | date: "shortDate"
-            }}</nz-tag>
-          </td>
-          <td>
-            <div class="row">
-              <p style="margin-top: 15px">{{ value.allday }} วัน</p>
-            </div>
-          </td>
-          <td>{{ value.type }}</td>
-          <td style="text-align: center">
+
+          <!-- type ------------------------------------------------------->
+          <td style="text-align: center;">{{value.type}}</td>
+
+          <!-- <td >
+          <div *ngIf="value.type == 'ลากิจ'">
+            <span class="type_business">{{value.type}}</span>
+          </div>
+          <div *ngIf="value.type == 'ลาป่วย'">
+            <span class="type_medic">{{value.type}}</span>
+          </div>
+          <div *ngIf="value.type == 'ลาพักร้อน'">
+            <span class="type_summer">{{value.type}}</span>
+          </div>
+          </td> -->
+
+          <!-- status ---------------------------------------------------->
+          <td style="text-align: center;">
             <div
               *ngIf="value.status_name == 'wait'"
               nz-tooltip
@@ -133,48 +174,65 @@
               <img
                 src="../../../../assets/cancel.jpg"
                 alt=""
-                style="width: 15px"
+                style="width: 15px;"
               />
             </div>
           </td>
-          <td>
+          <td style="text-align: center;">
             <ng-container *ngIf="value.check=='0'">
               <button
-              _ngcontent-wba-c15=""
-              class="btn btn-tmt-act btn-tmt-act-ed2"
-            >
-              <a nz-tooltip nzTooltipTitle="แก้ไข">
-                <i
-                  nz-icon
-                  nzType="edit"
-                  nzTheme="outline"
-                  (click)="reData(value)"
-                ></i>
-              </a>
-            </button></ng-container>
+                _ngcontent-wba-c15=""
+                class="btn btn-tmt-act btn-tmt-act-ed2"
+              >
+                <a nz-tooltip nzTooltipTitle="แก้ไข">
+                  <i
+                    nz-icon
+                    nzType="edit"
+                    nzTheme="outline"
+                    (click)="reData(value)"
+                  ></i>
+                </a>
+              </button>
+            </ng-container>
             <ng-container *ngIf="value.check=='1'">
-              <a nz-tooltip nzTooltipTitle="ไม่สามารถแก้ไขได้"></a>
               <button
-              _ngcontent-wba-c15=""
-              class="btn btn-tmt-act btn-tmt-act-ed2"
-            >
-                <i
-                  nz-icon
-                  nzType="edit"
-                  nzTheme="outline"
-                  (click)="createMessage('error')"
-                ></i>
-            </button></ng-container>
+                disabled
+                _ngcontent-wba-c15=""
+                class="btn btn-tmt-act btn-tmt-act-ed2"
+              >
+                <a nz-tooltip nzTooltipTitle="แก้ไข">
+                  <i
+                    nz-icon
+                    nzType="edit"
+                    nzTheme="outline"
+                    (click)="reData(value)"
+                  ></i>
+                </a>
+              </button>
+            </ng-container>
           </td>
-          <td>
-            <button
-              class="btn btn-tmt-act btn-tmt-act-ed"
-              (click)="showDeleteConfirm(value.id, value)"
-            >
-              <a nz-tooltip nzTooltipTitle="ลบ">
-                <i nz-icon nzType="delete" nzTheme="outline"></i>
-              </a>
-            </button>
+          <td style="text-align: center;">
+            <ng-container *ngIf="value.check=='0'">
+              <button
+                class="btn btn-tmt-act btn-tmt-act-ed"
+                (click)="showDeleteConfirm(value.id,value)"
+              >
+                <a nz-tooltip nzTooltipTitle="ลบ">
+                  <i nz-icon nzType="delete" nzTheme="outline"></i>
+                </a>
+              </button>
+            </ng-container>
+            <ng-container *ngIf="value.check=='1'"
+              ><button
+                disabled
+                class="btn btn-tmt-act btn-tmt-act-ed"
+                (click)="showDeleteConfirm(value.id,value)"
+              >
+                <a nz-tooltip nzTooltipTitle="ลบ">
+                  <i nz-icon nzType="delete" nzTheme="outline"></i>
+                </a>
+              </button>
+            </ng-container>
           </td>
         </tr>
       </tbody>

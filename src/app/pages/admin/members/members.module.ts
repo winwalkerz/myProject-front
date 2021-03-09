@@ -16,7 +16,7 @@ import { FormsModule } from '@angular/forms';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
-
+import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 
 
 
@@ -38,7 +38,8 @@ import { NzTabsModule } from 'ng-zorro-antd/tabs';
     FormsModule,
     NzSelectModule,
     NzMenuModule,
-    NzTabsModule
+    NzTabsModule,
+    NzDrawerModule
   ]
 })
 export class MembersModule { }

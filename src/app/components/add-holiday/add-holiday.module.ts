@@ -8,13 +8,15 @@ import { FormsModule } from '@angular/forms';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
 
 @NgModule({
   declarations: [AddHolidayComponent],
   imports: [
     CommonModule,
     NzModalModule,
-    NzGridModule,NzInputModule,FormsModule,NzButtonModule,NzSelectModule,NzMenuModule
+    NzGridModule,NzInputModule,FormsModule,NzButtonModule,NzSelectModule,NzMenuModule,
+    NzDividerModule
   ]
 })
 export class AddHolidayModule { }

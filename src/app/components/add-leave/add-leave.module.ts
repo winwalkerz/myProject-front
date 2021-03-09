@@ -15,6 +15,7 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzFormModule, } from 'ng-zorro-antd/form';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
 
 @NgModule({
   declarations: [AddLeaveComponent],
@@ -34,6 +35,7 @@ import { NzFormModule, } from 'ng-zorro-antd/form';
     NzAlertModule,
     NzTagModule,
     NzFormModule,
+    NzDividerModule
  
   ]
 })

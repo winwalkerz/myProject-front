@@ -5,7 +5,9 @@
   cursor: pointer;
   transition: color 0.3s;
 }
-
+th {
+  text-align: center;
+}
 .trigger:hover {
   color: #1890ff;
 }
@@ -206,6 +208,67 @@ nz-avatar {
 /* icon-in-button */
 .position-botton {
   position: absolute;
-  bottom: 10px;
+  bottom: 12px;
   left: 5px;
 }
+
+
+
+.numcount {
+  color: red;
+}
+
+.gridcount {
+  margin-top: 12px;
+  border-radius: 3px;
+  padding: 5px;
+}
+
+.headcount{
+  border: 1px solid #91d5ff;
+  background-color: #e6f7ff;
+  margin: 0;
+  padding: 0px 15px 0px 37px;
+  color: rgba(0,0,0,.65);
+  font-size: 15px;
+  font-variant: tabular-nums;
+  line-height: 1.5;
+  list-style: none;
+  font-feature-settings: 'tnum';
+  position: relative;
+  border-radius: 4px;
+}
+
+/* .type_business{
+  color: #fbae29;
+  border: 1px solid #fbae29;
+  padding: .05rem .25rem;
+    border-radius: 50rem;
+    font-size: 12px;
+    box-sizing: border-box;
+    text-align: center!important;
+}
+
+.type_medic{
+  color: #3d79bd;
+    border: 1px solid #3d79bd;
+    padding: .05rem .25rem;
+    border-radius: 50rem;
+    font-size: 12px;
+  
+    box-sizing: border-box;
+    text-align: center!important;
+    
+}
+
+.type_summer{
+  color: #e91527;
+  border: 1px solid #e91527;
+  padding: .05rem .25rem;
+    border-radius: 50rem;
+    font-size: 12px;
+   
+    box-sizing: border-box;
+    text-align: center!important;
+   
+} */

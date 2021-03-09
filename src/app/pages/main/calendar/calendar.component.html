@@ -1,7 +1,7 @@
 <div nz-row>
-  <div nz-col nzSpan="12" style="margin-bottom: 10px;">
+  <div nz-col nzSpan="12" style="margin-bottom: 10px">
     <nz-badge nzStatus="error">
-     <span> วันหยุดตามปฏิทินประเทศไทย</span>
+      <span> วันหยุดตามปฏิทินประเทศไทย</span>
     </nz-badge>
   </div>
   <div nz-col nzSpan="12">
@@ -10,11 +10,10 @@
     </nz-badge>
   </div>
 </div>
-
-<nz-calendar  style="border-radius: 10px;">
+<nz-calendar style="border-radius: 10px">
   <ul *nzDateCell="let date; let month" class="events">
-    <ng-container  *ngFor="let index_m of counts">
-      <ng-container  *ngIf="monthint[index_m] == month.getMonth()">
+    <ng-container *ngFor="let index_m of counts">
+      <ng-container *ngIf="monthint[index_m] == month.getMonth()">
         <ng-container *ngIf="dayint[index_m] == date.getDate()">
           <!-- <ng-container *ngFor="let item of holyData.data"> -->
           <li>

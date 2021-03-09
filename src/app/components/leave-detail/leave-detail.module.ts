@@ -8,6 +8,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';     //ถ้าไม่ลงใช้ ngModel ไม่ได้
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { NzTagModule } from 'ng-zorro-antd/tag';
 
 
 
@@ -21,7 +23,9 @@ import { NzTabsModule } from 'ng-zorro-antd/tabs';
     NzButtonModule,
     FormsModule,
     NzTableModule,
-    NzTabsModule
+    NzTabsModule,
+    NzDividerModule,
+    NzTagModule
   ]
 })
 export class LeaveDetailModule { }
