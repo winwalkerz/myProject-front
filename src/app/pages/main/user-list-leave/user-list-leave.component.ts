@@ -24,7 +24,10 @@ export class UserListLeaveComponent implements OnInit {
   count: any
   allcount = 0
   lastallcount = 0
-
+  model_search={
+    page: 1,
+    search: '',
+  }
   constructor (
     private nzDrawerService: NzDrawerService, //ประกาศตัวแปลเพื่อมาใช้งาน
     private userService: UserService,
@@ -35,7 +38,7 @@ export class UserListLeaveComponent implements OnInit {
   ) {}
 
   ngOnInit (): void {
-    this.showData()
+    this.showData(this.model_search)
 
     var token = localStorage.getItem('token') //สร้างตัวแปลมาเก็บ token ที่มาจาก storage
     this.decode = jwt_decode(token || '')
@@ -51,8 +54,8 @@ export class UserListLeaveComponent implements OnInit {
     console.log(this.lastallcount)
   }
   //แสดข้อมูลของ user
-  showData () {
-    this.userService.getOrderByID().then((res: any) => {
+  showData (data:any) {
+    this.userService.getOrderByID(this.model_search).then((res: any) => {
       this.listorder = res.data
       this.count = res.count
 
@@ -76,7 +79,7 @@ export class UserListLeaveComponent implements OnInit {
     })
 
     drawRef.afterClose.subscribe(() => {
-      this.showData()
+      this.showData(this.model_search)
     })
   }
 
@@ -100,14 +103,14 @@ export class UserListLeaveComponent implements OnInit {
       }
     })
     drawRef.afterClose.subscribe(() => {
-      this.showData()
+      this.showData(this.model_search)
     })
   }
 
   deleteLeave (id: any, data: any) {
     this.crud.delete(id, data).then(() => {})
     this.nzMessageService.success('Deleted')
-    this.showData()
+    this.showData(this.model_search)
   }
 
   showDeleteConfirm (id: any, data: any): void {
@@ -123,7 +126,7 @@ export class UserListLeaveComponent implements OnInit {
         nzOnCancel: () => console.log('Cancel')
       })
       .afterClose.subscribe(() => {
-        this.showData()
+        this.showData(this.model_search)
       })
   }
 
@@ -136,5 +139,10 @@ export class UserListLeaveComponent implements OnInit {
       type,
       'ไม่สามารถแก้ไขได้ เนื่องจากได้รับการตรวจสอบแล้ว'
     )
+  }
+
+  click($event: any) {
+    this.model_search.page = $event;
+    this.showData(this.model_search);
   }
 }

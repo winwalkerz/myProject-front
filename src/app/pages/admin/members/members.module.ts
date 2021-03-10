@@ -1,3 +1,6 @@
+import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { NzGridModule } from 'ng-zorro-antd/grid';
 import { AddUsersModule } from './../../../components/add-users/add-users.module';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzPaginationModule } from 'ng-zorro-antd/pagination';
@@ -39,7 +42,10 @@ import { NzDrawerModule } from 'ng-zorro-antd/drawer';
     NzSelectModule,
     NzMenuModule,
     NzTabsModule,
-    NzDrawerModule
+    NzDrawerModule,
+    NzGridModule,
+    NzLayoutModule,
+    NzDividerModule
   ]
 })
 export class MembersModule { }

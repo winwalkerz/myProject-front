@@ -1,3 +1,4 @@
+import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -43,7 +44,8 @@ import { NzAlertModule } from 'ng-zorro-antd/alert';
     NzImageModule,
     NzMessageModule,
     NzPopconfirmModule,
-    NzAlertModule
+    NzAlertModule,
+    NzPaginationModule
   ]
 })
 export class UserListLeaveModule { }

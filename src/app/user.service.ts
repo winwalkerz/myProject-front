@@ -6,7 +6,7 @@ const api_url = 'http://localhost:3000/api';
 })
 export class UserService {
   constructor(private _http: HttpClient) {}
-  getOrderByID() {
+  getOrderByID(data:any) {
     let token = localStorage.getItem('token');
     let token_json = JSON.parse(token || '{}');
 
@@ -16,7 +16,7 @@ export class UserService {
       },
     };
     console.log(_header);
-    return this._http.get(`${api_url}/users/showDB`, _header).toPromise();
+    return this._http.post(`${api_url}/users/showDB`,data, _header).toPromise();
   }
   getAlluser(data: any) {
     let token = localStorage.getItem('token');

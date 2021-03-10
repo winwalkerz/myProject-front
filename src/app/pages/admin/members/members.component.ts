@@ -17,8 +17,7 @@ export class MembersComponent implements OnInit {
     private nzdrawerservice: NzDrawerService,
     private users: UserService,
     private modal: NzModalService,
-    private nzMessageService: NzMessageService,
-    // private nzDrawerRef:NzDrawerRef
+    private nzMessageService: NzMessageService // private nzDrawerRef:NzDrawerRef
   ) {}
   members: any = [];
   model_search = {
@@ -27,7 +26,7 @@ export class MembersComponent implements OnInit {
   };
   memberCount = null;
   typeData: any;
-  newData: any= [];
+  newData: any = [];
   ngOnInit(): void {
     this.memberList(this.model_search);
   }
@@ -71,21 +70,21 @@ export class MembersComponent implements OnInit {
 
   //edit users
   // editUsers() {
-    // const drawRefEdit = this.nzdrawerservice.create<
-    //   UserEditorComponent,
-    //   { edits: any }
-    // >({
-    //   nzTitle: 'แก้ไข User',
-    //   nzContent: UserEditorComponent,
-    //   nzWidth: '65%',
-    //   nzCloseOnNavigation: true,
-    //   nzContentParams: {
-    //     edits: this.newData,
-    //   },
-    // });
-    // drawRefEdit.afterClose.subscribe(() => {
-    //   this.memberList(this.model_search);
-    // });
+  // const drawRefEdit = this.nzdrawerservice.create<
+  //   UserEditorComponent,
+  //   { edits: any }
+  // >({
+  //   nzTitle: 'แก้ไข User',
+  //   nzContent: UserEditorComponent,
+  //   nzWidth: '65%',
+  //   nzCloseOnNavigation: true,
+  //   nzContentParams: {
+  //     edits: this.newData,
+  //   },
+  // });
+  // drawRefEdit.afterClose.subscribe(() => {
+  //   this.memberList(this.model_search);
+  // });
   // }
 
   showDeleteConfirm(id: any): void {
@@ -104,7 +103,7 @@ export class MembersComponent implements OnInit {
         this.memberList(id);
       });
   }
-  
+
   delUser(id: any) {
     this.users.deleteUser(id).then((res: any) => {});
     this.nzMessageService.success('Deleted');
@@ -113,16 +112,13 @@ export class MembersComponent implements OnInit {
 
   visible = false;
 
-  open(item:any){
+  open(item: any) {
     this.visible = true;
     this.newData = { ...item };
-    console.log(this.newData)
-
+    console.log(this.newData);
   }
 
-  
-
-  showEditConfirm(id: any, data:any): void {
+  showEditConfirm(id: any, data: any): void {
     this.modal
       .confirm({
         nzTitle: '<b>คำเตือน</b>',
@@ -134,21 +130,21 @@ export class MembersComponent implements OnInit {
         nzCancelText: 'ยกเลิก',
         nzOnCancel: () => console.log('Cancel'),
       })
-      // .afterClose.subscribe(() => {
-      //   this.memberList(id);
-      // });
+      .afterClose.subscribe(() => {
+        this.visible = false;
+        this.memberList(this.model_search);
+      });
   }
   editfunc(id: any, data: any) {
     this.users
       .editUser(id, data)
       .then(() => {
-        
         this.nzMessageService.success('แก้ไขสำเร็จ');
       })
       .catch((error: any) => {});
   }
 
-  closeEdit(){
+  closeEdit() {
     this.visible = false;
   }
 }

@@ -8,6 +8,9 @@
 th {
   text-align: center;
 }
+td.ant-table-cell{
+  padding: 10px 10px;
+}
 .trigger:hover {
   color: #1890ff;
 }
