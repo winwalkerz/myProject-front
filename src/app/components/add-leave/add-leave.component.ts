@@ -96,7 +96,10 @@ export class AddLeaveComponent implements OnInit {
     console.log('Button ok clicked!')
     this.Crudservice.createLeave(data)
       .then(() => {
-        this.leaveworkCreated(data)
+        this.isVisible = false
+        this.nzDrawerRef.close()
+        this.msg.success('เพิ่มคำขอลางานสำเร็จ');
+        // this.leaveworkCreated(data)
       })
       .catch(err => {
         this.msg.error(err.error.message)
@@ -109,21 +112,21 @@ export class AddLeaveComponent implements OnInit {
     this.isVisible = false
   }
 
-  leaveworkCreated (data: any): void {
-    this.isVisible = false
-    this.nzDrawerRef.close()
-    this.modal.success({
-      nzTitle: 'ทำการลาสำเร็จ',
-      nzContent:
-        'คุณได้ทำการลางานเป็นจำนวน ' + this.leaveCreate.allday + ' วัน',
-      nzOkText: 'ยืนยัน',
-      nzOkType: 'danger',
-      nzCancelText: 'ยกเลิก',
-      nzOkDanger: true,
-      nzFooter: null,
-      nzOnOk: () => console.log('OK')
-    })
-  }
+  // leaveworkCreated (data: any): void {
+  //   this.isVisible = false
+  //   this.nzDrawerRef.close()
+  //   this.modal.success({
+  //     nzTitle: 'ทำการลาสำเร็จ',
+  //     nzContent:
+  //       'คุณได้ทำการลางานเป็นจำนวน ' + this.leaveCreate.allday + ' วัน',
+  //     nzOkText: 'ยืนยัน',
+  //     nzOkType: 'danger',
+  //     nzCancelText: 'ยกเลิก',
+  //     nzOkDanger: true,
+  //     nzFooter: null,
+  //     nzOnOk: () => console.log('OK')
+  //   })
+  // }
 
   // -----------------------------------cancel botton------------------------
   cancel () {

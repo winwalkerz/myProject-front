@@ -115,11 +115,11 @@ export class UserListLeaveComponent implements OnInit {
       .confirm({
         nzTitle: '<b>คำเตือน !!!</b>',
         nzContent: 'คุณเเน่ใจใช่ไหมว่าจะลบการลางานนี้ ?',
-        nzOkText: 'Yes',
+        nzOkText: 'ยืนยัน',
         nzOkType: 'primary',
         nzOkDanger: true,
         nzOnOk: () => this.deleteLeave(id, data),
-        nzCancelText: 'No',
+        nzCancelText: 'ยกเลิก',
         nzOnCancel: () => console.log('Cancel')
       })
       .afterClose.subscribe(() => {
