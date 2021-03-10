@@ -40,3 +40,6 @@
   color: #f1eae8;
   transition: .25s ease-in-out;
 }
+input {
+  border-radius: 5px;
+}

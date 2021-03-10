@@ -28,14 +28,9 @@
         <td>{{ item.position }}</td>
         <td style="text-align: center">{{ item.max_days }}</td>
         <td>
-          <button class="btn btn-tmt-act btn-tmt-act-ed2">
+          <button class="btn btn-tmt-act btn-tmt-act-ed2" (click)="open(item)">
             <a nz-tooltip nzTooltipTitle="แก้ไข">
-              <i
-                nz-icon
-                nzType="edit"
-                nzTheme="outline"
-                (click)="open(item)"
-              ></i>
+              <i nz-icon nzType="edit" nzTheme="outline"></i>
             </a>
           </button>
         </td>
@@ -65,80 +60,70 @@
   [nzVisible]="visible"
   nzPlacement="right"
   nzTitle="แก้ไขข้อมูลพนักงาน"
-  nzWidth="65%"
+  nzWidth="35%"
 >
-  <ng-container *nzDrawerContent>
-    <div>
-      <div nz-row>
-        <div nz-col nzWith="250px">col-12</div>
-        <div nz-col nzSpan="2">col-12</div>
+  <div>
+    <div nz-row>
+      <div style="padding-top: 5px" nz-col nzSpan="7">
+        <span>Firstname :</span>
       </div>
-      <div nz-row>
-        <div nz-col nzSpan="4">
-          <span>Firstname :</span>
-        </div>
-        <div nz-col nzSpan="4" style="width: 200px">
-          <input nz-input required [(ngModel)]="newData.first_name" />
-        </div>
-      </div>
-      <br />
-
-      <div nz-row>
-        <div nz-col nzSpan="12">
-          <div>
-            <span>Lastname :</span>
-          </div>
-        </div>
-        <div nz-col nzPull="8" nzSpan="12">
-          <!-- <input  class="input-box" nz-input placeholder="Last name" [(ngModel)]="newData.last_name" /> -->
-        </div>
-      </div>
-      <br />
-
-      <div nz-row>
-        <div nz-col nzSpan="12" nzAlign="middle">
-          <span>Email :</span>
-        </div>
-        <div nz-col nzPull="8" nzSpan="12">
-          <!-- <input  class="input-box" nz-input placeholder="Email" [(ngModel)]="newData.email" /> -->
-        </div>
-      </div>
-      <br />
-
-      <div nz-row>
-        <div nz-col nzSpan="12">
-          <div>
-            <span>Password :</span>
-          </div>
-        </div>
-        <div nz-col nzPull="8" nzSpan="12">
-          <!-- <input  class="input-box" nz-input placeholder="Password" [(ngModel)]="newData.password" /> -->
-        </div>
-      </div>
-      <br />
-
-      <br />
-
-      <div style="margin-bottom: 15px">
-        <div nz-row>
-          <div nz-col nzSpan="12">
-            <span>จำนวนวันที่ลาได้ :</span>
-          </div>
-          <div nz-col nzPull="8" nzSpan="12">
-            <!-- <input  class="input-box" nz-input placeholder="1-100" [(ngModel)]="newData.max_days" /> -->
-          </div>
-        </div>
-      </div>
-      <div style="margin-bottom: 15px">
-        <button
-          nz-button
-          nzType="primary"
-          (click)="showEditConfirm(newData.id, newData)"
-        >
-          ยืนยัน
-        </button>
-        <button nz-button nzType="primary" (click)="closeEdit()">ยกเลิก</button>
+      <div nz-col nzSpan="17" style="width: 200px">
+        <input nz-input required [(ngModel)]="newData.first_name" />
       </div>
     </div>
-  </ng-container>
+    <br />
+
+    <div nz-row>
+      <div style="padding-top: 5px" nz-col nzSpan="7">
+        <span>Lastname :</span>
+      </div>
+      <div nz-col nzSpan="17">
+        <input nz-input required [(ngModel)]="newData.last_name" />
+      </div>
+    </div>
+    <br />
+
+    <div nz-row>
+      <div style="padding-top: 5px" nz-col nzSpan="7" nzAlign="middle">
+        <span>Email :</span>
+      </div>
+      <div nz-col nzSpan="17">
+        <input nz-input required [(ngModel)]="newData.email" />
+      </div>
+    </div>
+    <br />
+    <div nz-row>
+      <div style="padding-top: 5px" nz-col nzSpan="7" nzAlign="middle">
+        <span>Position :</span>
+      </div>
+      <div nz-col nzSpan="17">
+        <input nz-input required [(ngModel)]="newData.position" />
+      </div>
+    </div>
+    <br />
+    <div  style="margin-bottom: 15px">
+      <div nz-row>
+        <div style="padding-top: 5px" nz-col nzSpan="7">
+          <span>จำนวนวันที่ลาได้ :</span>
+        </div>
+        <div nz-col nzSpan="17">
+          <input nz-input required [(ngModel)]="newData.max_days" />
+        </div>
+      </div>
+    </div>
+    <nz-divider></nz-divider>
+    <div style="margin-bottom: 15px">
+      <button
+        nz-button
+        nzType="primary"
+        (click)="showEditConfirm(newData.id, newData)"
+        style="margin-right: 15px"
+      >
+        ยืนยัน
+      </button>
+      <button nz-button nzType="primary" nzDanger (click)="closeEdit()">
+        ยกเลิก
+      </button>
+    </div>
+  </div>
 </nz-drawer>
