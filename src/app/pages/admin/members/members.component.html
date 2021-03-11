@@ -11,30 +11,30 @@
   <nz-table nzShowPagination="false" [nzData]="members">
     <thead>
       <tr>
-        <th>NO.ID</th>
-        <th>ชื่อนามสกุล</th>
-        <th>อีเมล</th>
-        <th>ตำหแหน่ง</th>
-        <th>จำนวนันที่ลาได้</th>
+        <th class="get-center">NO.ID</th>
+        <th class="get-center">ชื่อ-นามสกุล</th>
+        <th class="get-center">อีเมล</th>
+        <th class="get-center">ตำแหน่ง</th>
+        <th class="get-center">วันลาสูงสุด</th>
         <th></th>
         <th></th>
       </tr>
     </thead>
     <tbody *ngFor="let item of members">
       <tr>
-        <td>{{ item.id }}</td>
-        <td>{{ item.first_name }} {{ item.last_name }}</td>
-        <td>{{ item.email }}</td>
-        <td>{{ item.position }}</td>
+        <td  class="get-center">{{ item.id }}</td>
+        <td class="get-center">{{ item.first_name }} {{ item.last_name }}</td>
+        <td class="get-center">{{ item.email }}</td>
+        <td class="get-center">{{ item.position }}</td>
         <td style="text-align: center">{{ item.max_days }}</td>
-        <td>
+        <td  class="get-center">
           <button class="btn btn-tmt-act btn-tmt-act-ed2" (click)="open(item)">
             <a nz-tooltip nzTooltipTitle="แก้ไข">
               <i nz-icon nzType="edit" nzTheme="outline"></i>
             </a>
           </button>
         </td>
-        <td>
+        <td  class="get-center">
           <button
             class="btn btn-tmt-act btn-tmt-act-ed"
             (click)="showDeleteConfirm(item.id)"

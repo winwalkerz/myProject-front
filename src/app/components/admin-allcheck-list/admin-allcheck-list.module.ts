@@ -33,7 +33,8 @@ import { NzImageModule } from 'ng-zorro-antd/image';
     NzToolTipModule,
     NzTagModule,
     NzInputModule,
-    NzImageModule
+    NzImageModule,
+    NzIconModule
   ],
   exports:[AdminAllcheckListComponent]
 })

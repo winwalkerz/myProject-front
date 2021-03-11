@@ -1,3 +1,5 @@
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { NzModalService } from 'ng-zorro-antd/modal';
 import { CrudService } from './../../crud.service';
 import { LeaveDetailComponent } from './../leave-detail/leave-detail.component';
 import { NzDrawerService } from 'ng-zorro-antd/drawer';
@@ -25,7 +27,9 @@ export class AdminAllcheckListComponent implements OnInit {
   constructor(
     private userservice: UserService,
     private nzdrawerservice: NzDrawerService,
-    private crud: CrudService
+    private crud: CrudService,
+    private modal: NzModalService,
+    private nzMessageService: NzMessageService
   ) {}
 
   ngOnInit(): void {
@@ -74,5 +78,27 @@ export class AdminAllcheckListComponent implements OnInit {
       this.count = res.count;
       console.log(this.listAlluser);
     });
+  }
+
+  showDeleteConfirm(id: any,data:any): void {
+    this.modal
+      .confirm({
+        nzTitle: '<b>คำเตือน !!!</b>',
+        nzContent: 'คุณเเน่ใจใช่ไหมว่าจะลบยูสเซอร์นี้ ?',
+        nzOkText: 'ยืนยัน',
+        nzOkType: 'primary',
+        nzOkDanger: true,
+        nzOnOk: () => this.delUser(id,data),
+        nzCancelText: 'ยกเลิก',
+        nzOnCancel: () => console.log('Cancel'),
+      })
+      .afterClose.subscribe(() => {
+        this.getAlluser(this.body);
+      });
+  }
+  delUser(id: any,data:any) {
+    this.crud.delete(id,data).then((res: any) => {});
+    this.nzMessageService.success('Deleted');
+    
   }
 }
