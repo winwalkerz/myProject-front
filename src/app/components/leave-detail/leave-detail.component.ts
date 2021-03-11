@@ -56,7 +56,7 @@ export class LeaveDetailComponent implements OnInit {
     // console.log(id, data);
     this.dataDetailSendAfter.check='1'
     this.crud
-      .edit(id, data)
+      .editadmin(id, data)
       .then( () => {
         this.nzdrawerref.close();
         // location.reload() 

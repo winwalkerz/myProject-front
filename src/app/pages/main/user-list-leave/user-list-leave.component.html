@@ -179,7 +179,7 @@
             </div>
           </td>
           <td style="text-align: center;">
-            <!-- <ng-container *ngIf="value.check=='0'"> -->
+            <ng-container *ngIf="value.check=='0'">
               <button
                 _ngcontent-wba-c15=""
                 class="btn btn-tmt-act btn-tmt-act-ed2"
@@ -193,12 +193,12 @@
                   ></i>
                 </a>
               </button>
-            <!-- </ng-container>
+            </ng-container>
             <ng-container *ngIf="value.check=='1'">
               <button
-                disabled
                 _ngcontent-wba-c15=""
                 class="btn btn-tmt-act btn-tmt-act-ed2"
+                (click)="createMessage('warning')"
               >
                 <a nz-tooltip nzTooltipTitle="แก้ไข">
                   <i
@@ -207,12 +207,12 @@
                     nzTheme="outline"
                   ></i>
                 </a>
-                (click)="reData(value)"
+                
               </button>
-            </ng-container> -->
+            </ng-container>
           </td>
           <td style="text-align: center;">
-            <!-- <ng-container *ngIf="value.check=='0'"> -->
+            <ng-container *ngIf="value.check=='0'">
               <button
                 class="btn btn-tmt-act btn-tmt-act-ed"
                 (click)="showDeleteConfirm(value.id, value)"
@@ -221,18 +221,18 @@
                   <i nz-icon nzType="delete" nzTheme="outline"></i>
                 </a>
               </button>
-            <!-- </ng-container>
-            <ng-container *ngIf="value.check=='1'" -->
-              <!-- ><button
-                disabled
+            </ng-container>
+            <ng-container *ngIf="value.check=='1'"
+              ><button
+                
                 class="btn btn-tmt-act btn-tmt-act-ed"
-                (click)="showDeleteConfirm(value.id, value)"
+                (click)="createMessage2('error')"
               >
                 <a nz-tooltip nzTooltipTitle="ลบ">
                   <i nz-icon nzType="delete" nzTheme="outline"></i>
                 </a>
               </button>
-            </ng-container> -->
+            </ng-container>
           </td>
         </tr>
       </tbody>

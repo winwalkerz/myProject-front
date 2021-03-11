@@ -140,6 +140,12 @@ export class UserListLeaveComponent implements OnInit {
       'ไม่สามารถแก้ไขได้ เนื่องจากได้รับการตรวจสอบแล้ว'
     )
   }
+  createMessage2 (type: string): void {
+    this.nzMessageService.create(
+      type,
+      'ไม่สามารถลบได้ เนื่องจากได้รับการตรวจสอบแล้ว'
+    )
+  }
 
   click($event: any) {
     this.model_search.page = $event;

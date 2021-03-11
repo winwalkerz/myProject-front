@@ -29,7 +29,27 @@ export class CrudService {
   }
 
   edit(id: any,data: any ) {
-    return this.http.put(`${url}/leavework/update/${id}`, data).toPromise();
+    let token = localStorage.getItem('token');
+    let token_json = JSON.parse(token || '{}');
+
+    let _header = {
+      headers: {
+        authorization: `Bearer ${token_json.token}`,
+      },
+    };
+    return this.http.put(`${url}/leavework/update/${id}`, data,_header).toPromise();
+  }
+
+  editadmin(id: any,data: any ) {
+    let token = localStorage.getItem('token');
+    let token_json = JSON.parse(token || '{}');
+
+    let _header = {
+      headers: {
+        authorization: `Bearer ${token_json.token}`,
+      },
+    };
+    return this.http.put(`${url}/leavework/updateadmin/${id}`, data,_header).toPromise();
   }
 
   delete(id: any, data:any) {
