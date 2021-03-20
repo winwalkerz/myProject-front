@@ -109,7 +109,7 @@ export class UserListLeaveComponent implements OnInit {
 
   deleteLeave (id: any, data: any) {
     this.crud.delete(id, data).then(() => {})
-    this.nzMessageService.success('Deleted')
+    this.nzMessageService.success('ลบรายการลางานสำเร็จ')
     this.showData(this.model_search)
   }
 

@@ -1,8 +1,8 @@
 <div nz-row>
-  <div nz-col nzSpan="7" nzAlign="middle">
+  <div nz-col nzSpan="8" nzAlign="middle">
     <span>Firstname :</span>
   </div>
-  <div nz-col  nzSpan="17">
+  <div nz-col  nzSpan="16">
     <input
       class="input-box"
       nz-input
@@ -14,12 +14,12 @@
   <br /><br />
 </div>
 <div nz-row>
-  <div nz-col nzSpan="7">
+  <div nz-col nzSpan="8">
     <div>
       <span>Lastname :</span>
     </div>
   </div>
-  <div nz-col  nzSpan="17">
+  <div nz-col  nzSpan="16">
     <input
       class="input-box"
       nz-input
@@ -32,10 +32,10 @@
 
 <!-- email password ------------------------------------------------------->
 <div nz-row>
-  <div nz-col nzSpan="7" nzAlign="middle">
+  <div nz-col nzSpan="8" nzAlign="middle">
     <span>Email :</span>
   </div>
-  <div nz-col nzSpan="17">
+  <div nz-col nzSpan="16">
     <input
       class="input-box"
       nz-input
@@ -47,29 +47,67 @@
 <br />
 
 <div nz-row>
-  <div nz-col nzSpan="7">
+  <div nz-col nzSpan="8">
     <div>
       <span>Password :</span>
     </div>
   </div>
-  <div nz-col nzSpan="17">
-    <input
-      class="input-box"
-      nz-input
-      placeholder="Password"
-      [(ngModel)]="addUser.password"
-    />
+  <div nz-col nzSpan="16">
+    <nz-input-group [nzSuffix]="suffixTemplate" class="input-box">
+      <input [type]="passwordVisible ? 'text' : 'password'" nz-input placeholder="input password" [(ngModel)]="addUser.password" />
+    </nz-input-group>
+    <ng-template #suffixTemplate>
+      <i nz-icon [nzType]="passwordVisible ? 'eye-invisible' : 'eye'" (click)="passwordVisible = !passwordVisible"></i>
+    </ng-template>
   </div>
 </div>
 <br />
 
 <div nz-row>
-  <div nz-col nzSpan="7">
+  <div nz-col nzSpan="8">
+    <div>
+      <span>Confirm Password :</span>
+    </div>
+  </div>
+  <div nz-col nzSpan="16">
+    <nz-input-group [nzSuffix]="suffixTemplate" class="input-box">
+      <input [type]="passwordVisible ? 'text' : 'password'" nz-input placeholder="input password" [(ngModel)]="checkpassword" />
+    </nz-input-group>
+    <ng-template #suffixTemplate>
+      <i nz-icon [nzType]="passwordVisible ? 'eye-invisible' : 'eye'" (click)="passwordVisible = !passwordVisible"></i>
+    </ng-template>
+  </div>
+</div>
+<br />
+<!-- <div nz-row>
+  <div nz-col nzSpan="8">
+    <div>
+      <span>Comfirm Password :</span>
+    </div>
+  </div>
+  <div nz-col nzSpan="16">
+    <input
+      class="input-box"
+      type="password"
+      nz-input
+      placeholder="Comfirm Password"
+      [(ngModel)]="checkpassword"
+    />
+  </div>
+</div>
+<br /> -->
+
+<!-- <ng-container *ngIf="addUser.password != checkpassword">
+  Two passwords that you enter is inconsistent!
+</ng-container> -->
+
+<div nz-row>
+  <div nz-col nzSpan="8">
     <div>
       <span>position :</span>
     </div>
   </div>
-  <div nz-col nzSpan="17">
+  <div nz-col nzSpan="16">
     <input
       class="input-box"
       nz-input
@@ -84,10 +122,10 @@
 
 <div style="margin-bottom: 15px">
   <div nz-row>
-    <div nz-col nzSpan="7">
+    <div nz-col nzSpan="8">
       <span>จำนวนวันที่ลาได้ :</span>
     </div>
-    <div nz-col nzSpan="17">
+    <div nz-col nzSpan="16">
       <input
         class="input-box"
         nz-input

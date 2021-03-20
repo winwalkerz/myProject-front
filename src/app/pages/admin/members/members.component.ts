@@ -37,7 +37,7 @@ export class MembersComponent implements OnInit {
     >({
       nzTitle: 'เพิ่ม User',
       nzContent: AddUsersComponent,
-      nzWidth: '35%',
+      nzWidth: '40%',
       nzCloseOnNavigation: true,
       nzContentParams: {
         dataTypeSend: this.typeData,

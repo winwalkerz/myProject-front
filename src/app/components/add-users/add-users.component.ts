@@ -12,7 +12,9 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 export class AddUsersComponent implements OnInit {
   isVisible = false;
   visible = false;
+  passwordVisible = false;
   alert = '';
+  checkpassword='';
   addUser = {
     // id: '',
     first_name: '',
@@ -54,4 +56,6 @@ export class AddUsersComponent implements OnInit {
    cancel(){
     this.NzDrawerRef.close();
   }
+
+  
 }

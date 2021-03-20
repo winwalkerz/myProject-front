@@ -157,7 +157,7 @@ export class AddLeaveComponent implements OnInit {
       this.endDatePicker.open()
     }
     console.log('handleStartOpenChange', open)
-    console.log(this.leaveCreate.date_start)
+    console.log(typeof this.leaveCreate.date_start)
   }
 
   handleEndOpenChange (open: boolean): void {

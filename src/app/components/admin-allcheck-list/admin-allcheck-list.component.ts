@@ -84,7 +84,7 @@ export class AdminAllcheckListComponent implements OnInit {
     this.modal
       .confirm({
         nzTitle: '<b>คำเตือน !!!</b>',
-        nzContent: 'คุณเเน่ใจใช่ไหมว่าจะลบยูสเซอร์นี้ ?',
+        nzContent: 'คุณเเน่ใจใช่ไหมว่าจะลบรายการนี้ ?',
         nzOkText: 'ยืนยัน',
         nzOkType: 'primary',
         nzOkDanger: true,
