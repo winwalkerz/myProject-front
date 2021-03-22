@@ -1,0 +1,48 @@
+<button nz-button nzType="primary" nzDanger (click)="addHoliday()">
+  เพิ่มวันหยุด
+</button>
+<div>
+  <nz-table [nzData]="dataHoliday" [nzShowPagination]="false">
+    <thead>
+      <tr>
+        <th>วันที่</th>
+        <th>Name</th>
+        <th>ประเภท</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of dataHoliday">
+        <td>{{data.date | date: "mediumDate"}}</td>
+        <td>{{data.content}}</td>
+        <td>
+          <div *ngIf="data.type == 'error'">
+            <p>วันหยุดตามปฏิทินประเทศไทย</p>
+          </div>
+          <div *ngIf="data.type == 'warning'">
+            <p>วันหยุดเพิ่มเติมของบริษัท</p>
+          </div>
+        </td>
+        <td>
+          <button
+            _ngcontent-wba-c15=""
+            class="btn btn-tmt-act btn-tmt-act-ed2"
+            
+          >
+            <a nz-tooltip nzTooltipTitle="แก้ไข">
+              <i nz-icon nzType="edit" nzTheme="outline"></i>
+            </a>
+          </button>
+          <button
+            class="btn btn-tmt-act btn-tmt-act-ed"
+            
+          >
+            <a nz-tooltip nzTooltipTitle="ลบ">
+              <i nz-icon nzType="delete" nzTheme="outline"></i>
+            </a>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>

@@ -42,16 +42,16 @@ export class UserListLeaveComponent implements OnInit {
 
     var token = localStorage.getItem('token') //สร้างตัวแปลมาเก็บ token ที่มาจาก storage
     this.decode = jwt_decode(token || '')
-    console.log(this.decode);
+    // console.log(this.decode);
   }
   calculated (item: any) {
     this.allcount = 0
     for (let i = 0; i < item; i++) {
       this.allcount += this.listorder[i].allday
-      console.log(this.listorder[i].allday)
+      // console.log(this.listorder[i].allday)
     }
     this.lastallcount = this.decode.max_days - this.allcount
-    console.log(this.lastallcount)
+    // console.log(this.lastallcount)
   }
   //แสดข้อมูลของ user
   showData (data:any) {

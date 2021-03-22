@@ -30,6 +30,11 @@ const routes: Routes = [
         loadChildren: () =>
           import('./members/members.module').then((m) => m.MembersModule),
       },
+      {
+        path: 'manage-vacation',
+        loadChildren: () =>
+          import('./manage-vacation/manage-vacation-routing.module').then((m) => m.ManageVacationRoutingModule),
+      },
     ],
   },
 ];

@@ -1,22 +1,39 @@
 <div nz-row>
   <div nz-col nzSpan="6">
+    วันที่ :
+  </div>
+  <div nz-col nzSpan="6">
+    <nz-date-picker style="width: 169.99px;"
+      [(ngModel)]="valueHoliday.date"
+      (ngModelChange)="onChange($event)"
+    ></nz-date-picker>
+  </div>
+</div>
+<br />
+<div nz-row>
+  <div nz-col nzSpan="6">
     <p>รายละเอียดวันหยุด</p>
   </div>
   <div nz-col nzSpan="6">
     <input
-      nz-input class="input-box"
+      nz-input
+      class="input-box"
       placeholder="Chrismas, New year"
       [(ngModel)]="valueHoliday.content"
     />
   </div>
 </div>
-<br>
+<br />
 <div nz-row>
-  <div nz-col nzSpan=6>
+  <div nz-col nzSpan="6">
     <p>รูปแบบวันหยุด</p>
   </div>
-  <div nz-col nzSpan=6>
-    <nz-select class="input-box" nzPlaceHolder="เลือกรูปวันหยุด" [(ngModel)]="valueHoliday.type">
+  <div nz-col nzSpan="6">
+    <nz-select
+      class="input-box"
+      nzPlaceHolder="เลือกรูปวันหยุด"
+      [(ngModel)]="valueHoliday.type"
+    >
       <nz-option nzValue="error" nzLabel="วันหยุดตามปฏิทิน"></nz-option>
       <nz-option nzValue="warning" nzLabel="วันหยุดเพิ่มเติมบริษัท"></nz-option>
     </nz-select>
@@ -24,5 +41,15 @@
 </div>
 
 <nz-divider></nz-divider>
-<button style="border-radius: 5px;" nz-button nzType="primary" nzDanger (click)="createHolidayy(valueHoliday)">ยืนยัน</button>
-<button class="cancelbot" nz-button nzType="default" (click)="cancel()">ยกเลิก</button>
+<button
+  style="border-radius: 5px;"
+  nz-button
+  nzType="primary"
+  nzDanger
+  (click)="createHolidayy(valueHoliday)"
+>
+  ยืนยัน
+</button>
+<button class="cancelbot" nz-button nzType="default" (click)="cancel()">
+  ยกเลิก
+</button>

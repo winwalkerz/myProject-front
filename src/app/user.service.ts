@@ -15,7 +15,7 @@ export class UserService {
         authorization: `Bearer ${token_json.token}`,
       },
     };
-    console.log(_header);
+    // console.log(_header);
     return this._http.post(`${api_url}/users/showDB`,data, _header).toPromise();
   }
   getAlluser(data: any) {

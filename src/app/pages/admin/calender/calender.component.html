@@ -1,48 +1,32 @@
-<!--    
-    <nz-calendar [(ngModel)]="selectedValue" (nzSelectChange)="selectChange($event)">
-        <ul *nzDateCell="let date" class="events">
-          <ng-container  *ngFor="let value of day">
-            
-            <ng-container *ngIf="date.getDate()==value">
-              <li *ngFor="let item of holyData.data">
-                <ng-container *ngIf="item.date.slice(8,10)==day">
-                <nz-badge  [nzStatus]="item.type" [nzText]="item.content"></nz-badge>
-                </ng-container>
-              </li>
-            </ng-container>
-          </ng-container>
-        </ul>
-          [(ngModel)]="selectedValue"
-  (nzSelectChange)="selectChange($event)"
-      </nz-calendar> -->
-      <div nz-row>
-        <div nz-col nzSpan="12" style="margin-bottom: 10px;">
-          <nz-badge nzStatus="error">
-           <span> วันหยุดตามปฏิทินประเทศไทย</span>
-          </nz-badge>
-        </div>
-        <div nz-col nzSpan="12">
-          <nz-badge nzStatus="warning">
-            <span> วันหยุดเพิ่มเติมของบริษัท</span>
-          </nz-badge>
-        </div>
-      </div>
-      
-      <nz-calendar [(ngModel)]="selectedValue" (nzSelectChange)="selectChange($event)" (dblclick)="addHoliday(datetime)">
-        <ul *nzDateCell="let date; let month" class="events">
-          <ng-container *ngFor="let index_m of counts">
-            <ng-container *ngIf="monthint[index_m] == month.getMonth()">
-              <ng-container *ngIf="dayint[index_m] == date.getDate()">
-                <!-- <ng-container *ngFor="let item of holyData.data"> -->
-                <li>
-                  <nz-badge
-                    [nzStatus]="holyData.data[index_m].type"
-                    [nzText]="holyData.data[index_m].content"
-                  ></nz-badge>
-                </li>
-                <!-- </ng-container> -->
-              </ng-container>
-            </ng-container></ng-container
-          >
-        </ul>
-      </nz-calendar>
+<div>
+  <nz-badge nzStatus="error">
+    วันหยุดตามปฏิทินประเทศไทย
+  </nz-badge>
+</div>
+<div>
+  <nz-badge nzStatus="warning">
+    <span> วันหยุดเพิ่มเติมของบริษัท</span>
+  </nz-badge>
+</div>
+
+<div>
+  <nz-calendar
+    [(ngModel)]="selectedValue"
+    (nzSelectChange)="selectChange($event)"
+    (dblclick)="showHoliday(datetime)"
+  >
+    <ul *nzDateCell="let date; let month" class="events">
+      <ng-container *ngFor="let index_m of counts">
+        <ng-container *ngIf="monthint[index_m] == month.getMonth()">
+          <ng-container *ngIf="dayint[index_m] == date.getDate()">
+            <li>
+              <nz-badge
+                [nzStatus]="holyData.data[index_m].type"
+                [nzText]="holyData.data[index_m].content"
+              ></nz-badge>
+            </li>
+          </ng-container> </ng-container
+      ></ng-container>
+    </ul>
+  </nz-calendar>
+</div>

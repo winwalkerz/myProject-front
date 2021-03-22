@@ -33,6 +33,7 @@ const routes: Routes = [
   { path: 'calendar', loadChildren: () => import('./pages/main/calendar/calendar.module').then(m => m.CalendarModule) },
   { path: 'overview', loadChildren: () => import('./pages/admin/overview/overview.module').then(m => m.OverviewModule) },
   { path: 'members', loadChildren: () => import('./pages/admin/members/members.module').then(m => m.MembersModule) },
+  { path: 'manage-vacation', loadChildren: () => import('./pages/admin/manage-vacation/manage-vacation.module').then(m => m.ManageVacationModule) },
   
 ];
 

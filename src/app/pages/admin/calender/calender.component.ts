@@ -1,3 +1,4 @@
+import { ShowHolidayComponent } from './../../../components/show-holiday/show-holiday.component';
 import { HolidayService } from './../../../holiday.service';
 import { AddHolidayComponent } from './../../../components/add-holiday/add-holiday.component';
 import { Component, OnInit } from '@angular/core';
@@ -30,11 +31,11 @@ export class CalenderComponent implements OnInit {
   //------------------------------------------------------------------------------------------
 
   // ------------------------------open modal add holiday component------------------------------
-  addHoliday(data: Date): void {
+  showHoliday(data: Date): void {
     // console.log(data)
     const drawRef = this.nzModalService.create({
-      nzTitle: 'เพิ่มวันหยุด',
-      nzContent: AddHolidayComponent,
+      nzTitle: 'รายละเอียดวันหยุด',
+      nzContent: ShowHolidayComponent,
       nzWidth: '45%',
       nzFooter: null,
       nzComponentParams: {
@@ -82,15 +83,16 @@ export class CalenderComponent implements OnInit {
     for (let i = 0; i < count; i++) {
       this.monthint[i] += -1;
       this.counts[i] = i;
-      console.log(
-        this.counts[i],
-        'Month:',
-        this.monthint[i],
-        'Day:',
-        this.dayint[i]
-      );
-      console.log(this.holyData.data[0].type);
+      // console.log(
+      //   this.counts[i],
+      //   'Month:',
+      //   this.monthint[i],
+      //   'Day:',
+      //   this.dayint[i]
+      // );
+      // console.log(this.holyData.data[0].type);
     }
     // console.log(this.dayint);
   }
+  
 }
