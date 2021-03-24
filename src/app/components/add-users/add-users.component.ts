@@ -13,8 +13,10 @@ export class AddUsersComponent implements OnInit {
   isVisible = false;
   visible = false;
   passwordVisible = false;
-  alert = '';
-  checkpassword='';
+  
+  
+  alert: any = [];
+ 
   addUser = {
     // id: '',
     first_name: '',
@@ -23,7 +25,8 @@ export class AddUsersComponent implements OnInit {
     password: '',
     role: 'user',
     position: '',
-    max_days: ''
+    max_days: '',
+    checkpassword: ''
   };
   constructor(private Crudservice : CrudService,
     private NzDrawerRef: NzDrawerRef,
@@ -39,6 +42,7 @@ export class AddUsersComponent implements OnInit {
       console.log('add success')
       
     }).catch((err) => {
+      this.alert = err
       this.msg.error(err.error.message);
       console.log(this.alert);
     });

@@ -19,6 +19,7 @@
         <th class="get-center">วันลาสูงสุด</th>
         <th></th>
         <th></th>
+        <th></th>
       </tr>
     </thead>
     <tbody *ngFor="let item of members">
@@ -28,14 +29,23 @@
         <td class="get-center">{{ item.email }}</td>
         <td class="get-center">{{ item.position }}</td>
         <td style="text-align: center">{{ item.max_days }}</td>
-        <td  class="get-center">
+
+        <td  style="padding: 5px;">
           <button class="btn btn-tmt-act btn-tmt-act-ed2" (click)="open(item)">
             <a nz-tooltip nzTooltipTitle="แก้ไข">
               <i nz-icon nzType="edit" nzTheme="outline"></i>
             </a>
           </button>
         </td>
-        <td  class="get-center">
+
+        <td style="padding: 5px;">
+          <button class="btn btn-tmt-act btn-tmt-act-ed2" (click)="open(item)">
+            <a nz-tooltip nzTooltipTitle="แก้ไข">
+              <i nz-icon nzType="edit" nzTheme="outline"></i>
+            </a>
+          </button>
+        </td>
+        <td  style="padding: 5px;">
           <button
             class="btn btn-tmt-act btn-tmt-act-ed"
             (click)="showDeleteConfirm(item.id)"
@@ -55,13 +65,18 @@
   [nzTotal]="memberCount"
   (nzPageIndexChange)="click($event)"
 ></nz-pagination>
-<!-- edit members -->
+
+
+
+
+
+<!--------------------------------------------------------- edit members ---------------------------------------->
 <nz-drawer
   [nzClosable]="false"
   [nzVisible]="visible"
   nzPlacement="right"
   nzTitle="แก้ไขข้อมูลพนักงาน"
-  nzWidth="35%"
+  nzWidth="45%"
 >
   <div>
     <div nz-row>
@@ -93,6 +108,45 @@
       </div>
     </div>
     <br />
+
+
+  <!-- ---------------------------------------------------------password---------------------------- -->
+    <div nz-row>
+      <div  style="padding-top: 5px" nz-col nzSpan="7">
+        <div>
+          <span>New Password :</span>
+        </div>
+      </div>
+      <div nz-col nzSpan="17">
+        <nz-input-group [nzSuffix]="suffixTemplate" class="input-box">
+          <input [type]="passwordVisible ? 'text' : 'password'" nz-input placeholder="New Password"  [(ngModel)]="newData.password">
+        </nz-input-group>
+        <ng-template #suffixTemplate>
+          <i nz-icon [nzType]="passwordVisible ? 'eye-invisible' : 'eye'" (click)="passwordVisible = !passwordVisible"></i>
+        </ng-template>
+      </div>
+    </div>
+    <br />
+    
+    <div nz-row>
+      <div  style="padding-top: 5px" nz-col nzSpan="7">
+        <div>
+          <span>Confirm Password :</span>
+        </div>
+      </div>
+      <div nz-col nzSpan="17">
+        <nz-input-group [nzSuffix]="suffixTemplate" class="input-box">
+          <input [type]="passwordVisible ? 'text' : 'password'" nz-input placeholder="Confirm Password" [(ngModel)]="newData.checkpassword">
+        </nz-input-group>
+        <ng-template #suffixTemplate>
+          <i nz-icon [nzType]="passwordVisible ? 'eye-invisible' : 'eye'" (click)="passwordVisible = !passwordVisible"></i>
+        </ng-template>
+      </div>
+    </div>
+    <br />
+
+    <!-- -------------------------------------------------------password-------------------------------------- -->
+    
     <div nz-row>
       <div style="padding-top: 5px" nz-col nzSpan="7" nzAlign="middle">
         <span>Position :</span>

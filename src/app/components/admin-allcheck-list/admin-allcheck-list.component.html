@@ -23,7 +23,6 @@
         <th class="get-center" style="width: 100">ประเภทการลา</th>
         <th class="get-center" style="width: 170px;">คำอธิบายเพิ่ม</th>
         <th></th>
-        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -92,16 +91,6 @@
                 nzTheme="outline"
                 (click)="refreshData(value)"
               ></i>
-            </a>
-          </button>
-        </td>
-        <td>
-          <button
-            class="btn btn-tmt-act btn-tmt-act-ed"
-            (click)="showDeleteConfirm(value.id,value)"
-          >
-            <a nz-tooltip nzTooltipTitle="ลบ">
-              <i nz-icon nzType="delete" nzTheme="outline"></i>
             </a>
           </button>
         </td>

@@ -54,7 +54,7 @@
   </div>
   <div nz-col nzSpan="16">
     <nz-input-group [nzSuffix]="suffixTemplate" class="input-box">
-      <input [type]="passwordVisible ? 'text' : 'password'" nz-input placeholder="input password" [(ngModel)]="addUser.password" />
+      <input [type]="passwordVisible ? 'text' : 'password'" nz-input placeholder="Password" [(ngModel)]="addUser.password" />
     </nz-input-group>
     <ng-template #suffixTemplate>
       <i nz-icon [nzType]="passwordVisible ? 'eye-invisible' : 'eye'" (click)="passwordVisible = !passwordVisible"></i>
@@ -71,7 +71,7 @@
   </div>
   <div nz-col nzSpan="16">
     <nz-input-group [nzSuffix]="suffixTemplate" class="input-box">
-      <input [type]="passwordVisible ? 'text' : 'password'" nz-input placeholder="input password" [(ngModel)]="checkpassword" />
+      <input [type]="passwordVisible ? 'text' : 'password'" nz-input placeholder="Confirm Password" [(ngModel)]="addUser.checkpassword" />
     </nz-input-group>
     <ng-template #suffixTemplate>
       <i nz-icon [nzType]="passwordVisible ? 'eye-invisible' : 'eye'" (click)="passwordVisible = !passwordVisible"></i>
@@ -96,10 +96,12 @@
   </div>
 </div>
 <br /> -->
-
-<!-- <ng-container *ngIf="addUser.password != checkpassword">
+<!-- <div>
+<ng-container *ngIf="addUser.password != checkpassword">
   Two passwords that you enter is inconsistent!
-</ng-container> -->
+</ng-container>
+</div> -->
+
 
 <div nz-row>
   <div nz-col nzSpan="8">
@@ -139,7 +141,18 @@
 
 <!-- --------------------------------------submit and cancel botton -->
 <div style="margin-bottom: 15px">
-  <button nz-button nzType="primary" nzDanger (click)="createUser(addUser)">บันทึก</button>
-
-  <button class="cancelbot" nz-button nzType="default" (click)="cancel()">ยกเลิก</button>
-</div>
+  
+ <!-- <div *ngIf="addUser.password != checkpassword; then thenBlock else elseBlock"></div>
+  
+  <ng-template #thenBlock>
+    <button nz-button nzType="primary" disabled>บันทึก</button>
+    <button class="cancelbot" nz-button nzType="default" (click)="cancel()">ยกเลิก</button>
+    <br><br>
+    <p style="color: red;">Two passwords that you enter is inconsistent!</p>
+    
+  </ng-template>
+  <ng-template #elseBlock> -->
+    <button nz-button nzType="primary" nzDanger (click)="createUser(addUser)">บันทึก</button>
+    <button class="cancelbot" nz-button nzType="default" (click)="cancel()">ยกเลิก</button>
+  <!-- </ng-template>
+</div>  -->

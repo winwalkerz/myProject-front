@@ -20,10 +20,13 @@ export class MembersComponent implements OnInit {
     private nzMessageService: NzMessageService // private nzDrawerRef:NzDrawerRef
   ) {}
   members: any = [];
+  alert: any = [];
+  passwordVisible = false;
   model_search = {
     page: 1,
     search: '',
   };
+
   memberCount = null;
   typeData: any;
   newData: any = [];
@@ -131,17 +134,21 @@ export class MembersComponent implements OnInit {
         nzOnCancel: () => console.log('Cancel'),
       })
       .afterClose.subscribe(() => {
-        this.visible = false;
-        this.memberList(this.model_search);
       });
   }
   editfunc(id: any, data: any) {
     this.users
       .editUser(id, data)
       .then(() => {
+        this.visible = false;
+        this.memberList(this.model_search);
         this.nzMessageService.success('แก้ไขสำเร็จ');
       })
-      .catch((error: any) => {});
+      .catch((err) => {
+        this.alert = err
+        this.nzMessageService.error(err.error.message);
+        console.log(this.alert);
+      });
   }
 
   closeEdit() {
