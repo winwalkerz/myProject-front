@@ -1,3 +1,4 @@
+import { HolidayService } from './../../holiday.service'
 import { NzDrawerRef } from 'ng-zorro-antd/drawer'
 import { CrudService } from './../../crud.service'
 import { Component, OnInit, Input, ViewChild } from '@angular/core'
@@ -8,7 +9,8 @@ import { environment } from 'src/environments/environment'
 import { NzDatePickerComponent } from 'ng-zorro-antd/date-picker'
 import jwt_decode from 'jwt-decode'
 import { NzModalService } from 'ng-zorro-antd/modal'
-
+import differenceInCalendarDays from 'date-fns/differenceInCalendarDays'
+import * as moment from 'moment'
 @Component({
   selector: 'app-add-leave',
   templateUrl: './add-leave.component.html',
@@ -23,7 +25,8 @@ export class AddLeaveComponent implements OnInit {
     private Crudservice: CrudService,
     private nzDrawerRef: NzDrawerRef,
     private msg: NzMessageService,
-    private modal: NzModalService
+    private modal: NzModalService,
+    private holyService: HolidayService
   ) {}
 
   environment = environment
@@ -44,39 +47,27 @@ export class AddLeaveComponent implements OnInit {
     date_end: new Date(),
     description: '',
     file: '',
-    allday: 0
+    allday: 0,
+    sex: ''
   }
   loading = false
   avatarUrl?: string
 
+  //ฟังก์ชัน calendar
+  date = null
+
+  onChange (result: Date[]): void {
+    this.leaveCreate.date_start = result[0]
+    this.leaveCreate.date_end = result[1]
+    console.log('oateStart: ', this.leaveCreate.date_start)
+    console.log('oateEnd: ', this.leaveCreate.date_end)
+  }
+  // block ลาย้อนหลัง
+  today = new Date()
+  disabledDate = (current: Date): boolean => {
+    return differenceInCalendarDays(current, this.today) < 0
+  }
   // calculate date differents ----------------------------------------------------------------
-  calculateDiff () {
-    let date1 = this.leaveCreate.date_start
-    let date2 = this.leaveCreate.date_end
-    let dayCount = 0
-    console.log(date1,date2)
-    if (date1 == date2) {
-      this.leaveCreate.allday = 1
-      return this.leaveCreate.allday
-    } else {
-      while (date2 >= date1) {
-        dayCount++
-        date1.setDate(date1.getDate() + 1)
-      }
-      date1.setDate(date1.getDate() - dayCount)
-      this.leaveCreate.allday = dayCount
-      return this.leaveCreate.allday
-    }
-  }
-
-  // varible of date_start_end --------------------------------------------
-  open (): void {
-    this.visible = true
-  }
-
-  close (): void {
-    this.visible = false
-  }
 
   // start ----------------------------------------------------------------------------------
   decode: any
@@ -84,21 +75,25 @@ export class AddLeaveComponent implements OnInit {
     var token = localStorage.getItem('token') //สร้างตัวแปลมาเก็บ token ที่มาจาก storage
     this.decode = jwt_decode(token || '')
     this.leaveCreate.id_user_fk = this.decode.id
-    console.log(this.leaveCreate.id)
+    this.leaveCreate.sex = this.decode.sex
+
+    this.getHoliday()
   }
 
   // --------------------------------confiamation add leave--------------------------------------
   showConfirm (data: any): void {
+     this.leaveCreate.allday=this.calculateBusinessDays(this.leaveCreate.date_start, this.leaveCreate.date_end)
     this.isVisible = true
   }
 
   handleOk (data: any): void {
     console.log('Button ok clicked!')
+
     this.Crudservice.createLeave(data)
       .then(() => {
         this.isVisible = false
         this.nzDrawerRef.close()
-        this.msg.success('เพิ่มคำขอลางานสำเร็จ');
+        this.msg.success('เพิ่มคำขอลางานสำเร็จ')
         // this.leaveworkCreated(data)
       })
       .catch(err => {
@@ -112,60 +107,9 @@ export class AddLeaveComponent implements OnInit {
     this.isVisible = false
   }
 
-  // leaveworkCreated (data: any): void {
-  //   this.isVisible = false
-  //   this.nzDrawerRef.close()
-  //   this.modal.success({
-  //     nzTitle: 'ทำการลาสำเร็จ',
-  //     nzContent:
-  //       'คุณได้ทำการลางานเป็นจำนวน ' + this.leaveCreate.allday + ' วัน',
-  //     nzOkText: 'ยืนยัน',
-  //     nzOkType: 'danger',
-  //     nzCancelText: 'ยกเลิก',
-  //     nzOkDanger: true,
-  //     nzFooter: null,
-  //     nzOnOk: () => console.log('OK')
-  //   })
-  // }
-
   // -----------------------------------cancel botton------------------------
   cancel () {
     this.nzDrawerRef.close()
-  }
-
-  ///////////////////////////////// date ////////////////////////////////////
-  startValue: Date | null = null
-  endValue: Date | null = null
-
-  @ViewChild('endDatePicker') endDatePicker!: NzDatePickerComponent
-  disabledStartDate = (startValue: Date): boolean => {
-    if (!startValue || !this.endValue) {
-      return false
-    }
-    return startValue.getDate() > this.endValue.getDate()
-  }
-
-  disabledEndDate = (endValue: Date): boolean => {
-    if (!endValue || !this.startValue) {
-      return false
-    }
-    return endValue.getDate() <= this.startValue.getDate()
-  }
-
-  handleStartOpenChange (open: boolean): void {
-    if (!open) {
-      this.endDatePicker.open()
-    }
-    console.log('handleStartOpenChange', open)
-    console.log(typeof this.leaveCreate.date_start)
-  }
-
-  handleEndOpenChange (open: boolean): void {
-    if (!open) {
-      this.calculateDiff()
-    }
-    console.log(this.leaveCreate.allday)
-    console.log('handleEndOpenChange', open)
   }
 
   // upload ------------------------------------------------
@@ -214,4 +158,105 @@ export class AddLeaveComponent implements OnInit {
         break
     }
   }
+
+  calculateBusinessDays (firstDate: any, secondDate: any) {
+    // EDIT : use of startOf
+    let day1 = moment(moment(firstDate).format('YYYY-MM-DD')).startOf('day')
+    let day2 = moment(moment(secondDate).format('YYYY-MM-DD')).startOf('day')
+    // console.log("THIS IS StartOf: ",day1)
+    // EDIT : start at 1
+    let adjust = 1
+
+    if (day1.dayOfYear() === day2.dayOfYear() && day1.year() === day2.year()) {
+      if (day1.day() === 6 || day1.day() === 0) {
+        return 0
+      }
+      return 1
+    }
+
+    if (day2.isBefore(day1)) {
+      const temp = day1
+      day1 = day2
+      day2 = temp
+    }
+
+    //Check if first date starts on weekends
+    if (day1.day() === 6) {
+      //Saturday
+      //Move date to next week monday
+      day1.day(8)
+    } else if (day1.day() === 0) {
+      //Sunday
+      //Move date to current week monday
+      day1.day(1)
+    }
+
+    //Check if second date starts on weekends
+    if (day2.day() === 6) {
+      //Saturday
+      //Move date to current week friday
+      day2.day(5)
+    } else if (day2.day() === 0) {
+      //Sunday
+      //Move date to previous week friday
+      day2.day(-2)
+    }
+
+    const day1Week = day1.week()
+    let day2Week = day2.week()
+
+    //Check if two dates are in different week of the year
+    if (day1Week !== day2Week) {
+      //Check if second date's year is different from first date's year
+      if (day2Week < day1Week) {
+        day2Week += day1Week
+      }
+      //Calculate adjust value to be substracted from difference between two dates
+      // EDIT: add rather than assign (+= rather than
+      adjust += -2 * (day2Week - day1Week)
+    }
+    let total = day2.diff(day1, 'days') + adjust
+    if (total < 0) {
+      total = 0
+    }
+
+    return total
+  }
+
+  holyData: any
+  countHoliday: any
+  getHoliday () {
+    this.holyService.getHoliday().then((res: any) => {
+      this.holyData = res.data
+      this.countHoliday = res.count
+      this.calculateVacation(this.holyData, this.countHoliday)
+    })
+  }
+
+  calculateVacation (data: any, count: any) {
+    const dataVacation: any = []
+    const dataVacation2: any = []
+    // dataVacation[0] = moment(data[0].date).format('YYYY-MM-DD');
+    // console.log(dataVacation[0])
+    // console.log(data[0])
+    for (let item = 0; item < count; item++) {
+      dataVacation[item] = moment(moment(data[item].date).format('YYYY-MM-DD')).startOf('day');
+      dataVacation2[item] = dataVacation[item].dayOfYear();
+      console.log(dataVacation[item]);
+    }
+  }
+
+  //block holiday 
+  
+  // let allinHoliday:any = []
+  // allinHoliday = this.calculateVacation(this.leaveCreate.date_start, this.leaveCreate.date_end)
+  // //day1s, day2s เปลี่ยนtype เป็น number
+  // let day1s = day1.dayOfYear();
+  // let day2s = day2.dayOfYear();
+  // let counts=0
+  // for (let value=0, item = day1s; item <= day2s; item++) {
+  //   if ( day1s === allinHoliday[value]){
+  //     counts+= -1
+  //   }
+  // }
 }

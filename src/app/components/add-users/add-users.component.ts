@@ -23,7 +23,8 @@ export class AddUsersComponent implements OnInit {
     password: '',
     role: 'user',
     position: '',
-    max_days: ''
+    max_days: '',
+    sex:''
   };
   constructor(private Crudservice : CrudService,
     private NzDrawerRef: NzDrawerRef,

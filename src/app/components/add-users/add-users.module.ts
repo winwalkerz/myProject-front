@@ -14,7 +14,7 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzFormModule } from 'ng-zorro-antd/form';
-
+import { NzRadioModule } from 'ng-zorro-antd/radio';
 
 
 @NgModule({
@@ -33,7 +33,8 @@ import { NzFormModule } from 'ng-zorro-antd/form';
     NzIconModule,
     NzAlertModule,
     NzDividerModule,
-    NzFormModule
+    NzFormModule,
+    NzRadioModule
   ]
 })
 export class AddUsersModule { }

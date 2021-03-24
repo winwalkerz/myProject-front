@@ -100,6 +100,20 @@
 <!-- <ng-container *ngIf="addUser.password != checkpassword">
   Two passwords that you enter is inconsistent!
 </ng-container> -->
+<div nz-row>
+  <div nz-col nzSpan="8">
+    <div>
+      <span>Gender :</span>
+    </div>
+  </div>
+  <div nz-col nzSpan="16">
+    <nz-radio-group [(ngModel)]="addUser.sex">
+      <label nz-radio nzValue="male">male</label>
+      <label nz-radio nzValue="female">female</label>
+    </nz-radio-group>
+  </div>
+</div>
+<br />
 
 <div nz-row>
   <div nz-col nzSpan="8">

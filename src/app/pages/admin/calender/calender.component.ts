@@ -52,11 +52,6 @@ export class CalenderComponent implements OnInit {
     this.holyService.getHoliday().then((res: any) => {
       this.holyData = res;
       this.querys(this.holyData.count);
-      // console.log(this.holyData.count);
-      // console.log(this.holyData[0]);
-      // console.log(this.holyData.data);
-      // var daydate = this.holyData.data[1].date.getDate()
-      // console.log(daydate);
     });
   } //------------------------------------------------------------------------------------------
 
