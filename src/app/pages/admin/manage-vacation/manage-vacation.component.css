@@ -16,3 +16,13 @@
   transition: .25s ease-in-out;
     
 }
+
+.btn-tmt-primary{
+  font-variant: tabular-nums;
+  color: white;
+  background-color: #e85440;
+  border-color: #e85440;
+  box-sizing: border-box;
+  border-radius: 5px;
+  height: 38px;
+}

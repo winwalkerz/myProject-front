@@ -96,12 +96,24 @@
   </div>
 </div>
 <br /> -->
-<!-- <div>
-<ng-container *ngIf="addUser.password != checkpassword">
-  Two passwords that you enter is inconsistent!
-</ng-container>
-</div> -->
 
+<!-- <ng-container *ngIf="addUser.password != checkpassword">
+  Two passwords that you enter is inconsistent!
+</ng-container> -->
+<div nz-row>
+  <div nz-col nzSpan="8">
+    <div>
+      <span>Gender :</span>
+    </div>
+  </div>
+  <div nz-col nzSpan="16">
+    <nz-radio-group [(ngModel)]="addUser.sex">
+      <label nz-radio nzValue="male">male</label>
+      <label nz-radio nzValue="female">female</label>
+    </nz-radio-group>
+  </div>
+</div>
+<br />
 
 <div nz-row>
   <div nz-col nzSpan="8">
@@ -141,18 +153,7 @@
 
 <!-- --------------------------------------submit and cancel botton -->
 <div style="margin-bottom: 15px">
-  
- <!-- <div *ngIf="addUser.password != checkpassword; then thenBlock else elseBlock"></div>
-  
-  <ng-template #thenBlock>
-    <button nz-button nzType="primary" disabled>บันทึก</button>
-    <button class="cancelbot" nz-button nzType="default" (click)="cancel()">ยกเลิก</button>
-    <br><br>
-    <p style="color: red;">Two passwords that you enter is inconsistent!</p>
-    
-  </ng-template>
-  <ng-template #elseBlock> -->
-    <button nz-button nzType="primary" nzDanger (click)="createUser(addUser)">บันทึก</button>
-    <button class="cancelbot" nz-button nzType="default" (click)="cancel()">ยกเลิก</button>
-  <!-- </ng-template>
-</div>  -->
+  <button nz-button nzType="primary" nzDanger (click)="createUser(addUser)">บันทึก</button>
+
+  <button class="cancelbot" nz-button nzType="default" (click)="cancel()">ยกเลิก</button>
+</div>

@@ -26,7 +26,8 @@ export class AddUsersComponent implements OnInit {
     role: 'user',
     position: '',
     max_days: '',
-    checkpassword: ''
+    checkpassword: '',
+    sex:''
   };
   constructor(private Crudservice : CrudService,
     private NzDrawerRef: NzDrawerRef,
@@ -35,6 +36,7 @@ export class AddUsersComponent implements OnInit {
 
   ngOnInit(): void {
   }
+ 
   createUser(data: any) {
     this.Crudservice.createUsers(data).then(() => {
       this.NzDrawerRef.close();
@@ -42,7 +44,6 @@ export class AddUsersComponent implements OnInit {
       console.log('add success')
       
     }).catch((err) => {
-      this.alert = err
       this.msg.error(err.error.message);
       console.log(this.alert);
     });

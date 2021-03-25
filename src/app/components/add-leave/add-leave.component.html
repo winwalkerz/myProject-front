@@ -1,38 +1,69 @@
 <div style="margin-bottom: 15px">
   <div nz-row>
     <div nz-col nzSpan="9">
-      <span>วันที่ต้องการลา</span>
-    </div>
-    <div nz-col nzSpan="15">
-      <nz-date-picker
-        [nzDisabledDate]="disabledStartDate"
-        nzFormat="yyyy/MM/dd"
-        [(ngModel)]="leaveCreate.date_start"
-        nzPlaceHolder="Start"
-        (nzOnOpenChange)="handleStartOpenChange($event)"
-      ></nz-date-picker> - <nz-date-picker
-        #endDatePicker
-        [nzDisabledDate]="disabledEndDate"
-        nzFormat="yyyy/MM/dd"
-        [(ngModel)]="leaveCreate.date_end"
-        nzPlaceHolder="End"
-        (nzOnOpenChange)="handleEndOpenChange($event)"
-      ></nz-date-picker>
-      <br />
-    </div>
-  </div>
-</div>
-<div style="margin-bottom: 15px">
-  <div nz-row>
-    <div nz-col nzSpan="9">
       <span>รูปแบบการลางาน</span>
     </div>
-    <div nz-col nzSpan="15">
-      <nz-select nzShowSearch nzAllowClear nzPlaceHolder="เลือกรูปแบบการลา" [(ngModel)]="leaveCreate.type">
-        <nz-option nzLabel="ลาพักร้อน" [nzValue]="'ลาพักร้อน'"></nz-option>
-        <nz-option nzLabel="ลากิจ" [nzValue]="'ลากิจ'"></nz-option>
-        <nz-option nzLabel="ลาป่วย" [nzValue]="'ลาป่วย'"></nz-option>
-      </nz-select>
+    <!-- พนักงานเป็น male -->
+    <ng-container *ngIf="leaveCreate.sex == 'male'">
+      <div nz-col nzSpan="15">
+        <nz-select
+          nzShowSearch
+          nzAllowClear
+          nzPlaceHolder="เลือกรูปแบบการลา"
+          [(ngModel)]="leaveCreate.type"
+        >
+          <nz-option nzLabel="ลากิจ" [nzValue]="'ลากิจ'"></nz-option>
+          <nz-option nzLabel="ลาป่วย" [nzValue]="'ลาป่วย'"></nz-option>
+          <nz-option nzLabel="ลาทำหมัน" [nzValue]="'ลาทำหมัน'"></nz-option>
+          <nz-option nzLabel="ลาฝึกอบรม" [nzValue]="'ลาฝึกอบรม'"></nz-option>
+          <nz-option
+            nzLabel="ลารับราชการทหาร"
+            [nzValue]="'ลารับราชการทหาร'"
+          ></nz-option>
+        </nz-select>
+      </div>
+    </ng-container>
+    <!-- พนักงานเป็น female -->
+    <ng-container *ngIf="leaveCreate.sex == 'female'">
+      <div nz-col nzSpan="15">
+        <nz-select
+          nzShowSearch
+          nzAllowClear
+          nzPlaceHolder="เลือกรูปแบบการลา"
+          [(ngModel)]="leaveCreate.type"
+        >
+          <nz-option nzLabel="ลากิจ" [nzValue]="'ลากิจ'"></nz-option>
+          <nz-option nzLabel="ลาป่วย" [nzValue]="'ลาป่วย'"></nz-option>
+          <nz-option nzLabel="ลาป่วย" [nzValue]="'ลาทำหมัน'"></nz-option>
+          <nz-option nzLabel="ลาป่วย" [nzValue]="'ลาฝึกอบรม'"></nz-option>
+          <nz-option nzLabel="ลาคลอดบุตร" [nzValue]="'ลาคลอดบุตร'"></nz-option>
+        </nz-select>
+      </div>
+    </ng-container>
+  </div>
+  <div style="margin-bottom: 15px;margin-top: 15px;">
+    <div nz-row>
+      <div nz-col nzSpan="9">
+        <span>วันที่ต้องการลา</span>
+      </div>
+      <ng-container *ngIf="leaveCreate.type=='ลาป่วย'">
+        <div nz-col nzSpan="15">
+          <nz-range-picker
+            nzFormat="yyyy-MM-dd"
+            [(ngModel)]="date"
+            (ngModelChange)="onChange($event)"
+          ></nz-range-picker>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="leaveCreate.type!='ลาป่วย'"
+        ><div nz-col nzSpan="15">
+          <nz-range-picker
+            [nzDisabledDate]="disabledDate"
+            nzFormat="yyyy-MM-dd"
+            [(ngModel)]="date"
+            (ngModelChange)="onChange($event)"
+          ></nz-range-picker></div
+      ></ng-container>
     </div>
   </div>
 </div>
@@ -43,7 +74,8 @@
     </div>
     <div nz-col nzSpan="15">
       <textarea
-        nz-input required
+        nz-input
+        required
         placeholder="รายละเอียดเพิ่มเติม"
         [nzAutosize]="{ minRows: 2, maxRows: 6 }"
         [(ngModel)]="leaveCreate.description"
@@ -53,55 +85,53 @@
 </div>
 <!-- https://firebasestorage.googleapis.com/v0/b/upload-5137e.appspot.com/o/${getpath.name}?alt=media -->
 <nz-upload
-      class="avatar-uploader"
-      [nzAction]="environment.apiURL+'/api/leaveWork/upload'"  
-      nzName="file"
-      nzListType="picture-card"
-      [nzShowUploadList]="false"
-      [nzBeforeUpload]="beforeUpload"
-      (nzChange)="handleChange($event)"
-    >
-      <ng-container *ngIf="!avatarUrl">
-        <i class="upload-icon" nz-icon [nzType]="loading ? 'loading' : 'plus'"></i>
-        <div class="ant-upload-text">Upload</div>
-      </ng-container>
-      <img *ngIf="avatarUrl" [src]="avatarUrl" style="width: 100%" />
-    </nz-upload>
+  class="avatar-uploader"
+  [nzAction]="environment.apiURL+'/api/leaveWork/upload'"
+  nzName="file"
+  nzListType="picture-card"
+  [nzShowUploadList]="false"
+  [nzBeforeUpload]="beforeUpload"
+  (nzChange)="handleChange($event)"
+>
+  <ng-container *ngIf="!avatarUrl">
+    <i class="upload-icon" nz-icon [nzType]="loading ? 'loading' : 'plus'"></i>
+    <div class="ant-upload-text">Upload</div>
+  </ng-container>
+  <img *ngIf="avatarUrl" [src]="avatarUrl" style="width: 100%" />
+</nz-upload>
 
-    <!-- ----------------------Last Summit botton----------------------------------- -->
-    <nz-divider></nz-divider>
-  <div>
-  <button style="border-radius: 5px;" nz-button nzType="primary"  nzDanger  (click)="showConfirm(leaveCreate)">บันทึก</button>
+<!-- ----------------------Last Summit botton----------------------------------- -->
+<nz-divider></nz-divider>
+<div>
+  <button
+    style="border-radius: 5px;"
+    nz-button
+    nzType="primary"
+    nzDanger
+    (click)="showConfirm(leaveCreate)"
+  >
+    บันทึก
+  </button>
   <!-- Submit modal -->
-  <nz-modal [(nzVisible)]="isVisible" nzTitle="กรุณายืนยันการลางาน" nzOkText="ยืนยัน" nzCancelText="ยกเลิก" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk(leaveCreate)">
+  <nz-modal
+    [(nzVisible)]="isVisible"
+    nzTitle="กรุณายืนยันการลางาน"
+    nzOkText="ยืนยัน"
+    nzCancelText="ยกเลิก"
+    (nzOnCancel)="handleCancel()"
+    (nzOnOk)="handleOk(leaveCreate)"
+  >
     <ng-container *nzModalContent>
       <nz-alert
-      nzType="warning"
-      nzMessage="ประเภทการลางานของคุณ :   {{leaveCreate.type}} " 
-      nzDescription="จำนวนวันลางานของคุณ :  {{leaveCreate.allday}} วัน "
-      nzShowIcon>
-    </nz-alert>
+        nzType="warning"
+        nzMessage="ประเภทการลางานของคุณ :   {{leaveCreate.type}} "
+        nzDescription="จำนวนวันลางานของคุณ :  {{leaveCreate.allday}} วัน "
+        nzShowIcon
+      >
+      </nz-alert>
     </ng-container>
   </nz-modal>
-  <button class="cancelbot" nz-button nzType="default" (click)="cancel()">ยกเลิก</button>
+  <button class="cancelbot" nz-button nzType="default" (click)="cancel()">
+    ยกเลิก
+  </button>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
