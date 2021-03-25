@@ -28,6 +28,13 @@
         <td class="get-center">{{ item.email }}</td>
         <td class="get-center">{{ item.position }}</td>
         <td style="text-align: center">{{ item.max_days }}</td>
+        <td  style="padding: 5px;">
+          <button class="btn btn-tmt-act btn-tmt-act-ed2" (click)="open(item)">
+            <a nz-tooltip nzTooltipTitle="รายละเอียด">
+              <i nz-icon nzType="info-circle" nzTheme="outline"></i>
+            </a>
+          </button>
+        </td>
         <td  class="get-center">
           <button class="btn btn-tmt-act btn-tmt-act-ed2" (click)="open(item)">
             <a nz-tooltip nzTooltipTitle="แก้ไข">
