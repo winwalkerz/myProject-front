@@ -76,13 +76,15 @@ export class AddLeaveComponent implements OnInit {
     this.decode = jwt_decode(token || '')
     this.leaveCreate.id_user_fk = this.decode.id
     this.leaveCreate.sex = this.decode.sex
-
     this.getHoliday()
   }
 
   // --------------------------------confiamation add leave--------------------------------------
   showConfirm (data: any): void {
-     this.leaveCreate.allday=this.calculateBusinessDays(this.leaveCreate.date_start, this.leaveCreate.date_end)
+    this.leaveCreate.allday = this.calculateBusinessDays(
+      this.leaveCreate.date_start,
+      this.leaveCreate.date_end
+    )
     this.isVisible = true
   }
 
@@ -164,6 +166,7 @@ export class AddLeaveComponent implements OnInit {
     let day1 = moment(moment(firstDate).format('YYYY-MM-DD')).startOf('day')
     let day2 = moment(moment(secondDate).format('YYYY-MM-DD')).startOf('day')
     // console.log("THIS IS StartOf: ",day1)
+    // console.log("THIS IS StartOf: ",day2)
     // EDIT : start at 1
     let adjust = 1
 
@@ -219,8 +222,24 @@ export class AddLeaveComponent implements OnInit {
     if (total < 0) {
       total = 0
     }
-
-    return total
+    //ฟังก์ชันเทียบวันหยุด เพื่อลบจำนวนวันหยุด
+    let allinHoliday: any = []
+    allinHoliday = this.calculateVacation(this.holyData, this.countHoliday)
+    console.log('this is Holiday : ', allinHoliday)
+    //ay1s, day2s เปลี่ยนtype เป็น number
+    let day1s = day1.dayOfYear()
+    let day2s = day2.dayOfYear()
+    console.log(day1s, day2s)
+    let counts = 0
+    for (let item = day1s; item <= day2s; item++) {
+      for (let value = 0; value <= this.countHoliday; value++) {
+        if (item === allinHoliday[value]) {
+          counts += 1
+        }
+      }
+    }
+    console.log('count: ', counts)
+    return total - counts
   }
 
   holyData: any
@@ -236,27 +255,17 @@ export class AddLeaveComponent implements OnInit {
   calculateVacation (data: any, count: any) {
     const dataVacation: any = []
     const dataVacation2: any = []
-    // dataVacation[0] = moment(data[0].date).format('YYYY-MM-DD');
-    // console.log(dataVacation[0])
-    // console.log(data[0])
     for (let item = 0; item < count; item++) {
       dataVacation[item] = moment(moment(data[item].date).format('YYYY-MM-DD')).startOf('day');
-      dataVacation2[item] = dataVacation[item].dayOfYear();
-      console.log(dataVacation[item]);
+      console.log(dataVacation[item].day())
+      //check วันหยุดตรงกับเสาร์อาทิตย์หรือไม่
+      if (dataVacation[item].day() != 0 && dataVacation[item].day() != 6) {
+        dataVacation2[item] = dataVacation[item].dayOfYear()
+        // console.log(dataVacation2[item]);
+      }
     }
+    return [...new Set(dataVacation2)]
   }
 
-  //block holiday 
-  
-  // let allinHoliday:any = []
-  // allinHoliday = this.calculateVacation(this.leaveCreate.date_start, this.leaveCreate.date_end)
-  // //day1s, day2s เปลี่ยนtype เป็น number
-  // let day1s = day1.dayOfYear();
-  // let day2s = day2.dayOfYear();
-  // let counts=0
-  // for (let value=0, item = day1s; item <= day2s; item++) {
-  //   if ( day1s === allinHoliday[value]){
-  //     counts+= -1
-  //   }
-  // }
+  //block holiday
 }

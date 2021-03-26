@@ -17,12 +17,12 @@
         <td>{{data.date | date: "mediumDate"}}</td>
         <td>{{data.content}}</td>
         <td>
-          <div *ngIf="data.type == 'error'">
-            <p>วันหยุดตามปฏิทินประเทศไทย</p>
-          </div>
-          <div *ngIf="data.type == 'warning'">
-            <p>วันหยุดเพิ่มเติมของบริษัท</p>
-          </div>
+        <div *ngIf="data.type == 'error'">
+          <nz-badge nzStatus="error" nzText="วันหยุดตามปฏิทินประเทศไทย"></nz-badge>
+        </div>
+        <div *ngIf="data.type == 'warning'">      
+          <nz-badge nzStatus="warning" nzText="วันหยุดเพิ่มเติมของบริษัท"></nz-badge>  
+        </div>
         </td>
         <td>
           <button
