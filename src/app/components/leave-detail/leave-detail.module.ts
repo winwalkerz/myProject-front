@@ -10,6 +10,7 @@ import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzTagModule } from 'ng-zorro-antd/tag';
+import { NzImageModule } from 'ng-zorro-antd/image';
 
 
 
@@ -25,7 +26,8 @@ import { NzTagModule } from 'ng-zorro-antd/tag';
     NzTableModule,
     NzTabsModule,
     NzDividerModule,
-    NzTagModule
+    NzTagModule,
+    NzImageModule
   ]
 })
 export class LeaveDetailModule { }

@@ -40,6 +40,18 @@
   color: #f1eae8;
   transition: .25s ease-in-out;
 }
+
+/* detail button */
+.btn-tmt-act.btn-tmt-act-ed3:hover {
+  background: linear-gradient(
+    -45deg,
+    #1cb831 0, #4cc91b 100%);
+  box-shadow: 0 0.35rem 0.5rem reg(177 38 41 /30%);
+  color: #f1eae8;
+  transition: .25s ease-in-out;
+}
+
+
 input {
   border-radius: 5px;
 }

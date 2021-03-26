@@ -30,13 +30,18 @@
         <td class="get-center">{{ item.position }}</td>
         <td style="text-align: center">{{ item.max_days }}</td>
 
+
+        <!-- -------------------------detail button------------------------------- -->
+
         <td  style="padding: 5px;">
-          <button class="btn btn-tmt-act btn-tmt-act-ed2" (click)="open(item)">
-            <a nz-tooltip nzTooltipTitle="แก้ไข">
-              <i nz-icon nzType="edit" nzTheme="outline"></i>
+          <button class="btn btn-tmt-act btn-tmt-act-ed3" (click)="openDetail()">
+            <a nz-tooltip nzTooltipTitle="รายละเอียด">
+              <i nz-icon nzType="info-circle" nzTheme="outline"></i>
             </a>
           </button>
         </td>
+
+        <!-- -------------------------edit button------------------------------------ -->
 
         <td style="padding: 5px;">
           <button class="btn btn-tmt-act btn-tmt-act-ed2" (click)="open(item)">
@@ -45,6 +50,9 @@
             </a>
           </button>
         </td>
+
+      <!-- ----------------------------delete button---------------------------------- -->
+
         <td  style="padding: 5px;">
           <button
             class="btn btn-tmt-act btn-tmt-act-ed"
@@ -55,6 +63,7 @@
             </a>
           </button>
         </td>
+
       </tr>
     </tbody>
   </nz-table>

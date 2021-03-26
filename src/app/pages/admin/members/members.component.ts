@@ -20,6 +20,7 @@ export class MembersComponent implements OnInit {
     private modal: NzModalService,
     private nzMessageService: NzMessageService // private nzDrawerRef:NzDrawerRef
   ) {}
+  showPortal = false;
   members: any = []
   alert: any = [];
   passwordVisible = false;
@@ -161,4 +162,9 @@ export class MembersComponent implements OnInit {
   closeEdit () {
     this.visible = false
   }
+
+  // ------------------------------------------------------------------open Detail function ----------------------------------------------
+  openDetail() {
+    var myWindow = window.open("","","width=1150px,height=750px");
+}
 }
