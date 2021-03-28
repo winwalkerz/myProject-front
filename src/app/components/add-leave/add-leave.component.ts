@@ -87,10 +87,10 @@ export class AddLeaveComponent implements OnInit {
     )
     this.isVisible = true
   }
+  
 
   handleOk (data: any): void {
     console.log('Button ok clicked!')
-
     this.Crudservice.createLeave(data)
       .then(() => {
         this.isVisible = false

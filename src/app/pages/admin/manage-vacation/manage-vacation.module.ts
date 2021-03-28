@@ -10,6 +10,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzBadgeModule } from 'ng-zorro-antd/badge';
+import { EditHolidayModule } from '../../../components/edit-holiday/edit-holiday.module';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { NzBadgeModule } from 'ng-zorro-antd/badge';
     NzIconModule,
     NzToolTipModule,
     NzTagModule,
-    NzBadgeModule
+    NzBadgeModule,
+    EditHolidayModule
   ]
 })
 export class ManageVacationModule { }

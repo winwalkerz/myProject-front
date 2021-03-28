@@ -24,20 +24,15 @@
           <nz-badge nzStatus="warning" nzText="วันหยุดเพิ่มเติมของบริษัท"></nz-badge>  
         </div>
         </td>
+
+        <!-- ----------------------------------button---------------------------------- -->
         <td>
-          <button
-            _ngcontent-wba-c15=""
-            class="btn btn-tmt-act btn-tmt-act-ed2"
-            
-          >
+          <button _ngcontent-wba-c15="" class="btn btn-tmt-act btn-tmt-act-ed2" (click)="open(data)">
             <a nz-tooltip nzTooltipTitle="แก้ไข">
               <i nz-icon nzType="edit" nzTheme="outline"></i>
             </a>
           </button>
-          <button
-            class="btn btn-tmt-act btn-tmt-act-ed"
-            
-          >
+          <button class="btn btn-tmt-act btn-tmt-act-ed" (click)="showDeleteConfirm(data.id)">
             <a nz-tooltip nzTooltipTitle="ลบ">
               <i nz-icon nzType="delete" nzTheme="outline"></i>
             </a>

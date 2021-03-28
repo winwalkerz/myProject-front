@@ -1,8 +1,6 @@
 import jwt_decode from 'jwt-decode'
-import { UserEditorComponent } from './../../../components/user-editor/user-editor.component'
 import { UserService } from './../../../user.service'
 import { AddUsersComponent } from './../../../components/add-users/add-users.component'
-import { NzDrawerRef } from 'ng-zorro-antd/drawer'
 import { NzDrawerService } from 'ng-zorro-antd/drawer'
 import { Component, OnInit } from '@angular/core'
 import { NzModalService } from 'ng-zorro-antd/modal'
