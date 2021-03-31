@@ -3,6 +3,8 @@ import { HolidayService } from './../../../holiday.service'
 import { Component, OnInit } from '@angular/core'
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzModalService } from 'ng-zorro-antd/modal'
+import { NzDrawerService } from 'ng-zorro-antd/drawer';
+import { EditHolidayComponent } from 'src/app/components/edit-holiday/edit-holiday.component';
 
 @Component({
   selector: 'app-manage-vacation',
@@ -14,7 +16,8 @@ export class ManageVacationComponent implements OnInit {
     private holidayService: HolidayService,
     private nzmodalService: NzModalService,
     private modal: NzModalService,
-    private msg:NzMessageService
+    private msg:NzMessageService,
+    private nzDrawerService: NzDrawerService
   ) {}
   visible = false;
   newData: any = []
@@ -22,7 +25,9 @@ export class ManageVacationComponent implements OnInit {
     search: '',
     page: 1
   }
+  listholiday: any = []
   dataHoliday:any;
+
   ngOnInit (): void {
     this.searchHoliday();
   }
@@ -70,43 +75,31 @@ export class ManageVacationComponent implements OnInit {
     this.msg.success('Deleted')
   }
 
+  reData (value: any) {
+    this.newData = { ...value }
+    this.onClickEdit()
+  }
+    onClickEdit(){
+      const drawRef = this.nzDrawerService.create<
+        EditHolidayComponent,
+        { dataEditSend: any }
+      >({
+        nzTitle: 'แก้ไขวันหยุด',
+        nzContent: EditHolidayComponent,
+        nzWidth: '45%',
+        nzContentParams: {
+          dataEditSend: this.newData
+        }
+      })
+      drawRef.afterClose.subscribe(() => {
+        
+      })
+    }
 
-  
+   
 
-  open (item: any) {
-    this.visible = true
-    this.newData = { ...item }
   }
 
-  showEditConfirm (id: any, data: any): void {
-    this.modal
-      .confirm({
-        nzTitle: '<b>คำเตือน</b>',
-        nzContent: 'คุณเเน่ใจใช่ไหมว่าต้องการแก้ไขยูสเซอร์นี้?',
-        nzOkText: 'ยืนยัน',
-        nzOkType: 'primary',
-        nzOkDanger: true,
-        nzOnOk: () => this.editfunc(id, data),
-        nzCancelText: 'ยกเลิก',
-        nzOnCancel: () => console.log('Cancel')
-      })
-      .afterClose.subscribe(() => {
-        this.visible = false
-        this.searchHoliday();(id)
-      })
-  }
-   editfunc(id: any, data: any) {
-    this.holidayService
-      .editHoliday(id, data)
-      .then(() => {
-        this.visible = false;
-        this.searchHoliday();(id)
-        this.msg.success('แก้ไขสำเร็จ');
-      })
-      .catch((err) => {
-        this.msg.error(err.error.message);
-        this.visible = true
-      });
-  }
 
-}
+
+

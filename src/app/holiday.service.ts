@@ -31,6 +31,19 @@ export class HolidayService {
     return this.http.get(`${url}/holiday/getholiday`,_header).toPromise();
   }
 
+  // getOrderByID(data:any) {
+  //   let token = localStorage.getItem('token');
+  //   let token_json = JSON.parse(token || '{}');
+
+  //   let _header = {
+  //     headers: {
+  //       authorization: `Bearer ${token_json.token}`,
+  //     },
+  //   };
+  //   // console.log(_header);
+  //   return this.http.post(`${url}/holidat/showDB`,data, _header).toPromise();
+  // }
+
   search(data:any){
     let token = localStorage.getItem('token');
     let token_json = JSON.parse(token || '{}');
