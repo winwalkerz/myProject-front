@@ -1,10 +1,14 @@
-.btn-tmt-act.btn-tmt-act-ed2:hover {
+/* delete button */
+.btn-tmt-act {
   background: linear-gradient(
-    -45deg,
-    #FBC02D 0, #FFEB3B 100%);
-  box-shadow: 0 0.35rem 0.5rem reg(177 38 41 /30%);
-  color: #f1eae8;
+45deg
+,#f1eae8 0,#f1eae8 100%);
+  color: #908484;
+  font-size: 16px;
   transition: .25s ease-in-out;
+  padding: .3rem .5rem;
+  line-height: 1;
+  box-shadow: 0 0 0 rgb(177 38 41 / 0%);
 }
 
 .btn-tmt-act.btn-tmt-act-ed:hover {
@@ -15,6 +19,16 @@
   color: #f1eae8;
   transition: .25s ease-in-out;
     
+}
+
+/* edit button */
+.btn-tmt-act.btn-tmt-act-ed2:hover {
+  background: linear-gradient(
+    -45deg,
+    #FBC02D 0, #FFEB3B 100%);
+  box-shadow: 0 0.35rem 0.5rem reg(177 38 41 /30%);
+  color: #f1eae8;
+  transition: .25s ease-in-out;
 }
 
 .btn-tmt-primary{

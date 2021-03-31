@@ -4,7 +4,7 @@
     </div>
     <div nz-col nzSpan="6">
       <nz-date-picker style="width: 169.99px;"
-        [(ngModel)]="newData.date"
+        [(ngModel)]="dataEditSend.date"
         (ngModelChange)="onChange($event)"
       ></nz-date-picker>
     </div>
@@ -19,7 +19,7 @@
         nz-input
         class="input-box"
         placeholder="Chrismas, New year"
-        [(ngModel)]="newData.content"
+        [(ngModel)]="dataEditSend.content"
       />
     </div>
   </div>
@@ -32,7 +32,7 @@
       <nz-select
         class="input-box"
         nzPlaceHolder="เลือกรูปวันหยุด"
-        [(ngModel)]="newData.type"
+        [(ngModel)]="dataEditSend.type"
       >
         <nz-option nzValue="error" nzLabel="วันหยุดตามปฏิทิน"></nz-option>
         <nz-option nzValue="warning" nzLabel="วันหยุดเพิ่มเติมบริษัท"></nz-option>
@@ -46,7 +46,7 @@
     nz-button
     nzType="primary"
     nzDanger
-    (click)="showEditConfirm(newData.id, newData)"
+    (click)="showEditConfirm(dataEditSend.id, dataEditSend)"
   >
     ยืนยัน
   </button>

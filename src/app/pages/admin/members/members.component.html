@@ -127,7 +127,7 @@
       </div>
       <div nz-col nzSpan="17">
         <nz-input-group [nzSuffix]="suffixTemplate" class="input-box">
-          <input [type]="passwordVisible ? 'text' : 'password'" nz-input placeholder="New Password"  [(ngModel)]="newData.password">
+          <input [type]="passwordVisible ? 'text' : 'password'" nz-input placeholder="New Password" required [(ngModel)]="newData.password">
         </nz-input-group>
         <ng-template #suffixTemplate>
           <i nz-icon [nzType]="passwordVisible ? 'eye-invisible' : 'eye'" (click)="passwordVisible = !passwordVisible"></i>
@@ -144,7 +144,7 @@
       </div>
       <div nz-col nzSpan="17">
         <nz-input-group [nzSuffix]="suffixTemplate" class="input-box">
-          <input [type]="passwordVisible ? 'text' : 'password'" nz-input placeholder="Confirm Password" [(ngModel)]="newData.checkpassword">
+          <input [type]="passwordVisible ? 'text' : 'password'" nz-input placeholder="Confirm Password" required [(ngModel)]="newData.checkpassword">
         </nz-input-group>
         <ng-template #suffixTemplate>
           <i nz-icon [nzType]="passwordVisible ? 'eye-invisible' : 'eye'" (click)="passwordVisible = !passwordVisible"></i>

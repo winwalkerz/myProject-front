@@ -122,6 +122,7 @@ export class MembersComponent implements OnInit {
     decode = jwt_decode(token || '')
     // this.newData.password = decode.password
     console.log(decode.password)
+    console.log(this.newData)
   }
 
   showEditConfirm (id: any, data: any): void {

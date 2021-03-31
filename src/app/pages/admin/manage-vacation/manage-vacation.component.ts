@@ -29,12 +29,12 @@ export class ManageVacationComponent implements OnInit {
   dataHoliday:any;
 
   ngOnInit (): void {
-    this.searchHoliday();
+    this.searchHoliday(this.model_search);
   }
-  searchHoliday () {
+  searchHoliday (data: any) {
     this.holidayService.search(this.model_search).then((res: any) => {
       this.dataHoliday = res.data
-      console.log(this.dataHoliday)
+      // console.log(this.dataHoliday)
     })
   }
 
@@ -49,7 +49,7 @@ export class ManageVacationComponent implements OnInit {
       // },
     });
     drawRef.afterClose.subscribe(() => {
-      this.searchHoliday();
+      this.searchHoliday(this.model_search);
     });
   }
 
@@ -66,7 +66,7 @@ export class ManageVacationComponent implements OnInit {
         nzOnCancel: () => console.log('Cancel')
       })
       .afterClose.subscribe(() => {
-        this.searchHoliday();(id)
+        this.searchHoliday(this.model_search);(id)
       })
   }
 
@@ -78,6 +78,7 @@ export class ManageVacationComponent implements OnInit {
   reData (value: any) {
     this.newData = { ...value }
     this.onClickEdit()
+    console.log(this.newData)
   }
     onClickEdit(){
       const drawRef = this.nzDrawerService.create<
@@ -92,7 +93,7 @@ export class ManageVacationComponent implements OnInit {
         }
       })
       drawRef.afterClose.subscribe(() => {
-        
+        this.searchHoliday(this.model_search);
       })
     }
 

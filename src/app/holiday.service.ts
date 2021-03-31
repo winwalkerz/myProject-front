@@ -65,7 +65,7 @@ export class HolidayService {
         authorization: `Bearer ${token_json.token}`,
       },
     };
-    return this.http.put(`${url}/holiday/update${id}`, data, _header).toPromise();
+    return this.http.put(`${url}/holiday/update/${id}`, data, _header).toPromise();
   }
 
   deleteHoliday(id: any) {

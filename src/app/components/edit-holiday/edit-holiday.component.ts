@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzModalService } from 'ng-zorro-antd/modal';
+import { NzDatePickerComponent } from 'ng-zorro-antd/date-picker';
 import { HolidayService } from 'src/app/holiday.service';
+import { NzDrawerRef } from 'ng-zorro-antd/drawer';
 
 @Component({
   selector: 'app-edit-holiday',
@@ -13,11 +15,14 @@ export class EditHolidayComponent implements OnInit {
   constructor(
     private holidayService: HolidayService,
     private modal: NzModalService,
-    private msg:NzMessageService
+    private msg:NzMessageService,
+    private nzDrawerRef: NzDrawerRef,
   ) { }
 
   ngOnInit(): void {
+    console.log(this.dataEditSend)
   }
+  dataEditSend: any;
 
   visible = false;
   model_search = {
@@ -25,19 +30,13 @@ export class EditHolidayComponent implements OnInit {
     page: 1
   }
   dataHoliday:any;
-  newData: any = []
+  
 
   onChange (result: Date): void {
     console.log('onChange: ', result)
   }
 
-  searchHoliday () {
-    this.holidayService.search(this.model_search).then((res: any) => {
-      this.dataHoliday = res.data
-      console.log(this.dataHoliday)
-    })
-  }
-
+  
   showEditConfirm (id: any, data: any): void {
     this.modal
       .confirm({
@@ -52,15 +51,13 @@ export class EditHolidayComponent implements OnInit {
       })
       .afterClose.subscribe(() => {
         this.visible = false
-        this.searchHoliday();(id)
       })
   }
    editfunc(id: any, data: any) {
     this.holidayService
       .editHoliday(id, data)
       .then(() => {
-        this.visible = false;
-        this.searchHoliday();(id)
+        this.nzDrawerRef.close();
         this.msg.success('แก้ไขสำเร็จ');
       })
       .catch((err) => {
@@ -70,7 +67,7 @@ export class EditHolidayComponent implements OnInit {
   }
 
   cancel() {
-    this.visible = false
+    this.nzDrawerRef.close();
   }
 
 }
