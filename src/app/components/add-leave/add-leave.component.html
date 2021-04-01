@@ -6,7 +6,7 @@
     <!-- พนักงานเป็น male -->
     <ng-container *ngIf="leaveCreate.sex == 'male'">
       <div nz-col nzSpan="15">
-        <nz-select
+        <nz-select style="width: 175px;"
           nzShowSearch
           nzAllowClear
           nzPlaceHolder="เลือกรูปแบบการลา"
@@ -26,7 +26,7 @@
     <!-- พนักงานเป็น female -->
     <ng-container *ngIf="leaveCreate.sex == 'female'">
       <div nz-col nzSpan="15">
-        <nz-select
+        <nz-select style="width: 175px;"
           nzShowSearch
           nzAllowClear
           nzPlaceHolder="เลือกรูปแบบการลา"

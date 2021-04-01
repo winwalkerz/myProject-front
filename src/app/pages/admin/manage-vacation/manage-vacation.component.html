@@ -27,16 +27,22 @@
 
         <!-- ----------------------------------button---------------------------------- -->
         <td>
-          <button class="btn btn-tmt-act btn-tmt-act-ed2" (click)="reData(data)">
-            <a nz-tooltip nzTooltipTitle="แก้ไข">
-              <i nz-icon nzType="edit" nzTheme="outline"></i>
-            </a>
-          </button>
-          <button class="btn btn-tmt-act btn-tmt-act-ed" (click)="showDeleteConfirm(data.id)">
-            <a nz-tooltip nzTooltipTitle="ลบ">
-              <i nz-icon nzType="delete" nzTheme="outline"></i>
-            </a>
-          </button>
+          <div nz-row>
+          
+            <div nz-col nzSpan="4"> <button class="btn btn-tmt-act btn-tmt-act-ed2" (click)="reData(data)">
+              <a nz-tooltip nzTooltipTitle="แก้ไข">
+                <i nz-icon nzType="edit" nzTheme="outline"></i>
+              </a>
+            </button>
+          </div>
+      
+            <div nz-col nzSpan="4"> <button class="btn btn-tmt-act btn-tmt-act-ed" (click)="showDeleteConfirm(data.id)">
+              <a nz-tooltip nzTooltipTitle="ลบ">
+                <i nz-icon nzType="delete" nzTheme="outline"></i>
+              </a>
+            </button>
+          </div>
+          </div>
         </td>
         <td>
           

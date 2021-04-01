@@ -138,7 +138,6 @@ export class MembersComponent implements OnInit {
         nzOnCancel: () => console.log('Cancel')
       })
       .afterClose.subscribe(() => {
-        this.visible = false
         this.memberList(this.model_search)
       })
   }

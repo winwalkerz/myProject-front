@@ -11,6 +11,7 @@ import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzBadgeModule } from 'ng-zorro-antd/badge';
 import { EditHolidayModule } from '../../../components/edit-holiday/edit-holiday.module';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { EditHolidayModule } from '../../../components/edit-holiday/edit-holiday
     NzToolTipModule,
     NzTagModule,
     NzBadgeModule,
-    EditHolidayModule
+    EditHolidayModule,
+    NzDividerModule
   ]
 })
 export class ManageVacationModule { }

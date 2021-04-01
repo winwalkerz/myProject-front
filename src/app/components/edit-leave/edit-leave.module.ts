@@ -12,6 +12,9 @@ import { NzMessageModule } from 'ng-zorro-antd/message';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { NzAlertModule } from 'ng-zorro-antd/alert';
+import { NzUploadModule } from 'ng-zorro-antd/upload';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 
 
 @NgModule({
@@ -28,7 +31,10 @@ import { NzDividerModule } from 'ng-zorro-antd/divider';
     NzMessageModule,
     NzPopconfirmModule,
     NzModalModule,
-    NzDividerModule
+    NzDividerModule,
+    NzAlertModule,
+    NzUploadModule,
+    NzIconModule
   ]
   
 })

@@ -11,6 +11,7 @@ import jwt_decode from 'jwt-decode'
 import { NzModalService } from 'ng-zorro-antd/modal'
 import differenceInCalendarDays from 'date-fns/differenceInCalendarDays'
 import * as moment from 'moment'
+
 @Component({
   selector: 'app-add-leave',
   templateUrl: './add-leave.component.html',
@@ -77,6 +78,7 @@ export class AddLeaveComponent implements OnInit {
     this.leaveCreate.id_user_fk = this.decode.id
     this.leaveCreate.sex = this.decode.sex
     this.getHoliday()
+    console.log(this.leaveCreate)
   }
 
   // --------------------------------confiamation add leave--------------------------------------
@@ -160,6 +162,8 @@ export class AddLeaveComponent implements OnInit {
         break
     }
   }
+
+  // -------------------------------------------------------------calculate day of leave --------------------------------------------------------------
 
   calculateBusinessDays (firstDate: any, secondDate: any) {
     // EDIT : use of startOf
