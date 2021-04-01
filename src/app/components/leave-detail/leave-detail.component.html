@@ -1,36 +1,75 @@
 <div>
   <div nz-row>
     <div nz-col nzSpan="12">
-      <span>หมายเลขการลา</span>
+      <span>หมายเลขการลา :</span>
     </div>
     <div nz-col nzSpan="12">
       <span>{{ dataDetailSendAfter.id }}</span>
     </div>
+    <nz-divider></nz-divider>
+    <br><br>
+
     <div nz-col nzSpan="12">
-      <span>ชื่อ-นามสกุล</span>
+      <span>ชื่อ-นามสกุล :</span>
     </div>
     <div nz-col nzSpan="12">
       <span
         >{{ dataDetailSendAfter.first_name }}
-        {{ dataDetailSendAfter.last_name }}</span
-      >
+        {{ dataDetailSendAfter.last_name }}</span>
     </div>
+    <nz-divider></nz-divider>
+    <br><br>
+
     <div nz-col nzSpan="12">
-      <span>วันที่ต้องการลา</span>
+      <span>วันที่ต้องการลา :</span>
     </div>
     <div nz-col nzSpan="12">
       <nz-tag [nzColor]="'magenta'"> <span>{{ dataDetailSendAfter.date_start  | date: 'shortDate'}}</span> -</nz-tag>
       <nz-tag [nzColor]="'magenta'"><span>{{ dataDetailSendAfter.date_end  | date: 'shortDate'}}</span></nz-tag>
-     
-      
+    </div>
+    <nz-divider></nz-divider>
+    <br><br>
+
+    <div nz-col nzSpan="12">
+      <span>ประเภทการลา :</span>
+    </div>
+    <span>{{ dataDetailSendAfter.type }}</span>
+    <nz-divider></nz-divider>
+    <br><br>
+
+    <div nz-col nzSpan="12">
+      <span>จำนวนวัน :</span>
+    </div>
+    <span>{{dataDetailSendAfter.allday}}</span>
+    <nz-divider></nz-divider>
+    <br><br>
+
+    <div nz-col nzSpan="12">
+      <span>สิ่งที่แนบมา :</span>
     </div>
     <div nz-col nzSpan="12">
-      <span>หมายเหตุ, รายละเอียด</span>
+      <div *ngIf="dataDetailSendAfter?.file">
+      <img
+      nz-image
+      width="25px"
+      height="25px"
+      nzSrc="{{ dataDetailSendAfter.file }}"
+      alt=""
+    />
+    </div>
+  </div>
+  <nz-divider></nz-divider>
+    <br><br>
+
+    <div nz-col nzSpan="12">
+      <span>หมายเหตุ, รายละเอียด :</span>
     </div>
     <div nz-col nzSpan="12">
       <span>{{ dataDetailSendAfter.description }}</span>
     </div>
+    <nz-divider></nz-divider>
     <br><br>
+    <!-- --------------------------------------------------Select------------------------------------------------------ -->
     <div>
       <nz-select
         style="width: 200px"
@@ -42,6 +81,9 @@
       </nz-select>
     </div>
     <nz-divider></nz-divider>
+
+
+    <!-- ----------------------------------------------------button--------------------------------------------- -->
     <div style="margin-left: 20px;">
       <button
         nz-button

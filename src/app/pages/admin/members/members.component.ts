@@ -20,7 +20,10 @@ export class MembersComponent implements OnInit {
     private modal: NzModalService,
     private nzMessageService: NzMessageService // private nzDrawerRef:NzDrawerRef
   ) {}
+  showPortal = false;
   members: any = []
+  alert: any = [];
+  passwordVisible = false;
   model_search = {
     page: 1,
     search: ''
@@ -140,16 +143,28 @@ export class MembersComponent implements OnInit {
         this.memberList(this.model_search)
       })
   }
-  editfunc (id: any, data: any) {
+   editfunc(id: any, data: any) {
     this.users
       .editUser(id, data)
       .then(() => {
-        this.nzMessageService.success('แก้ไขสำเร็จ')
+        this.visible = false;
+        this.memberList(this.model_search);
+        this.nzMessageService.success('แก้ไขสำเร็จ');
       })
-      .catch((error: any) => {})
+      .catch((err) => {
+        this.alert = err
+        this.nzMessageService.error(err.error.message);
+        this.visible = true
+        console.log(this.alert);
+      });
   }
 
   closeEdit () {
     this.visible = false
   }
+
+  // ------------------------------------------------------------------open Detail function ----------------------------------------------
+  openDetail(id:any) {
+    window.open(`/admin/member-details/${id}`);
+}
 }

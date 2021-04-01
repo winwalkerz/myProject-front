@@ -13,8 +13,10 @@ export class AddUsersComponent implements OnInit {
   isVisible = false;
   visible = false;
   passwordVisible = false;
-  alert = '';
-  checkpassword='';
+  
+  
+  alert: any = [];
+ 
   addUser = {
     // id: '',
     first_name: '',
@@ -24,6 +26,7 @@ export class AddUsersComponent implements OnInit {
     role: 'user',
     position: '',
     max_days: '',
+    checkpassword: '',
     sex:''
   };
   constructor(private Crudservice : CrudService,
@@ -33,6 +36,7 @@ export class AddUsersComponent implements OnInit {
 
   ngOnInit(): void {
   }
+ 
   createUser(data: any) {
     this.Crudservice.createUsers(data).then(() => {
       this.NzDrawerRef.close();
