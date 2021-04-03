@@ -23,8 +23,18 @@ export class LeaveDetailComponent implements OnInit {
   dataDetailSendAfter: any = [];
   // data: any = [];
   statusData: any = [];
+  allinday: any
 
   ngOnInit(): void {
+    console.log(this.dataDetailSendAfter)
+    this.calallday()
+    console.log(this.allinday)
+   
+  }
+
+  calallday(){
+    var allinday = this.dataDetailSendAfter.allday + this.dataDetailSendAfter.allday
+    return this.allinday = allinday
   }
 
   getStatus() {
