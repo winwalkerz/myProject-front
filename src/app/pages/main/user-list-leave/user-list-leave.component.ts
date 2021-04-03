@@ -58,9 +58,6 @@ export class UserListLeaveComponent implements OnInit {
     this.userService.getOrderByID(this.model_search).then((res: any) => {
       this.listorder = res.data
       this.count = res.count
-
-      this.calculated(this.count)
-      // this.decode = this.listorder[0].max_days
     })
   }
 

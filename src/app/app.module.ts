@@ -17,7 +17,8 @@ registerLocaleData(en);
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    
     
     
     // EditUserComponent

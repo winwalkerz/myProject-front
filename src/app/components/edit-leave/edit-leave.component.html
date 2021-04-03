@@ -1,38 +1,69 @@
 <div style="margin-bottom: 15px">
   <div nz-row>
     <div nz-col nzSpan="9">
-      <span>วันที่ต้องการลา</span>
-    </div>
-    <div nz-col nzSpan="15">
-      <nz-date-picker
-        [nzDisabledDate]="disabledStartDate"
-        nzFormat="yyyy/MM/dd"
-        [(ngModel)]="dataEditSend.date_start"
-        nzPlaceHolder="Start"
-        (nzOnOpenChange)="handleStartOpenChange($event)"
-      ></nz-date-picker> - <nz-date-picker
-        #endDatePicker
-        [nzDisabledDate]="disabledEndDate"
-        nzFormat="yyyy/MM/dd"
-        [(ngModel)]="dataEditSend.date_end"
-        nzPlaceHolder="End"
-        (nzOnOpenChange)="handleEndOpenChange($event)"
-      ></nz-date-picker>
-      <br />
-    </div>
-  </div>
-</div>
-<div style="margin-bottom: 15px">
-  <div nz-row>
-    <div nz-col nzSpan="9">
       <span>รูปแบบการลางาน</span>
     </div>
-    <div nz-col nzSpan="15">
-      <nz-select nzShowSearch nzAllowClear nzPlaceHolder="เลือกรูปแบบการลา" [(ngModel)]="dataEditSend.type">
-        <nz-option nzLabel="ลาพักร้อน" [nzValue]="'ลาพักร้อน'"></nz-option>
-        <nz-option nzLabel="ลากิจ" [nzValue]="'ลากิจ'"></nz-option>
-        <nz-option nzLabel="ลาป่วย" [nzValue]="'ลาป่วย'"></nz-option>
-      </nz-select>
+    <!-- พนักงานเป็น male -->
+    <ng-container *ngIf="dataEditSend.sex == 'male'">
+      <div nz-col nzSpan="15">
+        <nz-select style="width: 175px;"
+          nzShowSearch
+          nzAllowClear
+          nzPlaceHolder="เลือกรูปแบบการลา"
+          [(ngModel)]="dataEditSend.type"
+        >
+          <nz-option nzLabel="ลากิจ" [nzValue]="'ลากิจ'"></nz-option>
+          <nz-option nzLabel="ลาป่วย" [nzValue]="'ลาป่วย'"></nz-option>
+          <nz-option nzLabel="ลาทำหมัน" [nzValue]="'ลาทำหมัน'"></nz-option>
+          <nz-option nzLabel="ลาฝึกอบรม" [nzValue]="'ลาฝึกอบรม'"></nz-option>
+          <nz-option
+            nzLabel="ลารับราชการทหาร"
+            [nzValue]="'ลารับราชการทหาร'"
+          ></nz-option>
+        </nz-select>
+      </div>
+    </ng-container>
+    <!-- พนักงานเป็น female -->
+    <ng-container *ngIf="dataEditSend.sex == 'female'">
+      <div nz-col nzSpan="15">
+        <nz-select style="width: 175px;"
+          nzShowSearch
+          nzAllowClear
+          nzPlaceHolder="เลือกรูปแบบการลา"
+          [(ngModel)]="dataEditSend.type"
+        >
+          <nz-option nzLabel="ลากิจ" [nzValue]="'ลากิจ'"></nz-option>
+          <nz-option nzLabel="ลาป่วย" [nzValue]="'ลาป่วย'"></nz-option>
+          <nz-option nzLabel="ลาป่วย" [nzValue]="'ลาทำหมัน'"></nz-option>
+          <nz-option nzLabel="ลาป่วย" [nzValue]="'ลาฝึกอบรม'"></nz-option>
+          <nz-option nzLabel="ลาคลอดบุตร" [nzValue]="'ลาคลอดบุตร'"></nz-option>
+        </nz-select>
+      </div>
+    </ng-container>
+  </div>
+  <div style="margin-bottom: 15px;margin-top: 15px;">
+    <div nz-row>
+      <div nz-col nzSpan="9">
+        <span>วันที่ต้องการลา</span>
+      </div>
+      <ng-container *ngIf="dataEditSend.type=='ลาป่วย'">
+        <div nz-col nzSpan="15">
+          <nz-range-picker
+            nzFormat="yyyy-MM-dd"
+            [(ngModel)]="date"
+            (ngModelChange)="onChange($event)"
+          ></nz-range-picker>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="dataEditSend.type!='ลาป่วย'"
+        ><div nz-col nzSpan="15">
+          <nz-range-picker
+            [nzDisabledDate]="disabledDate"
+            nzFormat="yyyy-MM-dd"
+            [(ngModel)]="date"
+            (ngModelChange)="onChange($event)"
+          ></nz-range-picker></div
+      ></ng-container>
     </div>
   </div>
 </div>
@@ -40,10 +71,30 @@
   <div nz-row>
     <div nz-col nzSpan="9">
       <span>รายละเอียดเพิ่มเติม, หมายเหตุ</span>
+      <br><br>
+      <!-- upload -->
+      <nz-upload
+        class="avatar-uploader"
+        [nzAction]="environment.apiURL+'/api/leaveWork/upload'"
+        nzName="file"
+        nzListType="picture-card"
+        [nzShowUploadList]="false"
+        [nzBeforeUpload]="beforeUpload"
+        (nzChange)="handleChange($event)"
+      >
+      
+        <ng-container *ngIf="!avatarUrl" >
+        <i class="upload-icon" nz-icon [nzType]="loading ? 'loading' : 'plus'"></i>
+        <div class="ant-upload-text">Upload</div>
+        </ng-container>
+        <img *ngIf="avatarUrl" [src]="avatarUrl" style="width: 100%" />
+      </nz-upload>
     </div>
+    <!-- ---------- -->
     <div nz-col nzSpan="15">
-      <textarea
+      <textarea style="height: 50px;"
         nz-input
+        required
         placeholder="รายละเอียดเพิ่มเติม"
         [nzAutosize]="{ minRows: 2, maxRows: 6 }"
         [(ngModel)]="dataEditSend.description"
@@ -51,9 +102,29 @@
     </div>
   </div>
 </div>
+
+
 <nz-divider></nz-divider>
 <div>
-  <button style="border-radius: 5px;"  nz-button nzType="primary" nzDanger (click)="edit(dataEditSend.id,dataEditSend)">ยืนยัน</button>
+  <button style="border-radius: 5px;"  nz-button nzType="primary" nzDanger (click)="showConfirmEdit(dataEditSend.id,dataEditSend)">ยืนยัน</button>
+  <nz-modal
+    [(nzVisible)]="isVisible"
+    nzTitle="กรุณายืนยันการแก้ไข"
+    nzOkText="ยืนยัน"
+    nzCancelText="ยกเลิก"
+    (nzOnCancel)="handleCancel()"
+    (nzOnOk)="handleOk(dataEditSend)"
+  >
+    <ng-container *nzModalContent>
+      <nz-alert
+        nzType="warning"
+        nzMessage="ประเภทการลางานของคุณ :   {{dataEditSend.type}} "
+        nzDescription="จำนวนวันลางานของคุณ :  {{dataEditSend.allday}} วัน "
+        nzShowIcon
+      >
+      </nz-alert>
+    </ng-container>
+  </nz-modal>
 
   <button class="cancelbot" nz-button nzType="default" (click)="cancel()">ยกเลิก</button>
 </div>

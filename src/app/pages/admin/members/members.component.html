@@ -28,7 +28,6 @@
         <td class="get-center">{{ item.first_name }} {{ item.last_name }}</td>
         <td class="get-center">{{ item.email }}</td>
         <td class="get-center">{{ item.position }}</td>
-        <td style="text-align: center">{{ item.max_days }}</td>
 
 
         <!-- -------------------------detail button------------------------------- -->
@@ -39,12 +38,22 @@
               <i nz-icon nzType="info-circle" nzTheme="outline"></i>
             </a>
           </button>
-          <button style="margin-right: 5px;" class="btn btn-tmt-act btn-tmt-act-ed2" (click)="open(item.id)">
+        </td>
+
+        <!-- -------------------------edit button------------------------------------ -->
+
+        <td style="padding: 5px;">
+          <button class="btn btn-tmt-act btn-tmt-act-ed2" (click)="open(item)">
             <a nz-tooltip nzTooltipTitle="แก้ไข">
               <i nz-icon nzType="edit" nzTheme="outline"></i>
             </a>
           </button>
-          <button 
+        </td>
+
+      <!-- ----------------------------delete button---------------------------------- -->
+
+        <td  style="padding: 5px;">
+          <button
             class="btn btn-tmt-act btn-tmt-act-ed"
             (click)="showDeleteConfirm(item.id)"
           >
@@ -53,8 +62,6 @@
             </a>
           </button>
         </td>
-
-        
 
       </tr>
     </tbody>
@@ -119,7 +126,7 @@
       </div>
       <div nz-col nzSpan="17">
         <nz-input-group [nzSuffix]="suffixTemplate" class="input-box">
-          <input [type]="passwordVisible ? 'text' : 'password'" nz-input placeholder="New Password"  [(ngModel)]="newData.password">
+          <input [type]="passwordVisible ? 'text' : 'password'" nz-input placeholder="New Password" required [(ngModel)]="newData.password">
         </nz-input-group>
         <ng-template #suffixTemplate>
           <i nz-icon [nzType]="passwordVisible ? 'eye-invisible' : 'eye'" (click)="passwordVisible = !passwordVisible"></i>
@@ -136,7 +143,7 @@
       </div>
       <div nz-col nzSpan="17">
         <nz-input-group [nzSuffix]="suffixTemplate" class="input-box">
-          <input [type]="passwordVisible ? 'text' : 'password'" nz-input placeholder="Confirm Password" [(ngModel)]="newData.checkpassword">
+          <input [type]="passwordVisible ? 'text' : 'password'" nz-input placeholder="Confirm Password" required [(ngModel)]="newData.checkpassword">
         </nz-input-group>
         <ng-template #suffixTemplate>
           <i nz-icon [nzType]="passwordVisible ? 'eye-invisible' : 'eye'" (click)="passwordVisible = !passwordVisible"></i>
@@ -156,16 +163,6 @@
       </div>
     </div>
     <br />
-    <div  style="margin-bottom: 15px">
-      <div nz-row>
-        <div style="padding-top: 5px" nz-col nzSpan="7">
-          <span>จำนวนวันที่ลาได้ :</span>
-        </div>
-        <div nz-col nzSpan="17">
-          <input nz-input required [(ngModel)]="newData.max_days" />
-        </div>
-      </div>
-    </div>
     <nz-divider></nz-divider>
     <div style="margin-bottom: 15px">
       <button

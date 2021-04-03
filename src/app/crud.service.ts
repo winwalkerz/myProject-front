@@ -37,7 +37,7 @@ export class CrudService {
         authorization: `Bearer ${token_json.token}`,
       },
     };
-    return this.http.put(`${url}/leavework/update/${id}`, data,_header).toPromise();
+    return this.http.put(`${url}/leavework/update/${id}`, data).toPromise();
   }
 
   editadmin(id: any,data: any ) {

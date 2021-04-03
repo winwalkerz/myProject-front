@@ -77,6 +77,7 @@ export class AddLeaveComponent implements OnInit {
     this.leaveCreate.id_user_fk = this.decode.id
     this.leaveCreate.sex = this.decode.sex
     this.getHoliday()
+    console.log(this.leaveCreate)
   }
 
   // --------------------------------confiamation add leave--------------------------------------
@@ -87,6 +88,7 @@ export class AddLeaveComponent implements OnInit {
     )
     this.isVisible = true
   }
+  
 
   handleOk (data: any): void {
     console.log('Button ok clicked!')
@@ -160,6 +162,8 @@ export class AddLeaveComponent implements OnInit {
         break
     }
   }
+
+  // -------------------------------------------------------------calculate day of leave --------------------------------------------------------------
 
   calculateBusinessDays (firstDate: any, secondDate: any) {
     // EDIT : use of startOf
