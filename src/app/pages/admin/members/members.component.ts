@@ -5,7 +5,6 @@ import { NzDrawerService } from 'ng-zorro-antd/drawer'
 import { Component, OnInit } from '@angular/core'
 import { NzModalService } from 'ng-zorro-antd/modal'
 import { NzMessageService } from 'ng-zorro-antd/message'
-
 @Component({
   selector: 'app-members',
   templateUrl: './members.component.html',
@@ -18,10 +17,11 @@ export class MembersComponent implements OnInit {
     private modal: NzModalService,
     private nzMessageService: NzMessageService // private nzDrawerRef:NzDrawerRef
   ) {}
-  showPortal = false;
+  showPortal = false
+  passs: any = []
   members: any = []
-  alert: any = [];
-  passwordVisible = false;
+  alert: any = []
+  passwordVisible = false
   model_search = {
     page: 1,
     search: ''
@@ -29,6 +29,9 @@ export class MembersComponent implements OnInit {
   memberCount = null
   typeData: any
   newData: any = []
+  encryptSecretKey =
+    '6a2da20943931e9834fc12cfe5bb47bbd9ae43489a30726962b576f4e3993e50'
+  test = '9ca1a71a91da5ca07467e8ff24cac6c6'
   ngOnInit (): void {
     this.memberList(this.model_search)
   }
@@ -54,7 +57,8 @@ export class MembersComponent implements OnInit {
     this.users.memberList(this.model_search).then((res: any) => {
       this.members = res.data
       this.memberCount = res.count
-      // console.log('member : ', this.members);
+      this.passs = res.password
+      console.log('member : ', this.passs)
       // console.log('member : ', this.members);
     })
   }
@@ -62,32 +66,6 @@ export class MembersComponent implements OnInit {
     this.model_search.page = $event
     this.memberList(this.model_search)
   }
-
-  //เอาข้อมูลมาเปลี่ยนก่อนส่งไป edit
-  // reData(data: any) {
-  //   this.newData = { ...data };
-  //   console.log(this.newData)
-  //   this.open(this.newData);
-  // }
-
-  //edit users
-  // editUsers() {
-  // const drawRefEdit = this.nzdrawerservice.create<
-  //   UserEditorComponent,
-  //   { edits: any }
-  // >({
-  //   nzTitle: 'แก้ไข User',
-  //   nzContent: UserEditorComponent,
-  //   nzWidth: '65%',
-  //   nzCloseOnNavigation: true,
-  //   nzContentParams: {
-  //     edits: this.newData,
-  //   },
-  // });
-  // drawRefEdit.afterClose.subscribe(() => {
-  //   this.memberList(this.model_search);
-  // });
-  // }
 
   showDeleteConfirm (id: any): void {
     this.modal
@@ -115,14 +93,10 @@ export class MembersComponent implements OnInit {
   visible = false
 
   open (item: any) {
-    var decode:any
-    this.visible = true
     this.newData = { ...item }
-    var token = localStorage.getItem('token') //สร้างตัวแปลมาเก็บ token ที่มาจาก storage
-    decode = jwt_decode(token || '')
-    // this.newData.password = decode.password
-    console.log(decode.password)
-    console.log(this.newData)
+    // this.newData.password = this.decryptData(this.newData.password)
+    console.log(this.newData.password)
+    this.visible = true
   }
 
   showEditConfirm (id: any, data: any): void {
@@ -141,20 +115,20 @@ export class MembersComponent implements OnInit {
         this.memberList(this.model_search)
       })
   }
-   editfunc(id: any, data: any) {
+  editfunc (id: any, data: any) {
     this.users
       .editUser(id, data)
       .then(() => {
-        this.visible = false;
-        this.memberList(this.model_search);
-        this.nzMessageService.success('แก้ไขสำเร็จ');
+        this.visible = false
+        this.memberList(this.model_search)
+        this.nzMessageService.success('แก้ไขสำเร็จ')
       })
-      .catch((err) => {
+      .catch(err => {
         this.alert = err
-        this.nzMessageService.error(err.error.message);
+        this.nzMessageService.error(err.error.message)
         this.visible = true
-        console.log(this.alert);
-      });
+        console.log(this.alert)
+      })
   }
 
   closeEdit () {
@@ -162,7 +136,9 @@ export class MembersComponent implements OnInit {
   }
 
   // ------------------------------------------------------------------open Detail function ----------------------------------------------
-  openDetail() {
-    var myWindow = window.open("","","width=1150px,height=750px");
-}
+  openDetail (id: any) {
+    window.open(`/admin/member-details/${id}`)
+  }
+
+
 }
