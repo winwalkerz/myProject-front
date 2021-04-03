@@ -1,1 +1,14 @@
-<p>member-details works!</p>
+<div nz-row *ngFor="let item of data">
+  <div nz-col nzSpan="7">
+    <img
+      nz-image
+      width="200px"
+      height="200px"
+      nzSrc="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+      alt=""
+    />
+  </div>
+  <div nz-col nzSpan="17">
+    <p>{{item.first_name}} {{item.last_name}}</p>
+  </div>
+</div>

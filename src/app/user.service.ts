@@ -27,7 +27,7 @@ export class UserService {
         authorization: `Bearer ${token_json.token}`,
       },
     };
-    return this._http.post(`${api_url}/users/searchid/${id}`, _header).toPromise();
+    return this._http.get(`${api_url}/users/searchid/${id}`,_header).toPromise();
   }
   getAlluser(data: any) {
     let token = localStorage.getItem('token');
