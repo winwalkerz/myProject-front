@@ -117,7 +117,35 @@
     </div>
     <br />
 
+    <div nz-row>
+      <div style="padding-top: 5px" nz-col nzSpan="7" nzAlign="middle">
+        <span>Gender :</span>
+      </div>
+      <div nz-col nzSpan="17">
+        <nz-radio-group  ngDefaultControl [(ngModel)]="newData.sex">
+          <label nz-radio nzValue="male">male</label>
+          <label nz-radio nzValue="female">female</label>
+        </nz-radio-group>
+      </div>
+    </div>
+    <br />
+
+    <div nz-row>
+      <div style="padding-top: 5px" nz-col nzSpan="7" nzAlign="middle">
+        <span>Position :</span>
+      </div>
+      <div nz-col nzSpan="17">
+        <input nz-input required [(ngModel)]="newData.position" />
+      </div>
+    </div>
+    <br />
+    <nz-divider></nz-divider>
+ 
+
     <!-- ---------------------------------------------------------password---------------------------- -->
+
+    <p style="color: red;">กรอกเมื่อต้องการเปลี่ยน Password</p>
+
     <div nz-row>
       <div  style="padding-top: 5px" nz-col nzSpan="7">
         <div>
@@ -126,7 +154,7 @@
       </div>
       <div nz-col nzSpan="17">
         <nz-input-group [nzSuffix]="suffixTemplate" class="input-box">
-          <input [type]="passwordVisible ? 'text' : 'password'" nz-input placeholder="New Password" required [(ngModel)]="newData.password">
+          <input [type]="passwordVisible ? 'text' : 'password'" nz-input placeholder="New Password" required [(ngModel)]="newData.newpassword">
         </nz-input-group>
         <ng-template #suffixTemplate>
           <i nz-icon [nzType]="passwordVisible ? 'eye-invisible' : 'eye'" (click)="passwordVisible = !passwordVisible"></i>
@@ -143,27 +171,18 @@
       </div>
       <div nz-col nzSpan="17">
         <nz-input-group [nzSuffix]="suffixTemplate" class="input-box">
-          <input [type]="passwordVisible ? 'text' : 'password'" nz-input placeholder="Confirm Password" required [(ngModel)]="newData.checkpassword">
+          <input [type]="passwordVisible ? 'text' : 'password'" nz-input placeholder="Confirm Password" required [(ngModel)]="newData.checkpassword" >
         </nz-input-group>
         <ng-template #suffixTemplate>
           <i nz-icon [nzType]="passwordVisible ? 'eye-invisible' : 'eye'" (click)="passwordVisible = !passwordVisible"></i>
         </ng-template>
       </div>
     </div>
-    <br />
     
-    <!-- ---------------------------------------------------------password---------------------------- -->
-
-    <div nz-row>
-      <div style="padding-top: 5px" nz-col nzSpan="7" nzAlign="middle">
-        <span>Position :</span>
-      </div>
-      <div nz-col nzSpan="17">
-        <input nz-input required [(ngModel)]="newData.position" />
-      </div>
-    </div>
-    <br />
+    <!-- ------------------------------------------------------------------------------------------------------------------------------- -->
+    
     <nz-divider></nz-divider>
+    
     <div style="margin-bottom: 15px">
       <button
         nz-button
