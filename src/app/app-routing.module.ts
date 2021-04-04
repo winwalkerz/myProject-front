@@ -34,6 +34,7 @@ const routes: Routes = [
   { path: 'overview', loadChildren: () => import('./pages/admin/overview/overview.module').then(m => m.OverviewModule) },
   { path: 'members', loadChildren: () => import('./pages/admin/members/members.module').then(m => m.MembersModule) },
   { path: 'manage-vacation', loadChildren: () => import('./pages/admin/manage-vacation/manage-vacation.module').then(m => m.ManageVacationModule) },
+  { path: 'member-details', loadChildren: () => import('./pages/admin/member-details/member-details.module').then(m => m.MemberDetailsModule) },
   
 ];
 

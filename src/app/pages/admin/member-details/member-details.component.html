@@ -1,0 +1,33 @@
+
+<div nz-row *ngFor="let item of data">
+    <div nz-col nzSpan="3" style="text-align: center;">
+      <img
+        nz-image
+        width="200px"
+        height="200px"
+        nzSrc="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+        alt=""
+      />
+    </div>
+    <div nz-col nzSpan="0.5">
+     <nz-divider  nzType="vertical" style="height: 600px;"></nz-divider>
+    </div>
+    
+    <div class="headcount" nz-col nzSpan="20">
+      <div nz-row>
+        <div nz-col nzSpan="5">
+          <br>  
+          <p class="headtext">Name - Surname :</p>
+          <nz-divider></nz-divider>
+          <p class="headtext">Position :</p>
+        </div>
+        <div nz-col nzSpan ="19">
+          <br>
+          <p class="infotext">{{item.first_name}} {{item.last_name}}</p>
+          <nz-divider></nz-divider>
+          <p class="infotext">{{item.position}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+ 

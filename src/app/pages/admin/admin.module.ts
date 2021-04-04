@@ -15,11 +15,11 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
-import { UsersListModule } from './users-list/users-list.module'
+import { UsersListModule } from './users-list/users-list.module';
 
 
 @NgModule({
-  declarations: [AdminComponent],
+  declarations: [AdminComponent, ],
   imports: [
     CommonModule,
     AdminRoutingModule,
@@ -35,7 +35,8 @@ import { UsersListModule } from './users-list/users-list.module'
     NzAvatarModule,
     NzDropDownModule,
     UsersListModule,
-    NzToolTipModule
+    NzToolTipModule,
+    
 
   ]
 })

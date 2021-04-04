@@ -1,0 +1,22 @@
+.headtext{
+   color: black;
+}
+
+.infotext{
+  color: black;
+}
+
+.headcount{
+    border: 1px solid #DCDCDC;
+    background-color: #FFFAF0;
+    margin: 0;
+    padding: 0px 15px 0px 37px;
+    color: rgba(0,0,0,.65);
+    font-size: 15px;
+    font-variant: tabular-nums;
+    line-height: 1.5;
+    list-style: none;
+    font-feature-settings: 'tnum';
+    position: relative;
+    border-radius: 4px;
+  }
