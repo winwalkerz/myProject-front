@@ -8,6 +8,18 @@ export class CrudService {
   constructor(
     private http: HttpClient // Inject HttpClient มาใช้ใน component หรือ service.
   ) {}
+  getLeaveAllByID(id:any) {
+    let token = localStorage.getItem('token');
+    let token_json = JSON.parse(token || '{}');
+
+    let _header = {
+      headers: {
+        authorization: `Bearer ${token_json.token}`,
+      },
+    };
+    // console.log(_header);
+    return this.http.post(`${url}/leavework/searchbyid${id}`, _header).toPromise();
+  }
  
   refresh() {
     return this.http.get(`${url}/users/search`).toPromise();

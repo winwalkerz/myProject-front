@@ -7,59 +7,82 @@
       <span>{{ dataDetailSendAfter.id }}</span>
     </div>
     <nz-divider></nz-divider>
-    <br><br>
+    <br /><br />
 
     <div nz-col nzSpan="12">
       <span>ชื่อ-นามสกุล :</span>
     </div>
     <div nz-col nzSpan="12">
       <span
-        >{{ dataDetailSendAfter.first_name }}
-        {{ dataDetailSendAfter.last_name }}</span>
+        >{{ dataDetailSendAfter.first_name }} {{ dataDetailSendAfter.last_name
+        }}</span
+      >
     </div>
     <nz-divider></nz-divider>
-    <br><br>
+    <br /><br />
 
     <div nz-col nzSpan="12">
       <span>วันที่ต้องการลา :</span>
     </div>
     <div nz-col nzSpan="12">
-      <nz-tag [nzColor]="'magenta'"> <span>{{ dataDetailSendAfter.date_start  | date: 'shortDate'}}</span> -</nz-tag>
-      <nz-tag [nzColor]="'magenta'"><span>{{ dataDetailSendAfter.date_end  | date: 'shortDate'}}</span></nz-tag>
+      <nz-tag [nzColor]="'magenta'">
+        <span
+          >{{ dataDetailSendAfter.date_start | date: 'shortDate'}}</span
+        ></nz-tag
+      >-
+      <nz-tag [nzColor]="'magenta'"
+        ><span
+          >{{ dataDetailSendAfter.date_end | date: 'shortDate'}}</span
+        ></nz-tag
+      >
     </div>
     <nz-divider></nz-divider>
-    <br><br>
+    <br /><br />
 
     <div nz-col nzSpan="12">
       <span>ประเภทการลา :</span>
     </div>
-    <span>{{ dataDetailSendAfter.type }}</span>
+    <div nz-col nzSpan="4">
+      <span>{{ dataDetailSendAfter.type }}</span>
+    </div>
+    <div nz-col nzSpan="8">
+      <ng-container [ngSwitch]="dataDetailSendAfter.type">
+        <nz-tag [nzColor]="'magenta'" *ngSwitchCase="'ลากิจ'"><span>มีการลาประเภทนี้แล้วทั้งหมด {{ sumLeave[0]}} วัน</span></nz-tag>
+        <nz-tag [nzColor]="'magenta'" *ngSwitchCase="'ลาป่วย'"><span>มีการลาประเภทนี้แล้วทั้งหมด {{ sumLeave[1]}} วัน</span></nz-tag>
+        <nz-tag [nzColor]="'magenta'" *ngSwitchCase="'ลาทำหมัน'"><span>มีการลาประเภทนี้แล้วทั้งหมด {{ sumLeave[2]}} วัน</span></nz-tag>
+        <nz-tag [nzColor]="'magenta'" *ngSwitchCase="'ลาฝึกอบรม'"><span>มีการลาประเภทนี้แล้วทั้งหมด {{ sumLeave[3]}} วัน</span></nz-tag>
+        <nz-tag [nzColor]="'magenta'" *ngSwitchCase="'ลารับราชการทหาร'"><span>มีการลาประเภทนี้แล้วทั้งหมด {{ sumLeave[4]}} วัน</span></nz-tag>
+        <nz-tag [nzColor]="'magenta'" *ngSwitchCase="'ลาคลอดบุตร'"><span>มีการลาประเภทนี้แล้วทั้งหมด {{ sumLeave[5]}} วัน</span></nz-tag>
+        <nz-tag [nzColor]="'magenta'" *ngSwitchCase="'ลาหยุดพักผ่อนประจำปี'"><span>มีการลาประเภทนี้แล้วทั้งหมด {{ sumLeave[6]}} วัน</span></nz-tag>
+      </ng-container>
+    </div>
+
     <nz-divider></nz-divider>
-    <br><br>
+    <br /><br />
 
     <div nz-col nzSpan="12">
       <span>จำนวนวัน :</span>
     </div>
     <span>{{dataDetailSendAfter.allday}}</span>
     <nz-divider></nz-divider>
-    <br><br>
+    <br /><br />
 
     <div nz-col nzSpan="12">
       <span>สิ่งที่แนบมา :</span>
     </div>
     <div nz-col nzSpan="12">
       <div *ngIf="dataDetailSendAfter?.file">
-      <img
-      nz-image
-      width="25px"
-      height="25px"
-      nzSrc="{{ dataDetailSendAfter.file }}"
-      alt=""
-    />
+        <img
+          nz-image
+          width="25px"
+          height="25px"
+          nzSrc="{{ dataDetailSendAfter.file }}"
+          alt=""
+        />
+      </div>
     </div>
-  </div>
-  <nz-divider></nz-divider>
-    <br><br>
+    <nz-divider></nz-divider>
+    <br /><br />
 
     <div nz-col nzSpan="12">
       <span>หมายเหตุ, รายละเอียด :</span>
@@ -68,7 +91,7 @@
       <span>{{ dataDetailSendAfter.description }}</span>
     </div>
     <nz-divider></nz-divider>
-    <br><br>
+    <br /><br />
     <!-- --------------------------------------------------Select------------------------------------------------------ -->
     <div>
       <nz-select
@@ -82,7 +105,6 @@
     </div>
     <nz-divider></nz-divider>
 
-
     <!-- ----------------------------------------------------button--------------------------------------------- -->
     <div style="margin-left: 20px;">
       <button
@@ -94,7 +116,9 @@
       </button>
     </div>
     <div style="margin-left: 20px;">
-      <button nz-button nzType="primary" nzDanger (click)="closeEdit()">ยกเลิก</button>
+      <button nz-button nzType="primary" nzDanger (click)="closeEdit()">
+        ยกเลิก
+      </button>
     </div>
   </div>
 </div>

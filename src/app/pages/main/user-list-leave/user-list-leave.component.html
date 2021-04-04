@@ -2,72 +2,106 @@
   <!-- calender and addleave button --------------------------------------------------- -->
 
   <div nz-row nzJustify="end" class="headingcontent">
-    <div nz-col nzSpan="18" nzPull="270px">
+    <div nz-col nzSpan="7" nzPull="270px">
       <h2>รายการลาทั้งหมดของคุณ</h2>
     </div>
-
-    <div nz-col nzSpan="3">
-      <button class="calenbot" nz-button nzSize="large" (click)="goCalender()">
-        <i
-          nz-icon
-          nzType="calendar"
-          style="position: absolute; left: 8px; bottom: 10px"
-          nzTheme="outline"
-        ></i>
-        <span style="position: absolute; right: 7px; bottom: 5px"
-          >Calendar</span
-        >
-      </button>
-    </div>
-
-    <div nz-col nzSpan="3">
+    <ng-template #contentTemplate>
+      <ng-container *ngIf="decode.sex =='male'">
+        <div class="headcount">
+          <div class="gridcount">
+            <span>ลาหยุดพักผ่อนประจำปี : </span>
+            <span style="color: red;">{{sumLeave[6]}}</span>
+            <span> วัน</span>
+          </div>
+          <div class="gridcount">
+            <span>ลากิจ : </span>
+            <span style="color: red;">{{sumLeave[0]}}</span>
+            <span> วัน</span>
+          </div>
+          <div class="gridcount">
+            <span>ลาป่วย : </span>
+            <span style="color: red;">{{sumLeave[1]}}</span>
+            <span> วัน</span>
+          </div>
+          <div class="gridcount">
+            <span>ลาทำหมัน : </span>
+            <span style="color: red;">{{sumLeave[2]}}</span>
+            <span> วัน</span>
+          </div>
+          <div class="gridcount">
+            <span>ลาฝึกอบรม : </span>
+            <span style="color: red;">{{sumLeave[3]}}</span>
+            <span> วัน</span>
+          </div>
+          <div class="gridcount">
+            <span>ลารับราชการทหาร : </span>
+            <span style="color: red;">{{sumLeave[4]}}</span>
+            <span> วัน</span>
+          </div>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="decode.sex =='female'">
+        <div class="headcount">
+          <div class="gridcount">
+            <span>ลาหยุดพักผ่อนประจำปี : </span>
+            <span style="color: red;">{{sumLeave[6]}}</span>
+            <span> วัน</span>
+          </div>
+          <div class="gridcount">
+            <span>ลากิจ : </span>
+            <span style="color: red;">{{sumLeave[0]}}</span>
+            <span> วัน</span>
+          </div>
+          <div class="gridcount">
+            <span>ลาป่วย : </span>
+            <span style="color: red;">{{sumLeave[1]}}</span>
+            <span> วัน</span>
+          </div>
+          <div class="gridcount">
+            <span>ลาทำหมัน : </span>
+            <span style="color: red;">{{sumLeave[2]}}</span>
+            <span> วัน</span>
+          </div>
+          <div class="gridcount">
+            <span>ลาฝึกอบรม : </span>
+            <span style="color: red;">{{sumLeave[3]}}</span>
+            <span> วัน</span>
+          </div>
+          <div class="gridcount">
+            <span>ลาคลอดบุตร : </span>
+            <span style="color: red;">{{sumLeave[5]}}</span>
+            <span> วัน</span>
+          </div>
+        </div>
+      </ng-container>
+    </ng-template>
+    <div nz-col nzSpan="7" nzOffset="10">
       <button
-        class="btn-tmt-primary btn-tmt-primary-ed"
-        nz-button=""
+        class="bts"
+        nz-button
+        nzSize="large"
+        nz-popover
+        nzPopoverTitle="จำนวนวันลาแต่ละประเภท"
+        [nzPopoverContent]="contentTemplate"
+        nzPopoverTrigger="hover"
+        nzPopoverPlacement="left"
+      >
+        <span>ตรวจสอบจำนวนวัน</span></button
+      ><button nz-button nzSize="large" (click)="goCalender()" class="bts">
+        <span>Calendar</span></button
+      ><button
+        class="bts"
+        nzDanger
+        nzSize="large"
+        nz-button
         nztype="primary"
         (click)="addLeave()"
       >
-        <i nz-icon nzType="plus-circle" class="position-botton"></i>
         <span>ทำรายการลา</span>
       </button>
     </div>
   </div>
-  <!-- <h5>จำนวนวันที่คุณลาได้ทั้งหมด :<span class="numcount">  12</span></h5>
-  <h5>จำนวนวันที่คุณได้ทำการลาเเล้ว :<span class="numcount">  12</span></h5> -->
-  <!-- --------------------------------------จำนวนวะนลา ลาไปเเเล้ว ----------------------------- -->
-
-  <div nz-row class="headcount">
-    <div class="gridcount" nz-col nzSpan="6">
-      <p style="width: 250px;">
-        จำนวนวันที่คุณสามารถลาได้ที่เหลือ :<span class="numcount">
-          {{ lastallcount }}</span
-        >
-      </p>
-    </div>
-
-    <div class="gridcount" nz-col nzSpan="6">
-      <p>
-        จำนวนวันที่คุณได้ลาไปแล้วทั้งหมด :<span class="numcount">
-          {{ allcount }}</span
-        >
-      </p>
-    </div>
-
-    <div nz-col nzSpan="14"></div>
-  </div>
   <br />
-
-  <!-- filter content ------------------------------------------------------------------------------ -->
-  <!-- <div nz-row class="heading">
-    <div nz-col nzSpan="12">
-       <h5>จำนวนวันที่คุณลาได้ทั้งหมด :<span class="numcount">  12</span></h5>
-    </div>
-    <div nz-col nzSpan="12">
-      <h5>จำนวนวันที่คุณได้ทำการลาเเล้ว :<span class="numcount">  12</span></h5>
-    </div>
-  </div>
-  <br> -->
-
   <!----------------------------- table ------------------------------------------------------------ -->
 
   <div nz-row>
@@ -97,17 +131,17 @@
         <tr *ngFor="let value of listorder">
           <td style="text-align: center">{{ value.id }}</td>
           <td style="text-align: center">
-            <nz-tag [nzColor]="'magenta'">{{
-              value.created_at | date: "short"
-            }}</nz-tag>
+            <nz-tag [nzColor]="'magenta'"
+              >{{ value.created_at | date: "short" }}</nz-tag
+            >
           </td>
           <td style="text-align: center">
             <nz-tag [nzColor]="'gold'"
               >{{ value.date_start | date: "shortDate" }} </nz-tag
             >-
-            <nz-tag [nzColor]="'gold'">{{
-              value.date_end | date: "shortDate"
-            }}</nz-tag>
+            <nz-tag [nzColor]="'gold'"
+              >{{ value.date_end | date: "shortDate" }}</nz-tag
+            >
           </td>
           <td style="text-align: center">
             <div class="row">
@@ -186,11 +220,7 @@
                 (click)="reData(value)"
               >
                 <a nz-tooltip nzTooltipTitle="แก้ไข">
-                  <i
-                    nz-icon
-                    nzType="edit"
-                    nzTheme="outline"
-                  ></i>
+                  <i nz-icon nzType="edit" nzTheme="outline"></i>
                 </a>
               </button>
             </ng-container>
@@ -201,13 +231,8 @@
                 (click)="createMessage('warning')"
               >
                 <a nz-tooltip nzTooltipTitle="แก้ไข">
-                  <i
-                    nz-icon
-                    nzType="edit"
-                    nzTheme="outline"
-                  ></i>
+                  <i nz-icon nzType="edit" nzTheme="outline"></i>
                 </a>
-                
               </button>
             </ng-container>
           </td>
@@ -224,7 +249,6 @@
             </ng-container>
             <ng-container *ngIf="value.check=='1'"
               ><button
-                
                 class="btn btn-tmt-act btn-tmt-act-ed"
                 (click)="createMessage2('error')"
               >
@@ -237,11 +261,11 @@
         </tr>
       </tbody>
     </nz-table>
-</div>
-<br>
-<nz-pagination
-      [nzPageIndex]="1"
-      [nzTotal]="count"
-      (nzPageIndexChange)="click($event)"
-    ></nz-pagination>
   </div>
+  <br />
+  <nz-pagination
+    [nzPageIndex]="1"
+    [nzTotal]="count"
+    (nzPageIndexChange)="click($event)"
+  ></nz-pagination>
+</div>
