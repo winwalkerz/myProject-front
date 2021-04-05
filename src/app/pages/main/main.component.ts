@@ -31,6 +31,7 @@ export class MainComponent implements OnInit {
     console.log(this.decode.first_name)
   }
   logout () {
+    localStorage.clear();
     this.router.navigate(['login'])
   }
 }

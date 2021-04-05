@@ -20,7 +20,7 @@ import { NzImageModule } from 'ng-zorro-antd/image';
 import { NzMessageModule } from 'ng-zorro-antd/message';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
-
+import { NzPopoverModule } from 'ng-zorro-antd/popover';
 
 @NgModule({
   declarations: [UserListLeaveComponent],
@@ -45,7 +45,8 @@ import { NzAlertModule } from 'ng-zorro-antd/alert';
     NzMessageModule,
     NzPopconfirmModule,
     NzAlertModule,
-    NzPaginationModule
+    NzPaginationModule,
+    NzPopoverModule
   ]
 })
 export class UserListLeaveModule { }

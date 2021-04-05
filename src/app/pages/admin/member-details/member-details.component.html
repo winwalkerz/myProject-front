@@ -1,33 +1,237 @@
 
 <div nz-row *ngFor="let item of data">
-    <div nz-col nzSpan="3" style="text-align: center;">
-      <img
+    <div class="leavdeatailboder" nz-col nzSpan="5" >
+      <br>
+      <div style="text-align: center;">
+      <img style="border-radius: 5px;"
         nz-image
         width="200px"
         height="200px"
-        nzSrc="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+        nzSrc="../../assets/default-user-image.png"
         alt=""
       />
+     
     </div>
+    <br>
+    <div style="text-align: center;"><h4>ข้อมูลการลาของพนักงาน</h4></div>
+    <nz-divider></nz-divider>
+    
+      <!-- -------------------------leave detail--------------- -->
+      <ng-container [ngSwitch]="item.sex">
+        <div  nz-row *ngSwitchCase="'male'">
+          <div  nz-col nzSpan="18">
+            <p>ลากิจ: <p>
+            <p>ลาป่วย : </p>
+            <p>ลาทำหมัน : </p>
+            <p>ลาฝึกอบรม : </p>
+            <p>ลารับราชการทหาร : </p>
+            <p>ลาหยุดพักผ่อนประจำปี : </p>
+            <nz-divider></nz-divider>
+           </div>
+           <div nz-col nzSpan="3">
+            <p class="infotext">{{leaveDetail.sumHoliday[0]}}</p>
+            <p class="infotext"> {{leaveDetail.sumHoliday[1]}}</p>
+            <p class="infotext">{{leaveDetail.sumHoliday[2]}}</p>
+            <p class="infotext"> {{leaveDetail.sumHoliday[3]}}</p>
+            <p class="infotext">{{leaveDetail.sumHoliday[4]}}</p>
+            <p class="infotext">{{leaveDetail.sumHoliday[6]}}</p>
+            <nz-divider></nz-divider>
+           </div>
+           <div nz-col nzSpan="3">
+            <p>วัน</p>
+            <p>วัน</p>
+            <p>วัน</p>
+            <p>วัน</p>
+            <p>วัน</p>
+            <p>วัน</p>
+            <nz-divider></nz-divider>
+           </div>
+        </div>
+        
+        <div nz-row *ngSwitchCase="'female'">
+          <div  nz-col nzSpan="18">
+            <p>ลากิจ: <p>
+            <p>ลาป่วย : </p>
+            <p>ลาทำหมัน : </p>
+            <p>ลาฝึกอบรม : </p>
+            <p>ลาคลอดบุตร : </p>
+            <p>ลาหยุดพักผ่อนประจำปี : </p>
+            <nz-divider></nz-divider>
+           </div>
+           <div nz-col nzSpan="3">
+            <p class="infotext">{{leaveDetail.sumHoliday[0]}}</p>
+            <p class="infotext"> {{leaveDetail.sumHoliday[1]}}</p>
+            <p class="infotext">{{leaveDetail.sumHoliday[2]}}</p>
+            <p class="infotext"> {{leaveDetail.sumHoliday[3]}}</p>
+            <p class="infotext">{{leaveDetail.sumHoliday[5]}}</p>
+            <p class="infotext">{{leaveDetail.sumHoliday[6]}}</p>
+            <nz-divider></nz-divider>
+           </div>
+           <div nz-col nzSpan="3">
+            <p>วัน</p>
+            <p>วัน</p>
+            <p>วัน</p>
+            <p>วัน</p>
+            <p>วัน</p>
+            <p>วัน</p>
+            <nz-divider></nz-divider>
+           </div>
+        </div>
+        </ng-container>
+      </div>
+
+
+
+
+      <!-- -------------------------head info--------------- -->
+
     <div nz-col nzSpan="0.5">
-     <nz-divider  nzType="vertical" style="height: 600px;"></nz-divider>
+     <nz-divider  nzType="vertical" style="height: 800px;"></nz-divider>
     </div>
     
-    <div class="headcount" nz-col nzSpan="20">
+    <div class="headcount" nz-col nzSpan="18">
       <div nz-row>
         <div nz-col nzSpan="5">
           <br>  
           <p class="headtext">Name - Surname :</p>
-          <nz-divider></nz-divider>
           <p class="headtext">Position :</p>
+          <p class="headtext">Gender :</p>
+          <nz-divider></nz-divider>
         </div>
         <div nz-col nzSpan ="19">
           <br>
-          <p class="infotext">{{item.first_name}} {{item.last_name}}</p>
+          <p class="subheadtext">{{item.first_name}} {{item.last_name}}</p>
+          <p class="subheadtext">{{item.position}}</p>
+          <p class="subheadtext">{{item.sex}}</p>
           <nz-divider></nz-divider>
-          <p class="infotext">{{item.position}}</p>
         </div>
       </div>
+
+
+<!-- -----------------------------------------------------table-------------------------------------------------------------------------------- -->
+<div><h5>รายละเอียดการลาของพนักงาน</h5></div>
+      <div class="headcount2">
+        <nz-table [nzData]="listorder" nzShowPagination="false">
+          <thead>
+            <tr style="width: 100%">
+              <th style="width: 40px; text-align: center">ID</th>
+              <th style="width: 200px; text-align: center">วันที่ยื่นคำร้อง</th>
+              <th
+                style="width: 400px;text-align: center;"
+                nz-tooltip
+                nzTooltipTitle="เดือน/วัน/ปี"
+                nzTooltipPlacement="top"
+              >
+                วันที่ต้องการลา
+              </th>
+              <th style="width: 150px; text-align: center">จำนวนวัน</th>
+              <th style="width: 220px; text-align: center">Description</th>
+              <th style="width: 200px; text-align: center">สิ่งที่แนบมา</th>
+              <th style="width: 270px; text-align: center">ประเภทการลา</th>
+              <th style="width: 100px; text-align: center">สถานะ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let value of listorder">
+              <td style="text-align: center">{{ value.id }}</td>
+              <td style="text-align: center">
+                <nz-tag [nzColor]="'magenta'">{{
+                  value.created_at | date: "short"
+                }}</nz-tag>
+              </td>
+              <td style="text-align: center">
+                <nz-tag [nzColor]="'gold'"
+                  >{{ value.date_start | date: "shortDate" }} </nz-tag
+                >-
+                <nz-tag [nzColor]="'gold'">{{
+                  value.date_end | date: "shortDate"
+                }}</nz-tag>
+              </td>
+              <td style="text-align: center">
+                <div class="row">
+                  <p style="margin-top: 15px">{{ value.allday }} วัน</p>
+                </div>
+              </td>
+              <td style="text-align: center;">{{ value.description }}</td>
+              <td style="text-align: center;">
+                <div *ngIf="value?.file">
+                  <img
+                    nz-image
+                    width="25px"
+                    height="25px"
+                    nzSrc="{{ value.file }}"
+                    alt=""
+                  />
+                </div>
+              </td>
+    
+              <!-- type ------------------------------------------------------->
+              <td style="text-align: center">{{ value.type }}</td>
+    
+              <!-- <td >
+              <div *ngIf="value.type == 'ลากิจ'">
+                <span class="type_business">{{value.type}}</span>
+              </div>
+              <div *ngIf="value.type == 'ลาป่วย'">
+                <span class="type_medic">{{value.type}}</span>
+              </div>
+              <div *ngIf="value.type == 'ลาพักร้อน'">
+                <span class="type_summer">{{value.type}}</span>
+              </div>
+              </td> -->
+    
+              <!-- status ---------------------------------------------------->
+              <td style="text-align: center">
+                <div
+                  *ngIf="value.status_name == 'wait'"
+                  nz-tooltip
+                  nzTooltipTitle="wait"
+                  nzTooltipPlacement="top"
+                >
+                  <i nz-icon nzType="clock-circle" nzTheme="outline"></i>
+                </div>
+                <div
+                  *ngIf="value.status_name == 'approve'"
+                  nz-tooltip
+                  nzTooltipTitle="approve"
+                  nzTooltipPlacement="top"
+                >
+                  <i
+                    nz-icon
+                    [nzType]="'check-circle'"
+                    [nzTheme]="'twotone'"
+                    [nzTwotoneColor]="'#52c41a'"
+                  ></i>
+                </div>
+                <div
+                  *ngIf="value.status_name == 'cancel'"
+                  nz-tooltip
+                  nzTooltipTitle="cancel"
+                  nzTooltipPlacement="top"
+                >
+                  <img
+                    src="../../../../assets/cancel.jpg"
+                    alt=""
+                    style="width: 15px"
+                  />
+                </div>
+              </td>
+             
+              
+            </tr>
+          </tbody>
+        </nz-table>
+      </div>
+      <br>
+<nz-pagination
+      [nzPageIndex]="1"
+      [nzTotal]="count"
+      (nzPageIndexChange)="click($event)"
+    ></nz-pagination>
+    <br>
+<!-- ----------------------------------------------------------table--------------------------------------------------------------- -->
     </div>
   </div>
+
+
  

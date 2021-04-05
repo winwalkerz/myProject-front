@@ -2,21 +2,55 @@
    color: black;
 }
 
+.subheadtext{
+  color: gray;
+}
+
 .infotext{
-  color: black;
+  color: red;
 }
 
 .headcount{
-    border: 1px solid #DCDCDC;
-    background-color: #FFFAF0;
-    margin: 0;
-    padding: 0px 15px 0px 37px;
-    color: rgba(0,0,0,.65);
-    font-size: 15px;
-    font-variant: tabular-nums;
-    line-height: 1.5;
-    list-style: none;
-    font-feature-settings: 'tnum';
-    position: relative;
-    border-radius: 4px;
+  border: 1px solid #91d5ff;
+  background-color: #e6f7ff;
+  margin: 0;
+  padding: 0px 15px 0px 37px;
+  color: rgba(0,0,0,.65);
+  font-size: 15px;
+  font-variant: tabular-nums;
+  line-height: 1.5;
+  list-style: none;
+  font-feature-settings: 'tnum';
+  position: relative;
+  border-radius: 4px;
   }
+
+  .headcount2{
+    border: 1px solid #91d5ff;
+  background-color: #e6f7ff;
+  margin: 0;
+  
+  color: rgba(0,0,0,.65);
+  font-size: 15px;
+  font-variant: tabular-nums;
+  line-height: 1.5;
+  list-style: none;
+  font-feature-settings: 'tnum';
+  position: relative;
+  border-radius: 4px;
+  }
+
+.leavdeatailboder{
+  border: 1px solid #91d5ff;
+  background-color: #e6f7ff;
+  margin: 0;
+  padding: 0px 7px 0px 10px;
+  color: rgba(0,0,0,.65);
+  font-size: 15px;
+  font-variant: tabular-nums;
+  line-height: 1.5;
+  list-style: none;
+  font-feature-settings: 'tnum';
+  position: relative;
+  border-radius: 4px;
+}

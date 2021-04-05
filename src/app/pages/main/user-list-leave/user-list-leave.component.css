@@ -47,6 +47,7 @@ background-color: #214d72;
   min-height: 630px;
   margin-top: 15px;
   border-radius: 10px;
+  height: 850px;
 }
 
 nz-footer {
@@ -180,7 +181,7 @@ nz-avatar {
   color: white;
   background-color: #e85440;
   border-color: #e85440;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
   border-radius: 5px;
   height: 39px;
   width: 111px;
@@ -192,29 +193,22 @@ nz-avatar {
   color: white;
   background-color: #ff8181;
   border-color: #ff8181;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
   border-radius: 5px;
-  height: 38px;
+  height: 39px;
 }
 
 
 
 /* calendar button on head */
 
-.calenbot {
-  height: 39px;
-  width: 115px;
-  border-radius: 5px;
+.bts {
+  margin-right: 5px;
+}
+.setIcon {
+  margin-bottom: 20px;
   
 }
-
-/* icon-in-button */
-.position-botton {
-  position: absolute;
-  bottom: 12px;
-  left: 5px;
-}
-
 
 
 .numcount {
@@ -251,7 +245,6 @@ nz-avatar {
     box-sizing: border-box;
     text-align: center!important;
 }
-
 .type_medic{
   color: #3d79bd;
     border: 1px solid #3d79bd;
@@ -263,7 +256,6 @@ nz-avatar {
     text-align: center!important;
     
 }
-
 .type_summer{
   color: #e91527;
   border: 1px solid #e91527;

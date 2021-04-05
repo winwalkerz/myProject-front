@@ -71,4 +71,19 @@ export class CrudService {
     };
     return this.http.get(`${url}/leavework/searchdata/${id}`,_header).toPromise();
   }
+
+// show in table
+  getLeaveAllByID(id:any, data:any) {
+    let token = localStorage.getItem('token');
+    let token_json = JSON.parse(token || '{}');
+
+    let _header = {
+      headers: {
+        authorization: `Bearer ${token_json}`,
+      },
+    };
+    // console.log(_header);
+    return this.http.post(`${url}/leavework/searchbyid/${id}`, data, _header).toPromise();
+  }
+
 }
