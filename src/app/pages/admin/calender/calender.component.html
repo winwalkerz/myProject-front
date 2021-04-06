@@ -13,7 +13,7 @@
   <nz-calendar
     [(ngModel)]="selectedValue"
     (nzSelectChange)="selectChange($event)"
-    (dblclick)="showHoliday(datetime)"
+    
   >
     <ul *nzDateCell="let date; let month" class="events">
       <ng-container *ngFor="let index_m of counts">

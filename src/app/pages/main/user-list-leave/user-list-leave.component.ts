@@ -106,8 +106,8 @@ export class UserListLeaveComponent implements OnInit {
     })
   }
 
-  deleteLeave (id: any, data: any) {
-    this.crud.delete(id, data).then(() => {})
+  deleteLeave (id: any) {
+    this.crud.delete(id).then(() => {})
     this.nzMessageService.success('ลบรายการลางานสำเร็จ')
     this.showData(this.model_search)
   }
@@ -120,7 +120,7 @@ export class UserListLeaveComponent implements OnInit {
         nzOkText: 'ยืนยัน',
         nzOkType: 'primary',
         nzOkDanger: true,
-        nzOnOk: () => this.deleteLeave(id, data),
+        nzOnOk: () => this.deleteLeave(id),
         nzCancelText: 'ยกเลิก',
         nzOnCancel: () => console.log('Cancel')
       })

@@ -52,7 +52,9 @@ export class AdminComponent implements OnInit {
   // }
 
   logout () {
-    window.location.href = 'http://localhost:4200/login'
+  localStorage.clear();
+  window.location.href = 'http://localhost:4200/login'
+  console.log('token')
   }
 
   getAcc () {

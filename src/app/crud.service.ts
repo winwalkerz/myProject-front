@@ -8,18 +8,7 @@ export class CrudService {
   constructor(
     private http: HttpClient // Inject HttpClient มาใช้ใน component หรือ service.
   ) {}
-  getLeaveAllByID(id:any) {
-    let token = localStorage.getItem('token');
-    let token_json = JSON.parse(token || '{}');
 
-    let _header = {
-      headers: {
-        authorization: `Bearer ${token_json.token}`,
-      },
-    };
-    // console.log(_header);
-    return this.http.post(`${url}/leavework/searchbyid${id}`, _header).toPromise();
-  }
  
   refresh() {
     return this.http.get(`${url}/users/search`).toPromise();
@@ -64,12 +53,28 @@ export class CrudService {
     return this.http.put(`${url}/leavework/updateadmin/${id}`, data,_header).toPromise();
   }
 
-  delete(id: any, data:any) {
-    return this.http.delete(`${url}/leavework/delete/${id}`,data).toPromise();
+  delete(id: any) {
+    let token = localStorage.getItem('token');
+    let token_json = JSON.parse(token || '{}');
+
+    let _header = {
+      headers: {
+        authorization: `Bearer ${token_json.token}`,
+      },
+    };
+    return this.http.delete(`${url}/leavework/delete/${id}`,_header).toPromise();
   }
 
   filter(data: any) {
-    return this.http.post(`${url}/leavework/filter`, data).toPromise();
+    let token = localStorage.getItem('token');
+    let token_json = JSON.parse(token || '{}');
+
+    let _header = {
+      headers: {
+        authorization: `Bearer ${token_json.token}`,
+      },
+    };
+    return this.http.post(`${url}/leavework/filter`, data,_header).toPromise();
   }
 
   getLeaveByID(id:any) {
@@ -83,4 +88,18 @@ export class CrudService {
     };
     return this.http.get(`${url}/leavework/searchdata/${id}`,_header).toPromise();
   }
+
+// show in table
+  getLeaveAllByID(id:any, data:any) {
+    let token = localStorage.getItem('token');
+    let token_json = JSON.parse(token || '{}');
+    let _header = {
+      headers: {
+        authorization: `Bearer ${token_json.token}`,
+      },
+    };
+    // console.log(_header);
+    return this.http.post(`${url}/leavework/searchbyid/${id}`, data, _header).toPromise();
+  }
+
 }
