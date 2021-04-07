@@ -14,6 +14,8 @@ export class GuardGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot):
      Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+      var token = localStorage.getItem('token'); //สร้างตัวแปลมาเก็บ token ที่มาจาก storage
+      this.decode = jwt_decode(token || '');
        if(localStorage.getItem('token')){
         return true;
        }
