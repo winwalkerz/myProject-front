@@ -23,24 +23,21 @@ export class LeaveDetailComponent implements OnInit {
   dataDetailSendAfter: any = [];
   // data: any = [];
   statusData: any = [];
-  allinday: any
+  sumLeave:any = [];
 
   ngOnInit(): void {
-    console.log(this.dataDetailSendAfter)
-    this.calallday()
-    console.log(this.allinday)
-   
+    this.getSumLeave();
   }
-
-  calallday(){
-    var allinday = this.dataDetailSendAfter.allday + this.dataDetailSendAfter.allday
-    return this.allinday = allinday
+  getSumLeave(){
+    this.crud.getLeaveByID(this.dataDetailSendAfter.id_user_fk).then((res:any) =>{
+      this.sumLeave = res.sumHoliday;
+      // console.log(this.sumLeave);
+    })
   }
-
   getStatus() {
     this.statusService.getStatus().then((res: any) => {
       this.statusData = res;
-      console.log(this.statusData.data.check);
+      // console.log(this.statusData.data.check);
     });
   }
 

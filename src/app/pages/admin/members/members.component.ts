@@ -140,5 +140,4 @@ export class MembersComponent implements OnInit {
     window.open(`/admin/member-details/${id}`)
   }
 
-
 }

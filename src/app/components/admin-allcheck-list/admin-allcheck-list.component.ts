@@ -88,7 +88,7 @@ export class AdminAllcheckListComponent implements OnInit {
         nzOkText: 'ยืนยัน',
         nzOkType: 'primary',
         nzOkDanger: true,
-        nzOnOk: () => this.delUser(id,data),
+        nzOnOk: () => this.delUser(id),
         nzCancelText: 'ยกเลิก',
         nzOnCancel: () => console.log('Cancel'),
       })
@@ -96,8 +96,8 @@ export class AdminAllcheckListComponent implements OnInit {
         this.getAlluser(this.body);
       });
   }
-  delUser(id: any,data:any) {
-    this.crud.delete(id,data).then((res: any) => {});
+  delUser(id: any) {
+    this.crud.delete(id).then((res: any) => {});
     this.nzMessageService.success('Deleted');
     
   }

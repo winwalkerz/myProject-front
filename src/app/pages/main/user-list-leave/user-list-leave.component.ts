@@ -24,9 +24,10 @@ export class UserListLeaveComponent implements OnInit {
   count: any
   allcount = 0
   lastallcount = 0
-  model_search={
+  sumLeave: any = []
+  model_search = {
     page: 1,
-    search: '',
+    search: ''
   }
   constructor (
     private nzDrawerService: NzDrawerService, //ประกาศตัวแปลเพื่อมาใช้งาน
@@ -42,7 +43,8 @@ export class UserListLeaveComponent implements OnInit {
 
     var token = localStorage.getItem('token') //สร้างตัวแปลมาเก็บ token ที่มาจาก storage
     this.decode = jwt_decode(token || '')
-    // console.log(this.decode);
+    console.log(this.decode);
+    this.sumleave();
   }
   calculated (item: any) {
     this.allcount = 0
@@ -54,7 +56,7 @@ export class UserListLeaveComponent implements OnInit {
     // console.log(this.lastallcount)
   }
   //แสดข้อมูลของ user
-  showData (data:any) {
+  showData (data: any) {
     this.userService.getOrderByID(this.model_search).then((res: any) => {
       this.listorder = res.data
       this.count = res.count
@@ -104,8 +106,8 @@ export class UserListLeaveComponent implements OnInit {
     })
   }
 
-  deleteLeave (id: any, data: any) {
-    this.crud.delete(id, data).then(() => {})
+  deleteLeave (id: any) {
+    this.crud.delete(id).then(() => {})
     this.nzMessageService.success('ลบรายการลางานสำเร็จ')
     this.showData(this.model_search)
   }
@@ -118,7 +120,7 @@ export class UserListLeaveComponent implements OnInit {
         nzOkText: 'ยืนยัน',
         nzOkType: 'primary',
         nzOkDanger: true,
-        nzOnOk: () => this.deleteLeave(id, data),
+        nzOnOk: () => this.deleteLeave(id),
         nzCancelText: 'ยกเลิก',
         nzOnCancel: () => console.log('Cancel')
       })
@@ -144,8 +146,15 @@ export class UserListLeaveComponent implements OnInit {
     )
   }
 
-  click($event: any) {
-    this.model_search.page = $event;
-    this.showData(this.model_search);
+  click ($event: any) {
+    this.model_search.page = $event
+    this.showData(this.model_search)
+  }
+
+  sumleave () {
+    this.crud.getLeaveByID(this.decode.id).then((res: any) => {
+      this.sumLeave = res.sumHoliday
+      console.log(this.sumLeave)
+    })
   }
 }

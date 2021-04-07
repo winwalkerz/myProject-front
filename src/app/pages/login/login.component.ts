@@ -34,8 +34,10 @@ export class LoginComponent implements OnInit {
         this.decode = jwt_decode(token || '');
         // console.log(this.decode);
        if (this.decode.role === 'user') {
+          console.log(this.decode)
           this.router.navigate(['main/user-list-leave']);
         } else if (this.decode.role ==='admin') {
+          console.log(this.decode)
           this.router.navigate(['admin/overview']);
         }else {
           this.router.navigate(['login'])

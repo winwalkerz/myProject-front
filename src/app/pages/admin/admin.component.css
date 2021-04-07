@@ -43,6 +43,7 @@ nz-breadcrumb {
   min-height: 630px;
   margin-top: 15px;
   background-color:rgb(245, 245, 245);
+  height: 900px;
 }
 
 nz-footer {
